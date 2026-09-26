@@ -1,0 +1,79 @@
+/* Pocket-worn scrap on C4. Static CSS layers; grime survives wiping the digits. */
+.game-screen .password-note {
+  position: relative; min-height: 182px; padding: 18px 19px 17px;
+  background: transparent; border: 0; border-radius: 0;
+  box-shadow: none; transform: rotate(-.65deg); isolation: isolate;
+  color: #362c20; -webkit-tap-highlight-color: transparent;
+}
+.game-screen .password-note::before, .game-screen .password-note::after { content: none; }
+.game-screen .password-note[data-state="wiping"] { box-shadow: none; }
+.game-screen .password-note:focus-visible { outline: 2px solid #f4d995; outline-offset: 5px; }
+.password-note .note-sheet {
+  position: absolute; z-index: -1; inset: 0; pointer-events: none;
+  clip-path: polygon(1% 2%,6% 1%,10% 2%,16% 0,28% 1%,31% 0,45% 1%,59% 0,65% 2%,78% 1%,81% 3%,92% 1%,97% 2%,100% 8%,99% 24%,100% 28%,99% 52%,100% 67%,99% 74%,100% 87%,97% 99%,88% 97%,83% 100%,78% 98%,72% 100%,67% 96%,64% 99%,55% 97%,47% 100%,41% 97%,39% 91%,37% 99%,30% 97%,21% 99%,15% 97%,10% 99%,4% 97%,0 93%,1% 78%,0 73%,2% 69%,0 65%,1% 45%,0 39%,2% 31%,0 25%);
+  background:
+    radial-gradient(ellipse at 1% 4%,#3b2913b8,transparent 27%),
+    radial-gradient(ellipse at 101% 94%,#443017b3,transparent 28%),
+    radial-gradient(ellipse at 0 71%,#3d332675,transparent 19%),
+    radial-gradient(ellipse at 82% 0,#7a593b80,transparent 28%),
+    repeating-linear-gradient(1deg,transparent 0 22px,#6154342e 23px,transparent 24px),
+    linear-gradient(110deg,#b1a077,#d0be91 31%,#c1ad7d 67%,#a49169);
+  box-shadow: inset 0 0 2px 2px #36240b91, inset 0 0 16px #6545239c;
+}
+.note-sheet::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse at 5% 79%,#44331d77 0 2%,transparent 8%),
+    radial-gradient(ellipse at 94% 27%,#62472770 0 3%,transparent 10%),
+    radial-gradient(ellipse at 19% 8%,#66563566 0 2%,transparent 8%),
+    radial-gradient(circle at 3px 5px,#44351d66 0 .6px,transparent 1px),
+    radial-gradient(circle at 15px 12px,#eee0b44d 0 .7px,transparent 1px),
+    url('../assets/ui/field-grain.svg');
+  background-size: auto,auto,auto,27px 31px,37px 23px,160px 160px;
+  opacity: .73;
+}
+.note-sheet::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(91deg,transparent 48.6%,#57422130 49%,#6a542847 49.3%,#e6dcb188 49.6%,transparent 50.5%),
+    linear-gradient(177deg,transparent 61%,#5844223d 61.4%,#efdbab88 61.8%,transparent 62.6%),
+    linear-gradient(32deg,transparent 3%,#513d212b 3.4%,#e1cda44d 3.8%,transparent 4.1% 91%,#77623f55 91.4%,#ecd5a257 91.7%,transparent 92%);
+}
+.password-note .note-tape {
+  z-index: 2; top: -8px; left: 20px; width: 74px; height: 24px;
+  border: 0; opacity: .83; pointer-events: none;
+  clip-path: polygon(0 8%,9% 0,16% 8%,25% 2%,37% 7%,65% 1%,76% 8%,96% 0,100% 93%,92% 100%,83% 91%,64% 98%,42% 92%,30% 100%,16% 93%,3% 100%);
+  background:
+    linear-gradient(0deg,#70654355 0 2px,transparent 3px 86%,#dfd2a233),
+    repeating-linear-gradient(87deg,#dbcca338 0 1px,transparent 1px 5px),
+    radial-gradient(ellipse at 12% 20%,#6e623b91,transparent 52%),#b1a273b3;
+  box-shadow: inset 0 0 3px #50411e44; transform: rotate(-9deg);
+}
+.password-note .note-tape-right { top: auto; left: auto; bottom: -5px; right: 24px; width: 55px; height: 19px; transform: rotate(11deg); opacity: .72; }
+.note-fold { position: absolute; right: -1px; bottom: 1px; width: 23px; height: 24px; z-index: 1; pointer-events: none; background: linear-gradient(135deg,#9c895f,#dac395 53%,#2b261bbd 54%); clip-path: polygon(0 100%,100% 0,100% 100%); transform: rotate(-3deg); }
+.game-screen .note-heading { display: flex; position: relative; gap: 10px; padding: 0; color: #51412c; font: 600 12px/1.4 "KaiTi","STKaiti",var(--sans); letter-spacing: .3px; }
+.game-screen .note-heading > span { transform: rotate(-1deg); border-bottom: 1px solid #76603b70; padding-bottom: 2px; }
+.game-screen .note-heading i { display: inline; font: 11px/1.4 "KaiTi","STKaiti",var(--sans); color: #6a3c2d; transform: rotate(5deg); white-space: nowrap; }
+.game-screen .note-code-window { margin: 10px 0 8px; padding: 2px 0; min-height: 45px; background: radial-gradient(ellipse,#ebd9ac4d,transparent 74%); }
+.game-screen .note-code { color: #2d2b22; text-shadow: .5px .4px #4437184a; }
+.note-scribble { position: relative; display: block; padding: 4px 29px 0 2px; font: 600 15px/1.5 "KaiTi","STKaiti","Kaiti SC",var(--sans); color: #39352b; letter-spacing: .15px; }
+.note-memo-line { display: block; transform: rotate(-.4deg); }
+.note-memo-reply { display: block; color: #654534; font-size: 13px; font-weight: 500; margin: 2px 0 0 15px; transform: rotate(.6deg); }
+.note-memo-reply::before { content: "↳ "; font-family: var(--sans); }
+.note-doodle { position: absolute; right: 18px; bottom: 21px; width: 25px; height: 28px; border: 1.5px solid #7857387d; border-radius: 45% 55% 52% 39%; transform: rotate(13deg); font: 700 italic 20px/26px "Segoe Print",serif; text-align: center; color: #7151368a; pointer-events: none; }
+.note-doodle span { position: absolute; top: -10px; right: -8px; font-size: 14px; }
+.note-readout { --wipe:0%; margin: 12px 0 0; }
+.game-screen .note-readout .note-footer { color: #e2d7b9; font-size: 11px; line-height: 1.5; font-weight: 500; }
+.note-readout .note-percent { color: #d1c29e; font-size: 10px; }
+.note-readout .note-progress { background: #171c1b52; margin-top: 5px; }
+.note-readout .note-progress > span { background: #cebe87; }
+.game-screen #note-help { margin-top: 6px; font-size: 11px; color: #d0ccb8; }
+@media(max-width:430px) {
+  .game-screen .password-note { min-height: 150px; padding: 16px 13px 16px; }
+  .game-screen .note-heading { font-size: 11px; gap: 5px; letter-spacing: 0; }
+  .game-screen .note-heading i { font-size: 10px; }
+  .game-screen .note-code-window { margin: 8px 0 6px; min-height: 40px; }
+  .note-scribble { font-size: 14px; padding-right: 16px; line-height: 1.5; letter-spacing: 0; }
+  .note-memo-reply { font-size: 13px; margin-left: 8px; }
+  .note-doodle { right: 10px; bottom: 20px; width: 19px; height: 22px; line-height: 20px; font-size: 16px; opacity: .65; }
+}
