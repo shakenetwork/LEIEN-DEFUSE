@@ -1,0 +1,80 @@
+/* Static Dust II atmosphere: no animated filters or particle loops. */
+body { background: #141b1e; isolation: isolate; }
+body::before {
+  content: ""; display: block; position: fixed; inset: 0; z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 12% 5%, #c8a76822, transparent 55%),
+    linear-gradient(180deg, #14222b66, #121a20c9 58%, #12191ff5),
+    linear-gradient(90deg, #18212655, #12191fc7 35%, #12191fe0 65%, #18212655),
+    url("../assets/scenes/dust2-a-site.jpg") center 38% / cover no-repeat;
+  opacity: .62;
+}
+body:has(.home-screen)::before { opacity: .86; }
+.ambient-grid {
+  opacity: .1;
+  background-image: repeating-linear-gradient(0deg, transparent 0 79px, #b4cad210 79px 80px);
+}
+.masthead {
+  border-bottom-color: #a7bbba45;
+  background: linear-gradient(90deg, #131f26ed, #17232c88 80%, #17232c33);
+}
+.home-screen .online-panel { border-color: #738b9759; box-shadow: inset 0 1px #d9edf312, 0 4px 16px #0002; }
+.home-screen .leaderboard-entry { border-left: 2px solid #dec578; }
+.home-screen .music-kit { background: linear-gradient(115deg, #2d393cf5, #202b30fa); }
+@media (hover: hover) and (pointer: fine) {
+  .home-screen :is(.home-actions .button, .leaderboard-entry, .music-kit-choice button):hover {
+    border-color: #efce7a; box-shadow: inset 0 1px #ffffff30, 0 0 0 1px #efce7a30;
+  }
+}
+.site-footer { border-top-color: #a7bbba35; }
+.game-screen .module-heading { scroll-margin-top: 112px; }
+.game-screen .module-instruction {
+  color: #d0dadd; text-shadow: 0 1px 2px #000b;
+}
+.game-screen .key.confirm-key:disabled {
+  background: #364247; color: #a1adb0; border-color: #526267;
+  box-shadow: inset 0 1px #ffffff0a;
+}
+.game-screen .smoke-cell.target-cell:disabled {
+  opacity: 1; background: #c6ad51; color: #172024;
+  border-color: #ffe491; box-shadow: inset 0 0 0 2px #eed88c, 0 0 16px #f1c64b26;
+}
+@media (max-width: 760px), (max-height: 480px) {
+  body::before { background-position: center, center, center, 55% center; opacity: .5; }
+  body:has(.home-screen)::before { opacity: .7; }
+  .game-screen .module-heading { scroll-margin-top: 86px; }
+}
+/* Desktop/laptop results: keep replay above optional records as on phones.
+ * A short laptop gets a two-column debrief rather than a tall scrolling stack. */
+@media (min-width: 761px) and (min-height: 481px) {
+  .result-screen { display: flex; flex-direction: column; text-align: left; }
+  .result-screen .result-actions { order: 1; margin-top: 12px; }
+  .result-screen .restart-hint { order: 2; text-align: center; }
+  .result-screen .result-ranking { order: 3; }
+  .result-screen .result-stats { order: 4; }
+  .result-screen .combat-summary { order: 5; }
+  .result-screen .friend-reaction { order: 6; }
+}
+@media (min-width: 1001px) and (max-height: 850px) {
+  .result-screen { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap: 12px 24px; max-width: 900px; margin: 20px auto; align-items: start; }
+  .result-screen > .match-ribbon { grid-column: 1 / -1; grid-row: 1; margin: 0; }
+  .result-screen .victory-banner { grid-column: 1; grid-row: 2; padding: 18px; grid-template-columns: 48px minmax(0,1fr); gap: 12px; }
+  .result-screen .victory-banner > .faction-mark { width: 48px; height: 48px; }
+  .result-screen .victory-banner h1 { font-size: 27px; }
+  .result-screen .result-scene { grid-column: 1; grid-row: 3; height: 90px; margin: 0; }
+  .result-screen .result-scene > img { width: 120px; height: 130px; }
+  .result-screen .result-subtitle { grid-column: 1; grid-row: 4; padding: 0; }
+  .result-screen .rank-card { grid-column: 1; grid-row: 5; }
+  .result-screen .mvp-banner { grid-column: 1; grid-row: 6; margin: 0; }
+  .result-screen .result-actions { grid-column: 2; grid-row: 2; margin: 0; align-self: start; }
+  .result-screen .result-ranking { grid-column: 2; grid-row: 3 / 5; margin: 0; }
+  .result-screen .result-stats { grid-column: 2; grid-row: 5; margin: 0; }
+  .result-screen .combat-summary { grid-column: 2; grid-row: 6; margin: 0; border-top: 1px solid #acb5a621; }
+  .result-screen .friend-reaction { grid-column: 1 / -1; grid-row: 7; margin: 0; }
+  .result-screen .restart-hint { display: none; }
+  .result-screen :is(.result-actions,.result-ranking,.result-stats,.combat-summary,.friend-reaction) { order: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before { background-attachment: scroll; }
+}

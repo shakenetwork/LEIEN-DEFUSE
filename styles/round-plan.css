@@ -1,0 +1,129 @@
+/* Round-plan dressing keeps the home page tactile without turning it into a blue poster. */
+.home-screen {
+  position: relative;
+  isolation: isolate;
+}
+.home-screen::before {
+  content: "";
+  position: absolute;
+  inset: 72px 0 auto;
+  height: 180px;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.075;
+  background: linear-gradient(90deg, transparent, #f1c34f22, transparent), url("../assets/scenes/dust2-b-site.jpg") center/cover;
+  filter: saturate(0.8) contrast(1.1);
+  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+}
+.home-visual {
+  box-shadow: 0 16px 0 #090d10, 0 0 0 1px #c9a8412c;
+}
+button,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.12s ease,
+    filter 0.12s ease,
+    box-shadow 0.12s ease,
+    background-color 0.12s ease;
+}
+button:active:not(:disabled),
+[role="button"]:active {
+  transform: translateY(2px) scale(0.985);
+  filter: brightness(1.08);
+}
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid #f1c650;
+  outline-offset: 2px;
+}
+.music-kit button:not(:disabled):active {
+  box-shadow: inset 0 0 0 1px #f1c65066;
+}
+.squad-roster > div,
+.roster-player {
+  transition:
+    transform 0.14s ease,
+    background-color 0.14s ease,
+    filter 0.14s ease;
+}
+.squad-roster > div:active {
+  transform: translateY(2px);
+  background: #d9b64b18;
+}
+.visual-topline {
+  background: linear-gradient(90deg, #101a22, #17232a, #101a22);
+}
+.home-plan-rush .visual-topline span:last-child,
+.intro-plan-rush .match-ribbon span:first-child {
+  color: #ff8b6b;
+}
+.home-plan-solo .visual-topline span:last-child,
+.intro-plan-solo .match-ribbon span:first-child {
+  color: #c6ced5;
+}
+.squad-roster > .dead-channel {
+  position: relative;
+  filter: grayscale(1);
+  opacity: 0.48;
+}
+.squad-roster > .dead-channel::after {
+  content: "DEAD CHANNEL";
+  position: absolute;
+  top: 8px;
+  right: 7px;
+  padding: 2px 4px;
+  color: #d2d7d9;
+  border: 1px solid #9ca6ad88;
+  background: #12181dcc;
+  font: 8px var(--mono);
+  letter-spacing: 0.7px;
+}
+.squad-roster > .rush-contact {
+  border-bottom: 2px solid var(--red);
+  background: #6e34221a;
+}
+.squad-roster > .rush-contact small {
+  color: #ff967b;
+}
+.intro-plan-solo .intro-ct img {
+  filter: grayscale(1) contrast(0.8);
+  opacity: 0.55;
+}
+.intro-plan-rush .intro-arena.ct-down .intro-ct img {
+  filter: grayscale(1) contrast(0.82);
+  opacity: 0.48;
+}
+.intro-plan-rush .intro-arena.ct-down .intro-ct::after {
+  content: "CT DOWN";
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  padding: 2px 4px;
+  color: #d2d7d9;
+  border: 1px solid #9ca6ad88;
+  background: #12181dcc;
+  font: 8px var(--mono);
+  letter-spacing: 0.7px;
+}
+.intro-plan-rush .intro-friend.friend-down img {
+  filter: grayscale(1) contrast(0.8);
+  opacity: 0.55;
+}
+.intro-plan-rush .intro-friend.friend-down::after {
+  content: "COVER DOWN";
+  color: #ff967b;
+  font: 8px var(--mono);
+  letter-spacing: 0.7px;
+}
+@media (max-width: 760px) {
+  .home-screen::before {
+    inset: 56px 0 auto;
+    height: 130px;
+  }
+  .squad-roster > .dead-channel::after {
+    top: 5px;
+    right: 5px;
+    font-size: 7px;
+  }
+}

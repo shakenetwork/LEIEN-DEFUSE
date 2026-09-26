@@ -1,0 +1,327 @@
+/* Mobile-first pass: keep the HUD readable while returning vertical space to the toy modules. */
+@media (max-width: 760px) {
+  .site-shell {
+    padding-inline: 12px;
+  }
+  .game-screen {
+    margin: 8px auto 18px;
+  }
+  .match-ribbon {
+    margin-bottom: 8px;
+    min-height: 32px;
+    padding: 7px 0;
+  }
+  .game-hud {
+    gap: 9px;
+  }
+  .timer-block .eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.6px;
+  }
+  .timer {
+    font-size: 38px;
+    letter-spacing: -2px;
+  }
+  .timer small {
+    font-size: 20px;
+    letter-spacing: -1px;
+  }
+  .hud-stats {
+    gap: 14px;
+  }
+  .hud-stats > div {
+    gap: 3px;
+  }
+  .hud-stats > div > span {
+    font-size: 10px;
+  }
+  .hud-stats b {
+    font-size: 22px;
+  }
+  .hud-stats small {
+    font-size: 11px;
+  }
+  .round-progress {
+    margin: 7px 0 10px;
+    gap: 4px;
+  }
+  .round-progress > span {
+    height: 3px;
+  }
+  .music-now {
+    min-height: 21px;
+    margin: -2px 0 6px;
+    font-size: 10px;
+  }
+  .music-now > span:first-child {
+    font-size: 13px;
+  }
+  .module-heading h2 {
+    font-size: 23px;
+    margin-top: 2px;
+  }
+  .module-heading .eyebrow {
+    font-size: 9px;
+    letter-spacing: 1.2px;
+  }
+  .module-id {
+    font-size: 31px;
+  }
+  .module-instruction {
+    font-size: 12px;
+    line-height: 1.45;
+    margin: 4px 0 8px;
+  }
+  .play-console {
+    padding: 12px;
+    min-height: 0;
+  }
+  .password-unit .code-display {
+    padding: 9px 10px;
+  }
+  .password-unit .code-display > b {
+    font-size: 29px;
+  }
+  .password-unit .password-note-wrap {
+    margin-top: 9px;
+  }
+  .keypad {
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .key {
+    height: 46px;
+    min-height: 44px;
+  }
+  .hold-orbit {
+    width: 190px;
+    height: 190px;
+    margin-block: 8px 10px;
+  }
+  .hold-button {
+    width: 148px;
+    height: 148px;
+  }
+  .tool-card {
+    height: 106px;
+  }
+  .tools-grid {
+    gap: 6px;
+  }
+  .wire-bank {
+    gap: 8px;
+  }
+  .wire {
+    height: 54px;
+  }
+  .smoke-grid {
+    padding: 8px;
+    gap: 6px;
+  }
+  .smoke-cell {
+    height: 62px;
+  }
+  .instruction-tag {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 760px) {
+  .pressure-panel {
+    margin-bottom: 10px;
+  }
+  .pressure-top {
+    min-height: 27px;
+    padding: 5px 10px;
+  }
+  .pressure-label {
+    font-size: 10px;
+    letter-spacing: 0;
+  }
+  .combat-location {
+    font-size: 8px;
+  }
+  .operator-card {
+    grid-template-columns: 44px minmax(0, 1fr) 88px;
+    gap: 8px;
+    padding: 9px 10px;
+  }
+  .operator-portrait {
+    width: 44px;
+    height: 48px;
+  }
+  .operator-name {
+    font-size: 14px;
+  }
+  .operator-name > span {
+    display: none;
+  }
+  .operator-role {
+    display: none;
+  }
+  .operator-action {
+    margin-top: 3px;
+    font-size: 11px;
+    min-height: 16px;
+  }
+  .operator-progress {
+    margin-top: 2px;
+  }
+  .operator-tag {
+    font-size: 8px;
+    padding: 1px 3px;
+  }
+  .pressure-panel .combat-vitals {
+    gap: 8px;
+  }
+  .combat-vitals > div > span {
+    font-size: 10px;
+  }
+  .combat-vitals small {
+    display: none;
+  }
+  .combat-vitals b {
+    font-size: 20px;
+    margin: 1px 0 3px;
+  }
+  .vital-track {
+    height: 3px;
+  }
+  .pressure-panel .radio-bubble {
+    min-height: 58px;
+    margin-inline: 10px;
+    padding-block: 6px;
+    gap: 7px;
+  }
+  .pressure-panel .radio-avatar {
+    width: 32px;
+    height: 38px;
+  }
+  .pressure-panel .radio-avatar img {
+    width: 39px;
+    height: 39px;
+  }
+  .pressure-panel .radio-avatar img.profile-portrait {
+    width: 31px;
+    height: 31px;
+  }
+  .pressure-panel #radio-label {
+    font-size: 10px;
+    padding-right: 8px;
+  }
+  .pressure-panel #radio-label i {
+    font-size: 9px;
+  }
+  .pressure-panel #radio-text {
+    font-size: 12px;
+    line-height: 1.35;
+    margin-top: 2px;
+  }
+  .pressure-panel .voice-bars {
+    display: none;
+  }
+  .pressure-panel .pressure-action {
+    padding: 7px 10px;
+    min-height: 62px;
+    gap: 7px;
+  }
+  .pressure-panel .pressure-action strong {
+    font-size: 16px;
+  }
+  .pressure-panel #threat-detail {
+    font-size: 10px;
+    line-height: 1.35;
+  }
+  .pressure-panel .evade-button {
+    min-width: 76px;
+    min-height: 48px;
+    padding: 7px 8px;
+    font-size: 14px;
+  }
+  .threat-track {
+    height: 2px;
+  }
+}
+
+@media (max-width: 359px) {
+  .site-shell {
+    padding-inline: 10px;
+  }
+  .timer {
+    font-size: 35px;
+  }
+  .hud-stats {
+    gap: 10px;
+  }
+  .hud-stats b {
+    font-size: 20px;
+  }
+  .operator-card {
+    grid-template-columns: 40px minmax(0, 1fr) 79px;
+    gap: 7px;
+  }
+  .operator-portrait {
+    width: 40px;
+    height: 44px;
+  }
+  .operator-name {
+    font-size: 13px;
+  }
+  .operator-action {
+    font-size: 10px;
+  }
+  .combat-vitals b {
+    font-size: 18px;
+  }
+  .pressure-panel .pressure-action strong {
+    font-size: 15px;
+  }
+  .pressure-panel #threat-detail {
+    font-size: 9px;
+  }
+  .smoke-cell {
+    height: 56px;
+  }
+}
+
+@media (max-height: 700px) and (max-width: 760px) {
+  .masthead {
+    height: 56px;
+  }
+  .game-screen {
+    margin-top: 4px;
+  }
+  .module-instruction {
+    display: none;
+  }
+  .operator-card {
+    padding-block: 6px;
+  }
+  .pressure-panel .radio-bubble {
+    min-height: 49px;
+    padding-block: 4px;
+  }
+  .pressure-panel .pressure-action {
+    min-height: 55px;
+    padding-block: 5px;
+  }
+  .pressure-panel .pressure-action strong {
+    font-size: 14px;
+  }
+  .play-console {
+    padding-block: 9px;
+  }
+}
+
+.restart-game {
+  min-height: 56px;
+  letter-spacing: 0.5px;
+}
+.restart-hint {
+  margin: 10px 0 0;
+  color: #d3b866;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.5;
+}

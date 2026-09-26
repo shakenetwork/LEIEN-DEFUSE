@@ -1,0 +1,152 @@
+/* Home mission card: official Dust II photography, a single objective,
+   and explicit phone flow. These rules deliberately stay off game screens. */
+/* The release label stays small; existing in-game footer visibility is retained. */
+.site-footer.version-footer { justify-content: flex-end; grid-template-columns: 1fr; }
+.site-footer.version-footer > .footer-version {
+  display: block;
+  width: auto;
+  text-align: right;
+  font: 400 12px/1.5 var(--sans);
+  color: #94a1a5;
+  letter-spacing: .2px;
+}
+.footer-version b { margin-left: 5px; color: #bbc7cb; font: 600 12px/1.5 var(--mono); }
+.home-screen {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: stretch;
+  min-height: 0;
+  gap: 20px 24px;
+  padding-block: 28px 24px;
+}
+.home-screen::before { display: none; }
+.home-screen .home-copy {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 0;
+  min-height: 500px;
+  padding: 28px;
+  overflow: hidden;
+  background: #1a2023;
+  border: 1px solid #9bafa42d;
+  border-radius: 3px;
+}
+.home-cover { position: absolute; inset: 0; z-index: -2; pointer-events: none; }
+.home-cover img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 57% 0; }
+.home-screen .home-copy::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, #131b2030 0%, #12191d15 20%, #151c20b8 43%, #151c20f5 64%, #151c20 100%);
+}
+.home-location {
+  position: absolute;
+  inset: 20px 24px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #fff;
+  text-shadow: 0 1px 8px #000a;
+  font-size: 12px;
+  font-weight: 600;
+}
+.home-location img { width: 112px; height: 30px; object-fit: contain; filter: drop-shadow(0 1px 4px #0008); }
+.mission-copy { min-width: 0; }
+.mission-side { display: flex; align-items: center; gap: 8px; color: #e1f2fa; font-size: 13px; letter-spacing: .5px; text-shadow: 0 1px 5px #08131f, 0 0 9px #08131f; }
+.mission-side .faction-mark { width: 25px; height: 25px; margin: 0; flex-shrink: 0; }
+.mission-side b { font-weight: 600; }
+.home-screen .home-copy h1 { margin: 13px 0 16px; letter-spacing: -1px; line-height: 1.13; font-weight: 800; }
+.mission-time { display: block; font-size: clamp(66px, 6.8vw, 86px); letter-spacing: -3px; color: #f4ca5b; font-weight: 850; line-height: 1.06; font-variant-numeric: lining-nums; }
+.mission-time small { font: 650 .36em/1 var(--sans); letter-spacing: 0; margin-left: -3px; }
+.mission-title { display: block; margin-top: 7px; font-size: clamp(36px, 3.8vw, 48px); color: #f5f5ed; letter-spacing: -.8px; }
+.home-screen .home-copy .tagline { font-size: 14px; line-height: 1.65; margin: 0; color: #bdc9ce; letter-spacing: 0; }
+.home-screen .home-actions { display: grid; grid-template-columns: minmax(0, 1fr) 104px; gap: 10px; max-width: none; margin: 24px 0 0; }
+.home-screen .home-actions .button { min-height: 54px; padding: 13px 17px; font-size: 15px; }
+.home-screen .home-actions .secondary { background: #ffffff05; border-color: #bfced33b; color: #d5dedf; }
+.home-screen .home-visual { min-width: 0; gap: 12px; align-content: start; }
+.home-screen .squad-scene { height: 240px; }
+.home-screen .hero-agent { height: 258px; width: 80%; bottom: -22px; }
+.home-screen .faction-heading { padding: 7px 12px; }
+.home-screen .faction-heading .faction-mark { width: 25px; height: 25px; }
+.home-screen .faction-heading > b { font-size: 12px; }
+.home-screen .faction-task { font-size: 11px; }
+.home-screen .scene-tag { left: 12px; bottom: 12px; padding: 8px 10px; }
+.home-screen .scene-tag b { font-size: 13px; }
+.home-screen .commander-brief { padding: 8px 10px; }
+.home-screen .commander-brief p { font-size: 12px; }
+.home-screen .squad-roster > div { padding: 6px 4px 10px; }
+.home-screen .squad-roster img { height: 65px; }
+.home-screen .squad-roster img.profile-portrait { width: 54px; height: 54px; margin-block: 5px 6px; }
+.home-screen .squad-roster small { font-size: 11px; }
+.home-screen .music-kit { margin: 0; box-shadow: inset 0 1px #ffffff0a; }
+.home-screen .music-kit .audio-loadout-header { padding-block: 9px; }
+body:has(.home-screen) .site-footer { margin-top: 0; padding-top: 18px; padding-bottom: 22px; }
+
+@media (min-width: 761px) and (max-width: 1000px) {
+  .home-screen { gap: 18px; }
+  .home-screen .home-copy { padding: 22px; }
+  .home-screen .home-actions { grid-template-columns: minmax(0, 1fr) 86px; gap: 8px; }
+  .home-screen .home-actions .button { padding-inline: 10px; font-size: 14px; }
+  .home-screen .squad-scene { height: 202px; }
+  .home-screen .hero-agent { height: 233px; width: 86%; }
+}
+@media (max-width: 1000px) {
+  .home-screen .squad-roster img,
+  .home-screen .squad-roster img.profile-portrait { width: 36px; height: 38px; margin: 0; }
+  .home-screen .squad-roster > div { grid-template-columns: 36px minmax(0, 1fr); padding: 5px 8px; gap: 7px; }
+  .home-screen .squad-roster > .roster-player { grid-template-columns: 36px minmax(0, 1fr); padding-right: 42px; }
+  .home-screen .squad-roster .roster-player img.profile-portrait { width: 36px; height: 36px; }
+}
+@media (max-width: 760px) {
+  .home-screen { display: flex; flex-direction: column; padding-block: 12px 16px; gap: 12px; }
+  .home-screen .home-copy { display: flex; order: 0; min-height: 358px; padding: 18px; }
+  .home-location { inset: 16px 18px auto; font-size: 11px; }
+  .home-location img { width: 97px; height: 25px; }
+  .home-cover img { object-position: 54% 18%; }
+  .home-screen .home-copy::after { background: linear-gradient(180deg, #131b202a, #151c2040 25%, #151c20ea 58%, #151c20 100%); }
+  .mission-side { font-size: 12px; gap: 7px; }
+  .mission-side .faction-mark { width: 22px; height: 22px; }
+  .home-screen .home-copy h1 { margin: 9px 0 10px; letter-spacing: -.5px; }
+  .mission-time { font-size: 61px; letter-spacing: -2px; }
+  .mission-title { font-size: 36px; margin-top: 3px; }
+  .home-screen .home-copy .tagline { font-size: 13px; }
+  .home-screen .home-actions { grid-template-columns: minmax(0, 1fr) 94px; gap: 8px; margin: 17px 0 0; }
+  .home-screen .home-actions .button { min-height: 50px; padding: 12px; font-size: 14px; }
+  .home-screen .home-visual { order: 1; gap: 8px; }
+  .home-screen .music-kit { order: 2; }
+  .home-screen .squad-scene { height: 145px; }
+  .home-screen .hero-agent { height: 176px; width: 74%; bottom: -31px; }
+  .home-screen .faction-heading { padding: 6px 9px; }
+  .home-screen .faction-heading .faction-mark { width: 23px; height: 23px; }
+  .home-screen .scene-tag { left: 9px; bottom: 9px; padding: 7px 8px; }
+  .home-screen .scene-tag b { font-size: 12px; }
+  .home-screen .music-kit-info { min-height: 50px; }
+  .home-screen .audio-art-frame { height: 50px; }
+  body:has(.home-screen) .site-footer { padding-block: 5px max(10px, env(safe-area-inset-bottom)); }
+}
+@media (max-width: 359px) {
+  .home-screen .home-copy { padding: 15px; min-height: 338px; }
+  .home-location { inset-inline: 15px; }
+  .mission-time { font-size: 56px; }
+  .mission-title { font-size: 33px; }
+  .home-screen .home-copy .tagline { font-size: 12px; }
+  .home-screen .home-actions { grid-template-columns: minmax(0, 1fr) 88px; }
+}
+@media (orientation: landscape) and (max-height: 480px) and (max-width: 1000px) {
+  .home-screen { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: 12px 16px; padding-block: 12px; }
+  .home-screen .home-copy { min-height: 306px; padding: 16px; }
+  .home-location { inset: 12px 16px auto; }
+  .mission-time { font-size: 57px; }
+  .mission-title { font-size: 32px; }
+  .home-screen .home-copy h1 { margin-block: 8px 9px; }
+  .home-screen .home-actions { margin-top: 14px; }
+  .home-screen .home-actions .button { min-height: 48px; padding-inline: 10px; }
+  .home-screen .squad-scene { height: 125px; }
+  .home-screen .hero-agent { height: 163px; bottom: -33px; }
+  .home-screen .music-kit { grid-column: 1 / -1; }
+}

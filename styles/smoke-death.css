@@ -1,0 +1,139 @@
+.smoke-death-running { height: 0; min-height: 0; overflow: hidden; }
+html:has(.smoke-death-screen), body:has(.smoke-death-screen) { overflow: hidden; overscroll-behavior: none; }
+.smoke-death-screen { position: fixed; inset: 0; z-index: 100; isolation: isolate; overflow: hidden; color: #e9e7df; background: #111719e8; font-family: var(--sans, sans-serif); }
+.smoke-death-scene { position: absolute; inset: -5%; overflow: hidden; background: linear-gradient(#19202280, #1a2021b8), url('../assets/scenes/dust2-b-site.jpg') center 54% / cover; filter: saturate(.45) brightness(.64); transition: transform .55s ease-out, filter .6s ease-out; }
+.smoke-death-haze { position: absolute; inset: 0; background: radial-gradient(ellipse at 23% 48%, #c2c5b79c, transparent 62%), radial-gradient(ellipse at 83% 33%, #bfc2b1b0, transparent 59%), radial-gradient(ellipse at 57% 92%, #758078c9, transparent 70%); opacity: .9; }
+.smoke-death-sight { position: absolute; inset: 46% auto auto 50%; width: 34px; height: 34px; transform: translate(-50%, -50%); opacity: .45; }
+.smoke-death-sight i { position: absolute; background: #dce7dd; }
+.smoke-death-sight i:nth-child(1) { height: 7px; width: 1px; top: 0; left: 16px; }
+.smoke-death-sight i:nth-child(2) { height: 7px; width: 1px; bottom: 0; left: 16px; }
+.smoke-death-sight i:nth-child(3) { width: 7px; height: 1px; left: 0; top: 16px; }
+.smoke-death-sight i:nth-child(4) { width: 7px; height: 1px; right: 0; top: 16px; }
+.smoke-death-edge { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, transparent 24%, #39141065 66%, #6a211ae0 100%); box-shadow: inset 0 0 66px #631d1970; opacity: .88; }
+.smoke-death-impacts { position: absolute; inset: 0; pointer-events: none; }
+.smoke-death-impact { position: absolute; left: var(--impact-x); top: var(--impact-y); width: clamp(76px, 18vw, 144px); aspect-ratio: 1; transform: translate(-50%, -50%) rotate(var(--impact-angle)); visibility: hidden; opacity: .7; }
+.smoke-death-impact.is-visible { visibility: visible; }
+.smoke-death-impact svg { width: 100%; height: 100%; stroke: #dfded281; stroke-width: 1.2; filter: drop-shadow(1px 1px 0 #0d1416bd); }
+.smoke-death-impact .smoke-death-crack-fine { stroke-width: .6; stroke: #ece9db57; }
+.smoke-death-impact > i { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 14px; height: 12px; border-radius: 42% 52% 36% 48%; background: #0b1011; border: 2px solid #888c818f; box-shadow: 0 0 0 2px #151a1cc7, 0 0 7px #071012e0; }
+.smoke-death-content { position: relative; height: 100%; width: min(100%, 720px); margin-inline: auto; display: flex; flex-direction: column; padding: max(14px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(14px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left)); }
+.smoke-death-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; color: #c5c3b6; font: 600 11px var(--mono, monospace); letter-spacing: 1px; }
+.smoke-death-skip { min-width: 76px; min-height: 44px; padding: 10px 12px; border: 1px solid #b3b7ad62; background: #172126b8; color: #e2e4db; font: 12px var(--sans, sans-serif); border-radius: 3px; }
+.smoke-death-skip span { margin-left: 8px; font-size: 17px; }
+.smoke-death-skip:focus-visible { outline: 2px solid #efd48d; outline-offset: 2px; }
+.smoke-death-message { margin-block: auto; padding-block: 22px; text-align: center; text-shadow: 0 2px 12px #000b; }
+.smoke-death-kicker { display: block; color: #e2b2a0; font: 600 10px var(--mono, monospace); letter-spacing: 2px; }
+.smoke-death-message h1 { margin: 11px 0 9px; color: #f2e9dc; font-size: clamp(32px, 8.8vw, 52px); font-weight: 850; letter-spacing: 3px; line-height: 1.14; }
+.smoke-death-message > p { color: #d2d0c7; font-size: 13px; line-height: 1.55; margin: 0; }
+.smoke-death-health { display: flex; align-items: center; justify-content: center; gap: 7px; margin: 16px auto 12px; width: min(100%, 230px); color: #edbbad; font: 11px var(--mono, monospace); }
+.smoke-death-health b { min-width: 28px; font-size: 21px; font-variant-numeric: tabular-nums; text-align: left; }
+.smoke-death-health > i { display: block; height: 3px; flex: 1; background: #dfc7b029; overflow: hidden; }
+.smoke-death-health em { display: block; height: 100%; background: #ce7460; transition: width .12s linear; }
+.smoke-death-casualties { display: grid; justify-content: center; gap: 5px; color: #c9c7bc; font-size: 11px; line-height: 1.45; }
+.smoke-death-casualties > :last-child { color: #b6beb8; }
+.smoke-death-radio { display: grid; gap: 8px; width: 100%; max-width: 580px; margin-inline: auto; }
+.smoke-death-radio-line { visibility: hidden; opacity: 0; padding: 11px 14px; border: 1px solid #94a39e42; border-left: 2px solid #bb8872; border-radius: 2px; background: #182227eb; transition: opacity .2s ease; min-width: 0; }
+.smoke-death-radio-line.is-visible { visibility: visible; opacity: 1; }
+.smoke-death-radio-line:nth-child(2) { border-left-color: #82aeba; }
+.smoke-death-radio-line.is-previous { background: #172025de; }
+.smoke-death-radio-heading { display: flex; align-items: baseline; gap: 8px; color: #e0baa7; font-size: 12px; line-height: 1.3; }
+.smoke-death-radio-heading > span { color: #b2b8b3; font-size: 10px; }
+.smoke-death-radio-heading > i { margin-left: auto; color: #758d93; font-size: 10px; }
+.smoke-death-radio-line:nth-child(2) b { color: #b1d1dc; }
+.smoke-death-radio-line p { margin: 5px 0 0; color: #e4e6de; font-size: 13px; line-height: 1.5; overflow-wrap: anywhere; }
+.smoke-death-footer { display: flex; justify-content: space-between; gap: 10px; margin-top: 14px; font: 10px/1.5 var(--mono, monospace); color: #b3b6ae; }
+.smoke-death-footer > :first-child { overflow-wrap: anywhere; }
+.smoke-death-footer > :last-child { white-space: nowrap; }
+.smoke-death-screen[data-phase="fallen"] .smoke-death-scene { transform: translateY(3%) rotate(-3deg) scale(1.035); filter: saturate(0) brightness(.43); }
+.smoke-death-screen[data-phase="fallen"] .smoke-death-sight { opacity: 0; }
+.smoke-death-screen[data-phase="fallen"] .smoke-death-message h1 { color: #edd8cc; }
+.smoke-death-soft .smoke-death-scene, .smoke-death-soft .smoke-death-health em, .smoke-death-soft .smoke-death-radio-line { transition: none; }
+.smoke-death-soft[data-phase="fallen"] .smoke-death-scene { transform: none; }
+.smoke-death-soft .smoke-death-edge { opacity: .65; }
+.smoke-result-radio { display: grid; gap: 8px; text-align: left; margin: 15px 0; }
+.smoke-result-line { padding: 10px 12px; background: #19282ecc; border: 1px solid #75929b39; border-left: 2px solid #aa816d; border-radius: 2px; }
+.smoke-result-line:nth-child(2) { border-left-color: #88aeb7; }
+.smoke-result-line b { display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px; color: #dbc1b0; font-size: 12px; line-height: 1.4; }
+.smoke-result-line:nth-child(2) b { color: #b0cfda; }
+.smoke-result-line small { color: #a7b5b6; font-size: 10px; font-weight: 400; }
+.smoke-result-line p { margin: 4px 0 0; color: #dce4df; font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+/* This failure keeps the complete exchange beside replay on a phone. Other
+   result causes retain their existing debrief and record controls. */
+@media (max-width: 760px) {
+  .result-screen.smoke-elimination { display: flex; flex-direction: column; gap: 10px; margin: 10px auto max(10px, env(safe-area-inset-bottom)); }
+  .result-screen.smoke-elimination > :is(.result-scene, .rank-card, .result-subtitle, .restart-hint, .combat-summary, .result-ranking, .result-footnote, .match-ribbon) { display: none; }
+  .result-screen.smoke-elimination .victory-banner { order: 0; grid-template-columns: 42px minmax(0, 1fr); column-gap: 12px; padding: 15px 13px; }
+  .result-screen.smoke-elimination .victory-banner > .faction-mark { width: 42px; height: 42px; margin: 0; }
+  .result-screen.smoke-elimination .victory-banner h1 { margin: 0 0 6px; font-size: 25px; line-height: 1.2; }
+  .result-screen.smoke-elimination .victory-banner p { font-size: 12px; line-height: 1.45; }
+  .result-screen.smoke-elimination .result-audio-cue { margin-top: 5px; font-size: 11px; }
+  .result-screen.smoke-elimination .result-audio-cue > span { display: none; }
+  .result-screen.smoke-elimination .result-stats { order: 1; margin: 0; padding: 9px 0; }
+  .result-screen.smoke-elimination .result-stats > div { gap: 3px; }
+  .result-screen.smoke-elimination .result-stats span, .result-screen.smoke-elimination .result-stats small { font-size: 11px; }
+  .result-screen.smoke-elimination .result-stats b { font-size: 22px; line-height: 1.2; }
+  .result-screen.smoke-elimination .smoke-result-radio { order: 2; gap: 8px; margin: 0; }
+  .result-screen.smoke-elimination .smoke-result-line { padding: 11px 12px; }
+  .result-screen.smoke-elimination .smoke-result-line p { font-size: 13px; line-height: 1.5; }
+  .result-screen.smoke-elimination .result-actions { order: 3; margin: 0; padding: 0 0 3px; }
+  .result-screen.smoke-elimination .result-actions .button { min-height: 48px; padding: 10px 12px; font-size: 15px; }
+  body:has(.result-screen.smoke-elimination) .site-footer { display: none; }
+}
+@media (max-width: 760px) and (max-height: 520px) {
+  .result-screen.smoke-elimination { gap: 7px; margin-block: 7px max(8px, env(safe-area-inset-bottom)); }
+  .result-screen.smoke-elimination .victory-banner { grid-template-columns: 35px minmax(0, 1fr); column-gap: 10px; padding: 10px 11px; }
+  .result-screen.smoke-elimination .victory-banner > .faction-mark { width: 35px; height: 35px; }
+  .result-screen.smoke-elimination .victory-banner h1 { font-size: 23px; margin-bottom: 4px; }
+  .result-screen.smoke-elimination .result-audio-cue { margin-top: 4px; }
+  .result-screen.smoke-elimination .result-stats { padding-block: 6px; }
+  .result-screen.smoke-elimination .result-stats span, .result-screen.smoke-elimination .result-stats small { font-size: 10px; }
+  .result-screen.smoke-elimination .result-stats b { font-size: 20px; }
+  .result-screen.smoke-elimination .smoke-result-radio { gap: 6px; }
+  .result-screen.smoke-elimination .smoke-result-line { padding: 8px 10px; }
+  .result-screen.smoke-elimination .smoke-result-line p { font-size: 12px; line-height: 1.45; }
+  .result-screen.smoke-elimination .result-actions .button { min-height: 44px; padding-block: 9px; font-size: 14px; }
+}
+@media (min-width: 761px) and (min-height: 481px) {
+  .result-screen.smoke-elimination .smoke-result-radio { order: 6; }
+}
+@media (min-width: 1001px) {
+  .result-screen.smoke-elimination { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 12px 24px; max-width: 900px; margin: 20px auto; align-items: start; }
+  .result-screen.smoke-elimination > .match-ribbon { grid-column: 1 / -1; grid-row: 1; margin: 0; }
+  .result-screen.smoke-elimination .victory-banner { grid-column: 1; grid-row: 2; padding: 18px; grid-template-columns: 48px minmax(0, 1fr); gap: 12px; }
+  .result-screen.smoke-elimination .victory-banner > .faction-mark { width: 48px; height: 48px; }
+  .result-screen.smoke-elimination .victory-banner h1 { font-size: 27px; }
+  .result-screen.smoke-elimination .result-scene { grid-column: 1; grid-row: 3; height: 90px; margin: 0; }
+  .result-screen.smoke-elimination .result-scene > img { width: 120px; height: 130px; }
+  .result-screen.smoke-elimination .result-subtitle { grid-column: 1; grid-row: 4; padding: 0; }
+  .result-screen.smoke-elimination .rank-card { grid-column: 1; grid-row: 5; }
+  .result-screen.smoke-elimination .result-actions { grid-column: 2; grid-row: 2; margin: 0; align-self: start; }
+  .result-screen.smoke-elimination .result-ranking { grid-column: 2; grid-row: 3 / 5; margin: 0; }
+  .result-screen.smoke-elimination .result-stats { grid-column: 2; grid-row: 5; margin: 0; }
+  .result-screen.smoke-elimination .combat-summary { grid-column: 2; grid-row: 6; margin: 0; border-top: 1px solid #acb5a621; }
+  .result-screen.smoke-elimination .restart-hint { display: none; }
+  .result-screen.smoke-elimination :is(.result-actions, .result-ranking, .result-stats, .combat-summary) { order: 0; }
+  .result-screen.smoke-elimination .smoke-result-radio { grid-column: 1 / -1; grid-row: 7; grid-template-columns: repeat(2, minmax(0, 1fr)); order: 0; margin: 0; }
+}
+@media (max-width: 380px), (max-height: 600px) {
+  .smoke-death-content { padding-inline: max(14px, env(safe-area-inset-left)); padding-block: max(10px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-bottom)); }
+  .smoke-death-message { padding-block: 13px; }
+  .smoke-death-message h1 { margin-block: 8px; font-size: 32px; }
+  .smoke-death-message > p { font-size: 12px; }
+  .smoke-death-health { margin-block: 10px 8px; }
+  .smoke-death-radio { gap: 6px; }
+  .smoke-death-radio-line { padding: 8px 10px; }
+  .smoke-death-radio-line p { font-size: 12px; line-height: 1.45; margin-top: 4px; }
+  .smoke-death-footer { margin-top: 10px; font-size: 9px; }
+  .smoke-result-radio { gap: 6px; margin-block: 10px; }
+  .smoke-result-line { padding: 8px 10px; }
+}
+@media (max-height: 420px) and (min-width: 540px) {
+  .smoke-death-content { display: grid; grid-template-columns: 1fr 1.15fr; grid-template-rows: 44px 1fr auto; column-gap: 20px; }
+  .smoke-death-top, .smoke-death-footer { grid-column: 1 / -1; }
+  .smoke-death-message { margin-block: auto; }
+  .smoke-death-radio { margin-block: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .smoke-death-screen *, .smoke-death-screen *::before, .smoke-death-screen *::after { animation: none !important; transition: none !important; }
+  .smoke-death-screen[data-phase="fallen"] .smoke-death-scene { transform: none; }
+}

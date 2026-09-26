@@ -1,0 +1,175 @@
+/* One task at a time; controls keep their real game shape and touch size. */
+body.in-training .site-footer, body.in-training .match-scoreboard { display:none; }
+body.in-training .masthead::after { content:attr(data-training-label); margin-left:auto; color:#9eb8c5; font-size:12px; order:1; }
+body.in-training .masthead .sound-button { order:2; margin-left:12px; }
+.training-screen { --train-blue:#a5d8e9; max-width:540px; margin:16px auto; display:flex; flex-direction:column; gap:12px; min-width:0; }
+.training-screen [hidden] { display:none!important; }
+.training-screen button { touch-action:manipulation; min-height:44px; }
+.training-screen button:focus-visible { outline:3px solid #a6dfed; outline-offset:-3px; }
+.training-screen .button { min-height:46px; font-size:14px; padding:10px 14px; }
+.training-screen .button:disabled { opacity:.48; cursor:default; box-shadow:none; }
+.training-kicker,.training-top { display:flex; align-items:center; justify-content:space-between; gap:8px; color:#9eb8c5; font:11px var(--mono); letter-spacing:1px; }
+.training-top { min-height:44px; border-bottom:1px solid #526d7766; }
+.training-top b { color:var(--train-blue); margin-left:8px; }
+.training-top button { color:#a9bbc2; background:transparent; border:0; padding:4px 8px; font-size:12px; }
+.training-progress { display:flex; gap:5px; height:3px; flex-shrink:0; }
+.training-progress i { background:#33434a; flex:1; }
+.training-progress i.done { background:#a5d8e9; }.training-progress i.current { background:#e7c76a; }
+.training-coach { display:flex; align-items:flex-start; gap:10px; min-height:80px; padding:12px; background:linear-gradient(120deg,#244252,#182a32); border-left:3px solid var(--train-blue); }
+.training-coach-mark { flex:0 0 34px; }.training-coach-mark :is(svg,img) { width:34px;height:34px; }
+.training-coach h1 { font-size:21px; line-height:1.3; margin:0 0 5px; letter-spacing:0; }
+.training-coach p { font-size:14px; line-height:1.55; color:#cee0e7; margin:0; }
+.training-workbench { flex:1; min-height:0; padding:14px; border:1px solid #74847f; border-top:2px solid #e4cc84; border-radius:3px; background:linear-gradient(145deg,#35423bcc,#202b29ee),url('../assets/ui/field-grain.svg'); display:flex; align-items:center; }
+.training-module { min-width:0; width:100%; }
+.training-footer { display:flex; align-items:center; justify-content:space-between; gap:8px; flex-shrink:0; }
+.training-footer > span { font-size:11px; color:#a8bebd; }
+.training-footer .button { min-width:112px; }
+.lesson-cleared .training-coach { border-color:#a3d7bf; background:#213d34; }
+.training-welcome,.training-done { padding:22px; border:1px solid #73909a77; border-top:2px solid #bddbea; background:linear-gradient(180deg,#193340b8,#152229 68%),url('../assets/scenes/dust2-b-approach.webp') center/cover; border-radius:4px; min-height:510px; }
+.training-intro-art { min-height:100px; flex:1; display:flex; justify-content:center; align-items:center; flex-direction:column; gap:12px; }
+.training-intro-art :is(svg,img) { width:82px; height:82px; filter:drop-shadow(0 4px 20px #0006); }
+.training-intro-art > span { color:#abc2c9; font:10px var(--mono); letter-spacing:3px; }
+.training-leien-intro img { width:88px; height:98px; object-fit:cover; object-position:center 20%; border:1px solid #a5ceda99; border-radius:3px; padding:3px; background:#193340; }
+.training-intro-copy h1,.training-done h1 { font-size:42px; margin:4px 0 8px; letter-spacing:-1px; }
+.training-intro-copy p,.training-done > p { font-size:15px; line-height:1.65; margin:0; color:#c6d7db; }
+.training-promises { display:flex; flex-wrap:wrap; gap:8px 18px; color:#a0c5d1; font-size:11px; margin-top:14px; }
+.training-welcome-actions { display:grid; gap:8px; margin-top:12px; }
+.training-welcome-actions .button { justify-content:center; }
+.training-screen[data-training-step="clock"] { max-width:600px; }
+.training-screen[data-training-step="clock"] .training-workbench { background:linear-gradient(145deg,#203640e6,#16252df0); border-color:#7895a36b; }
+.training-read-hud { padding:4px; display:grid; gap:12px; }
+.training-hud-caption { display:flex; align-items:center; justify-content:space-between; color:#99b5c2; font-size:11px; }
+.training-hud-caption > span:last-child { display:flex; align-items:center; gap:4px; }
+.training-hud-caption .action-icon { width:14px; height:14px; }
+.training-clock { position:relative; border:1px solid #ecd18b55; border-left:3px solid #e7c76a; color:#f5d879; background:linear-gradient(110deg,#e9c86a12,#122028); padding:18px 20px; text-align:left; border-radius:3px; }
+.training-stat-label { display:flex; align-items:center; gap:8px; color:#cfdee3; font-size:13px; }
+.training-stat-label i { color:#9baeb5; font:10px var(--mono); }
+.training-clock strong { display:block; margin:6px 0; font:600 clamp(40px,7vw,60px)/1 var(--mono); letter-spacing:-2px; }
+.training-clock strong span { font-size:22px; color:#a69a75; }
+.training-clock > svg { position:absolute; width:26px; right:20px; top:20px; color:#b4a36b; }
+.training-clock p,.training-hud-detail p { margin:0; color:#b9cbd2; font-size:13px; line-height:1.5; }
+.training-hud-detail { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.training-hud-detail > div { padding:14px; border:1px solid #7895a340; border-radius:3px; background:#11212b88; }
+.training-hud-detail b { display:block; margin:9px 0 6px; color:#b5dcea; font:600 32px/1 var(--mono); }
+.training-hud-detail b small { color:#8cabb8; font-size:18px; }
+.training-hud-note { font-size:12px; line-height:1.5; color:#9db6c1; margin:2px 0 0; }
+.training-screen .wire-unit > .instruction-tag { margin:0; padding:10px; font-size:14px; line-height:1.5; }
+.training-screen .wire-status { margin:10px 0; }
+.training-screen .wire-bank { margin:8px 0 0; padding:0; display:grid; gap:8px; }
+.training-screen .wire { min-height:50px; height:50px; }
+.training-screen .wire-legend { display:none; }
+.training-screen .password-unit > .unit-top { display:none; }
+.training-screen .mobile-password-nav { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:0 0 10px; }
+.training-screen .mobile-password-nav button { min-height:44px; padding:5px; background:#233238; border:1px solid #899b94; color:#dee5d5; font-size:13px; }
+.training-screen .mobile-password-nav [aria-pressed="true"] { color:#1f2928; background:#e5c768; border-color:#ffdf84; }
+.training-screen .password-unit[data-password-view="note"] > :is(.code-display,.keypad),.training-screen .password-unit[data-password-view="keys"] .password-note-wrap { display:none; }
+.training-screen .password-note-wrap { margin:8px 0 0; }
+.training-screen .password-note { min-height:160px; padding:14px; }
+.training-screen .note-code-window { min-height:48px; margin:12px 0; }
+.training-screen .note-code { font-size:clamp(28px,7vw,40px); letter-spacing:3px; }
+.training-screen .note-memo-line { font-size:12px; }.training-screen .note-memo-reply { font-size:10px; }
+.training-screen .note-readout { margin-top:8px; }.training-screen #note-help { font-size:12px; margin:6px 0 0; }
+.training-screen .code-display { min-height:0; padding:8px 10px; }.training-screen .code-display > b { font-size:30px; margin:3px 0; line-height:1.15; }
+.training-screen .screen-caption { display:none; }.training-screen .screen-foot { font-size:10px; }
+.training-screen .keypad { margin-top:8px; gap:6px; }.training-screen .key { min-height:46px; height:46px; font-size:20px; }
+.training-screen .key.confirm-key { font-size:14px; }
+.training-target { box-shadow:inset 0 -3px #a8dceb; }
+.training-screen .hold-unit { padding:14px; }.training-screen .hold-unit > .eyebrow { display:none; }
+.training-screen .hold-orbit { width:190px; height:190px; margin:8px auto 20px; }
+.training-screen .hold-button { width:154px; height:154px; }.training-screen .hold-button b { font-size:23px; }
+.training-screen .hold-meter { margin:10px 0; }.training-screen .hold-meter > b { font-size:28px; }
+.training-screen .hold-unit .instruction-tag { font-size:12px; padding:8px; margin-top:12px; }
+.training-threat-scene { height:174px; padding:12px; position:relative; overflow:hidden; display:grid; grid-template-columns:108px minmax(0,1fr); gap:14px; align-items:center; background:linear-gradient(90deg,#17262a77,#142125dd),url('../assets/scenes/dust2-b-doors.webp') center/cover; border:1px solid #8d9c95; transition:border-color .18s; }
+.training-partner { position:relative; height:100%; min-height:0; padding:3px; border:1px solid #aacbd199; border-radius:3px; background:#172d34; box-shadow:0 4px 14px #0005; }
+.training-partner img { display:block; width:100%; height:100%; object-fit:cover; object-position:center 25%; }
+.training-partner b { position:absolute; bottom:3px; left:3px; right:3px; display:flex; justify-content:space-between; align-items:center; padding:7px 6px; color:#ebf3f3; font-size:13px; background:linear-gradient(transparent,#11272b 35%); }
+.training-partner small { font-size:10px; color:#a6cad5; font-weight:400; }
+.training-drill-radio { min-width:0; }
+.training-drill-radio > span { color:#9fc9d6; font:10px var(--mono); letter-spacing:1px; }
+.training-drill-radio p { margin:10px 0; color:#edf0e6; font-size:15px; line-height:1.55; }
+.training-drill-radio > small { display:block; color:#c8b984; font-size:11px; line-height:1.4; }
+.training-threat-scene[data-drill-state="timed"] { border-color:#e9c16a; box-shadow:inset 0 -3px #e9c16a; }
+.training-threat-scene[data-drill-state="retry"] { border-color:#ce977c; }
+.training-threat-scene:is([data-drill-state="ready"],[data-drill-state="safe"]) { border-color:#9bc7af; }
+.training-threat-scene:is([data-drill-state="ready"],[data-drill-state="safe"]) .training-drill-radio > small { color:#a7d5b9; }
+.training-threat { display:flex; gap:8px; align-items:center; padding:12px; background:#4b382ad9; border-left:3px solid #e9bf6a; }
+.training-threat > div { flex:1; min-width:0; }.training-threat small { font-size:10px; color:#e0b76c; }.training-threat strong { display:block; font-size:17px; margin:3px 0; }.training-threat p { font-size:12px; color:#d2c9b8; margin:0; line-height:1.4; }.training-threat .button { min-width:88px; flex-shrink:0; }
+.training-threat-meter { height:4px; background:#453f33; }.training-threat-meter i { display:block; width:var(--remaining,100%); height:100%; background:#f0c562; }
+.training-complete-mark { display:grid; place-items:center; padding:20px; color:#a6d9c3; }.training-complete-mark svg { width:70px; height:70px; }
+.training-match-note { padding:14px; border:1px solid #68888766; background:#1b313caa; display:grid; gap:8px; margin-top:8px; }.training-match-note b { color:#e3ce8c; font-size:15px; }.training-match-note span { font-size:13px; line-height:1.65; color:#bfd0d6; }
+.training-done .training-welcome-actions { margin-top:auto; }
+.training-welcome .training-intro-copy { padding-top:8px; }
+.training-welcome .training-intro-copy h1 { margin-top:0; }
+.training-welcome .training-promises { color:#a6bdc6; padding-top:10px; border-top:1px solid #b4d5df24; }
+.training-welcome .training-welcome-actions .secondary { border-color:transparent; background:#14232a88; color:#b6cbd3; }
+.training-skip-dialog { max-width:400px; width:calc(100% - 32px); padding:22px; border:1px solid #b1d0da; background:#192c36; color:#e8f0ef; }.training-skip-dialog::backdrop { background:#050c12cf; }.training-skip-dialog h2 { font-size:25px; margin:10px 0; }.training-skip-dialog p { font-size:14px; line-height:1.6; color:#bed0d7; margin:10px 0 20px; }.training-skip-dialog > div { display:grid; gap:8px; }.training-skip-dialog .button { min-height:46px; font-size:14px; }
+@media(max-width:760px),(min-width:761px) and (max-height:680px) {
+  body.in-training .site-shell { padding:0 8px; }
+  body.in-training .masthead { height:44px; min-height:44px; padding-block:0; }
+  body.in-training .masthead .edition { display:none; }
+  body.in-training .brand-copy { display:none; }
+  body.in-training .masthead::after { margin-inline:auto; font-size:11px; }
+  body.in-training .masthead .sound-button { margin-left:0; }
+  .training-screen { height:calc(100dvh - 44px); margin:0 auto; padding:6px 0 max(6px,env(safe-area-inset-bottom)); gap:7px; }
+  .training-top { min-height:44px; flex-shrink:0; }.training-coach { padding:8px; min-height:78px; flex-shrink:0; gap:7px; }
+  .training-coach-mark { flex-basis:25px; }.training-coach-mark :is(img,svg) { width:25px; height:25px; }
+  .training-coach h1 { font-size:18px; margin-bottom:3px; }.training-coach p { font-size:13px; line-height:1.4; }
+  .training-workbench { padding:9px; }
+  .training-welcome,.training-done { padding:14px; margin-block:7px; height:calc(100dvh - 58px); min-height:0; }
+  .training-welcome-actions { margin-top:10px; }.training-intro-copy h1,.training-done h1 { font-size:34px; }
+  .training-read-hud { padding:10px 0; gap:14px; }.training-clock { padding:14px; }
+  .training-screen .hold-unit { padding:8px; }.training-screen .hold-orbit { width:170px; height:170px; margin:0 auto 12px; }.training-screen .hold-button { width:138px; height:138px; }
+  .training-screen .wire-status[data-kind] { min-height:46px; padding:4px 8px; }.training-screen .signal-housing { width:34px; height:34px; flex-basis:34px; }.training-screen .signal-lens { width:26px; height:26px; }.training-screen .signal-copy strong { font-size:21px; }
+}
+@media(max-height:560px) {
+  .training-screen { gap:4px; padding-top:0; padding-bottom:4px; }
+  .training-top { font-size:10px; }.training-top button { font-size:11px; }
+  .training-coach { min-height:66px; padding:6px 8px; }.training-coach-mark { display:none; }.training-coach h1 { font-size:16px; }.training-coach p { font-size:12px; line-height:1.35; }
+  .training-workbench { padding:6px 8px; }.training-footer .button { min-height:44px; padding:6px 10px; }.training-footer > span { font-size:10px; }
+  .training-screen:has(.password-unit[data-password-view="keys"]) .training-top { display:none; }
+  .training-screen .mobile-password-nav { gap:6px; margin-bottom:4px; }
+  .training-screen .code-display { padding:2px 8px; }.training-screen .code-display > b { font-size:24px; margin:0; }.training-screen .screen-foot { line-height:1.1; }
+  .training-screen .keypad { gap:3px; margin-top:4px; }.training-screen .key { height:44px; min-height:44px; }
+  .training-screen .password-note { min-height:112px; padding:8px 10px; }.training-screen .note-code-window { margin:4px 0; min-height:35px; }.training-screen .note-code { font-size:27px; }.training-screen .note-heading { font-size:9px; }.training-screen .note-memo-reply { display:none; }
+  .training-screen .note-readout { margin-top:4px; }.training-screen #note-help { margin-top:3px; font-size:11px; }
+  .training-screen .wire-unit > .instruction-tag { padding:5px 8px; font-size:12px; }.training-screen .wire-status { margin:4px 0; }.training-screen .wire-bank { margin-top:4px; gap:3px; }.training-screen .wire { min-height:44px; height:44px; }
+  .training-screen .hold-orbit { width:132px; height:132px; margin:0 auto 6px; }.training-screen .hold-button { width:108px; height:108px; }.training-screen .hold-button b { font-size:18px; }.training-screen .hold-button > svg { width:24px; height:24px; }.training-screen .hold-button > span { font-size:8px; }.training-screen .hold-meter { margin:3px 0; }.training-screen .hold-meter > b { font-size:22px; }.training-screen .hold-unit .instruction-tag { margin-top:5px; padding:5px; }
+  .training-threat-scene { height:100px; padding:6px; grid-template-columns:68px minmax(0,1fr); gap:9px; }.training-partner b { font-size:11px; padding:4px; }.training-partner small { font-size:9px; }.training-drill-radio p { font-size:12px; line-height:1.35; margin:4px 0; }.training-drill-radio > span,.training-drill-radio > small { font-size:9px; letter-spacing:0; }.training-threat { padding:8px; }.training-threat strong { font-size:14px; }.training-threat p { font-size:11px; }
+  .training-read-hud { padding:0; gap:10px; }.training-clock { padding:10px 14px; }.training-clock strong { font-size:36px; }.training-hud-detail b { font-size:18px; }.training-hud-note { font-size:12px; }
+  .training-intro-art { min-height:58px; gap:4px; }.training-intro-art :is(svg,img) { width:50px; height:50px; }.training-intro-art > span { display:none; }.training-intro-copy h1,.training-done h1 { font-size:29px; }.training-intro-copy p,.training-done > p { font-size:13px; }.training-promises { margin-top:8px; gap:10px; font-size:10px; }
+  .training-complete-mark { padding:6px; }.training-complete-mark svg { width:40px; height:40px; }.training-match-note { padding:10px; gap:5px; margin-top:4px; }.training-match-note span { font-size:12px; }.training-done .training-kicker { font-size:9px; }
+}
+
+.training-footer .training-leave { min-width:88px; min-height:44px; padding:6px 8px; background:transparent; border:1px solid transparent; color:#b5c6cc; font-size:12px; }
+.training-footer .button { flex:1; min-width:0; justify-content:space-between; font-weight:700; }
+.training-footer .button:not(:disabled) { box-shadow:inset 0 1px #fff4be,0 3px #9d7c27; }
+.training-footer .button .action-icon { flex:0 0 21px; width:21px; height:21px; }
+.training-top { min-height:28px; }
+@media(max-width:760px),(max-height:680px) { .training-footer > span { display:none; } .training-top { min-height:24px; } }
+@media(max-height:560px) {
+  .training-top { display:none; }
+  .training-coach { min-height:56px; }
+  .training-workbench { padding-block:3px; }
+  .training-screen .wire-unit { padding:0; }
+  .training-screen .wire-status[data-kind] { height:36px; min-height:36px; padding:2px 6px; }
+  .training-screen .wire-status .signal-copy { display:flex; align-items:center; gap:8px; }
+  .training-screen .wire-status .signal-copy small { font-size:11px; }
+  .training-screen .wire-status .signal-copy strong { font-size:17px; line-height:1; }
+  .training-screen .signal-housing { width:28px; height:28px; flex-basis:28px; }
+  .training-screen .signal-lens { width:22px; height:22px; }
+  .training-screen .code-display { padding-block:0; }
+  .training-screen .keypad { margin-top:2px; }
+  .training-screen .mobile-password-nav { margin-bottom:2px; }
+  .training-read-hud { padding:0; gap:7px; }
+  .training-hud-caption { font-size:10px; }
+  .training-clock { padding:9px 12px; }
+  .training-clock strong { margin:4px 0; font-size:38px; }
+  .training-clock > svg { width:20px; right:12px; top:12px; }
+  .training-clock p,.training-hud-detail p { font-size:11px; line-height:1.4; }
+  .training-hud-detail { gap:7px; }
+  .training-hud-detail > div { padding:8px; }
+  .training-stat-label { font-size:12px; gap:5px; }
+  .training-hud-detail b { margin:6px 0 4px; font-size:25px; }
+  .training-hud-detail b small { font-size:15px; }
+  .training-hud-note { margin:0; font-size:11px; }
+}

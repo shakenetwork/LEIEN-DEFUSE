@@ -1,0 +1,140 @@
+.flash-retake-screen { max-width: 600px; margin: 26px auto 22px; color: #e9eeeb; }
+.retake-round-strip { display: flex; justify-content: space-between; align-items: center; gap: 10px; min-height: 35px; padding: 8px 12px; background: linear-gradient(100deg, #213b48, #17232a); border-block: 1px solid #66899a45; color: #a9c8d6; font: 700 11px var(--mono); letter-spacing: .5px; }
+.retake-round-strip > :last-child { color: #e8c568; white-space: nowrap; }
+.retake-round-strip b { font-size: 15px; font-variant-numeric: tabular-nums; }
+.retake-mission { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; margin: 17px 0 14px; }
+.retake-kicker { display: block; margin-bottom: 6px; color: #d4b769; font: 700 10px var(--mono); letter-spacing: 1.4px; }
+.retake-mission h1 { font-size: clamp(24px, 5vw, 30px); letter-spacing: -.8px; line-height: 1.18; }
+.retake-phase-tag { padding: 5px 7px; color: #e1c582; background: #cbb26312; border: 1px solid #c5a75455; font-size: 10px; white-space: nowrap; }
+.retake-command { display: flex; align-items: center; min-height: 64px; gap: 10px; padding: 9px 12px; border: 1px solid #7193a25c; border-bottom: 0; background: linear-gradient(100deg, #244351a0, #18242b); }
+.retake-command > img { width: 36px; height: 44px; object-fit: contain; align-self: flex-end; }
+.retake-command > div { min-width: 0; flex: 1; }
+.retake-command b, .retake-support b { color: #a8d3e9; font-size: 12px; }
+.retake-command b > span, .retake-support b > span { margin-left: 6px; color: #95abb6; font-weight: 400; font-size: 10px; }
+.retake-command p { margin-top: 4px; color: #e3e9e8; font-size: 12px; line-height: 1.5; }
+.retake-radio-bars { color: #7293a3; font-size: 10px; align-self: flex-start; }
+.retake-arena { height: clamp(230px, 37svh, 320px); position: relative; overflow: hidden; isolation: isolate; border: 1px solid #7d919080; background: linear-gradient(180deg, #14202877, #14202817 46%, #0e1a24bb), url('../assets/scenes/dust2-b-site.jpg') center 56% / cover; cursor: crosshair; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+.retake-arena::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, #d1d7c903 0 1px, transparent 1px 4px); }
+.retake-preload { width: 1px; height: 1px; position: absolute; opacity: 0; pointer-events: none; }
+.retake-arena-label, .retake-arena-footer { position: absolute; z-index: 2; inset-inline: 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; pointer-events: none; font: 11px var(--mono); text-shadow: 0 1px 4px #000; }
+.retake-arena-label { top: 12px; color: #e0e5df; }
+.retake-arena-label b { font-weight: 500; color: #efba94; }
+.retake-arena-footer { inset-inline:0; bottom:0; min-height:34px; padding:8px 11px; gap:12px; color:#d2cfbf; background:linear-gradient(0deg,#142028eb,#1420289c); border-top:1px solid #a9bab31a; font:500 12px/1.35 var(--sans); text-shadow:none; }
+.retake-arena-footer > span { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.retake-arena-footer b { color:#d9e2df; font-weight:500; flex-shrink:0; white-space:nowrap; }
+.retake-cover { position: absolute; inset: 0 auto 0 0; width: 17%; border-right: 1px solid #92947c88; background: linear-gradient(90deg, #202923f2, #3c4238ed); box-shadow: 6px 0 20px #0004; transition: transform .18s ease; pointer-events: none; }
+.retake-cover::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 72px, #a6a28d17 73px 74px); }
+.retake-cover span { position: absolute; bottom: 56px; left: 10px; font: 10px var(--mono); color: #adae9e; writing-mode: vertical-rl; letter-spacing: 2px; }
+.retake-cover i { position: absolute; top: 44%; right: -7px; height: 34px; width: 6px; background: #efc54c; box-shadow: 0 0 18px #ecc65099; }
+.retake-flash-path { position: absolute; left: 21%; top: 29%; width: 44%; height: 49px; transform: rotate(-14deg); pointer-events: none; }
+.retake-flash-path > span { position: absolute; inset: 5px 0 0; border-top: 1px dashed #ede9b987; border-radius: 50%; }
+.retake-flash-path > i { position: absolute; right: -7px; top: -4px; color: #f7dfa0; font-size: 19px; filter: drop-shadow(0 0 6px #ead58c); animation: retakeFlashFloat 1.7s ease-in-out infinite; }
+.retake-waiting { position: absolute; inset: 43% 12px auto 17%; text-align: center; pointer-events: none; text-shadow: 0 2px 5px #000; display: grid; gap: 7px; }
+.retake-waiting b { color: #f6e8bf; font-size: 18px; }
+.retake-waiting > span:last-child { color: #d5dbd7; font-size: 12px; }
+.retake-flash-icon { display: none; }
+.retake-head { --retake-x: 50%; --retake-y: 43%; display: block; position: absolute; z-index: 3; left: clamp(49px, var(--retake-x), calc(100% - 49px)); top: clamp(68px, var(--retake-y), calc(100% - 70px)); transform: translate(-50%, -50%); padding: 0; width: 68px; height: 68px; border: 2px solid #f0d481; border-radius: 50%; background: #302c22; box-shadow: 0 0 0 5px #182c2aa8, 0 4px 18px #0009; touch-action: manipulation; }
+.retake-head:hover { border-color: #fff6d2; box-shadow: 0 0 0 5px #ebc95555, 0 4px 18px #0009; }
+.retake-head:active:not(:disabled) { transform: translate(-50%, -50%) scale(.97); }
+.retake-head-art { display: block; position: absolute; inset: 0; border-radius: inherit; background: #30261f var(--retake-enemy-image) var(--retake-enemy-position) / 240% auto no-repeat; filter: saturate(.82) brightness(1.13); pointer-events: none; }
+.retake-blind-stars { position: absolute; left: -3px; right: -3px; top: -22px; color: #ffe4a2; font: 15px var(--sans); text-shadow: 0 0 9px #efbc4e; pointer-events: none; }
+.retake-head-tag { position: absolute; left: 50%; bottom: -22px; transform: translateX(-50%); font-size: 10px; letter-spacing: 2px; white-space: nowrap; background: #282a21ef; color: #f5db8e; padding: 2px 8px; border: 1px solid #d9b75677; pointer-events: none; }
+.retake-head-reticle { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font: 18px var(--mono); color: #fff8d68c; text-shadow: 0 1px 2px #000; pointer-events: none; }
+.retake-hit-stamp { display: none; position: absolute; top: 42%; left: 0; right: 0; text-align: center; font: 850 30px var(--mono); letter-spacing: 4px; color: #eed784; text-shadow: 0 3px 12px #000; pointer-events: none; }
+.retake-flash-edge { position: absolute; z-index: 4; inset: 0; pointer-events: none; opacity: 0; box-shadow: inset 0 0 30px 5px #fbe5a4; }
+.retake-action-bar { display: flex; align-items: center; justify-content: space-between; min-height: 69px; gap: 12px; padding: 10px 13px; background: linear-gradient(100deg, #313d3c, #232d2e); border-inline: 1px solid #8c97844d; }
+.retake-action-bar > div { min-width: 0; }
+.retake-action-bar b { font-size: 16px; color: #f1d584; }
+.retake-action-bar > div > span { display: block; margin-top: 5px; color: #bcc6c3; font-size: 11px; }
+.retake-entry { min-height: 46px; flex-shrink: 0; padding: 10px 14px; border: 1px solid #a4b2b07a; background: linear-gradient(#42504d, #2b3734); color: #dfe8e4; font-size: 13px; font-weight: 700; box-shadow: inset 0 1px #d0d9d52b, 0 2px 0 #111b1c; }
+.retake-entry > span { padding-left: 7px; color: #dbbf74; }
+.retake-shot-clock { font: 750 30px var(--mono); min-width: 82px; color: #f1d584; text-align: right; font-variant-numeric: tabular-nums; }
+.retake-shot-clock > span { margin-left: 3px; font-size: 14px; color: #b9bbad; }
+.retake-window { height: 4px; overflow: hidden; background: #444d49; }
+.retake-window > span { display: block; height: 100%; width: 0; background: #e9c862; }
+.retake-support { display: flex; gap: 10px; align-items: center; margin-top: 13px; padding: 10px 12px; min-height: 64px; border: 1px solid #687b835e; background: linear-gradient(90deg, #243a42b0, #1d292d); }
+.retake-support > img { width: 38px; height: 44px; object-fit: contain; align-self: flex-end; }
+.retake-support > img.is-profile { object-fit: cover; border: 1px solid #8fa3a880; height: 38px; align-self: center; }
+.retake-support > div { flex: 1; min-width: 0; }
+.retake-support p { margin-top: 4px; font-size: 12px; color: #dae2df; line-height: 1.4; }
+.retake-next { text-align: center; font-size: 11px; color: #92a7ad; margin-top: 12px; line-height: 1.4; }
+.flash-retake-screen [hidden] { display: none !important; }
+.flash-retake-screen[data-phase="exposed"] .retake-cover { transform: translateX(-102%); }
+.flash-retake-screen[data-phase="trading"] .retake-cover { transform: translateX(-102%); }
+.flash-retake-screen[data-phase="trading"] .retake-flash-path { display: none; }
+.retake-support.is-down > img { filter: grayscale(1); opacity: .5; }
+.flash-retake-screen[data-phase="exposed"] .retake-flash-path { display: none; }
+.flash-retake-screen[data-phase="exposed"] .retake-arena-label b { color: #ffe09b; }
+.flash-retake-screen[data-phase="exposed"] .retake-flash-edge { animation: retakeEdgePop .3s ease-out both; }
+.flash-retake-screen.retake-soft .retake-flash-edge { display: none; }
+.flash-retake-screen[data-phase="won"] .retake-hit-stamp { display: block; }
+.flash-retake-screen[data-phase="failed"] .retake-arena { filter: saturate(.25); }
+@keyframes retakeFlashFloat { 0%, 100% { transform: translate(-10px, 3px); opacity: .7; } 50% { transform: translate(0, -3px); opacity: 1; } }
+@keyframes retakeEdgePop { from { opacity: .75; } to { opacity: 0; } }
+@media (max-width: 760px) {
+  .flash-retake-screen { margin: 12px auto 16px; }
+  .retake-round-strip { padding: 7px 9px; gap: 5px; font-size: 9px; }
+  .retake-round-strip b { font-size: 13px; }
+  .retake-mission { margin: 12px 0 10px; }
+  .retake-mission h1 { font-size: clamp(22px, 6.1vw, 27px); }
+  .retake-phase-tag { font-size: 9px; padding: 4px 5px; }
+  .retake-command { padding: 7px 9px; gap: 8px; min-height: 60px; }
+  .retake-command > img { width: 30px; height: 38px; }
+  .retake-command p { font-size: 11px; }
+  .retake-radio-bars { display: none; }
+  .retake-arena { height: clamp(190px, 32svh, 270px); }
+  .retake-arena-label { inset-inline: 10px; font-size: 9px; }
+  .retake-arena-label { top: 10px; }
+  .retake-head { width: 64px; height: 64px; }
+  .retake-action-bar { min-height: 65px; padding: 9px 10px; gap: 8px; }
+  .retake-action-bar b { font-size: 15px; }
+  .retake-action-bar > div > span { font-size: 10px; }
+  .retake-entry { padding: 10px 11px; font-size: 12px; }
+  .retake-support { margin-top: 10px; padding: 8px 10px; gap: 8px; min-height: 59px; }
+  .retake-support p { font-size: 11px; }
+  .retake-next { margin-top: 10px; font-size: 10px; }
+}
+@media (max-width: 760px) and (max-height: 670px) {
+  .flash-retake-screen { margin-top: 8px; }
+  .retake-mission { margin-block: 9px 8px; }
+  .retake-kicker { margin-bottom: 3px; font-size: 9px; }
+  .retake-mission h1 { font-size: 22px; }
+  .retake-command { min-height: 51px; padding-block: 6px; }
+  .retake-command p { margin-top: 2px; line-height: 1.3; }
+  .retake-command > img { width: 26px; height: 34px; }
+  .retake-arena { height: clamp(158px, 28svh, 184px); }
+  .retake-waiting { top: 38%; gap: 5px; }
+  .retake-waiting b { font-size: 16px; }
+  .retake-head { width: 56px; height: 56px; top: clamp(59px, var(--retake-y), calc(100% - 55px)); }
+  .retake-action-bar { min-height: 58px; padding-block: 6px; }
+  .retake-entry { min-height: 44px; }
+  .retake-support { margin-top: 8px; min-height: 50px; padding-block: 6px; }
+  .retake-support > img { width: 32px; height: 35px; }
+  .retake-support > img.is-profile { height: 32px; }
+  .retake-next { display: none; }
+}
+@media (max-width: 960px) and (max-height: 500px) and (orientation: landscape) {
+  .flash-retake-screen { max-width: 800px; display: grid; grid-template-columns: 1.2fr 1fr; column-gap: 14px; margin-top: 10px; }
+  .retake-round-strip { grid-column: 1 / -1; margin-bottom: 9px; }
+  .retake-mission { grid-column: 2; grid-row: 2; margin: 0 0 8px; }
+  .retake-mission h1 { font-size: 23px; }
+  .retake-kicker { font-size: 9px; }
+  .retake-phase-tag { display: none; }
+  .retake-command { grid-column: 2; grid-row: 3; border-bottom: 1px solid #7193a25c; padding: 6px 8px; min-height: 53px; }
+  .retake-command p { font-size: 11px; }
+  .retake-arena { grid-column: 1; grid-row: 2 / 8; height: 231px; align-self: stretch; }
+  .retake-action-bar { grid-column: 2; grid-row: 4; min-height: 62px; padding: 7px 8px; }
+  .retake-action-bar b { font-size: 14px; }
+  .retake-action-bar > div > span { font-size: 10px; }
+  .retake-window { grid-column: 2; grid-row: 5; }
+  .retake-support { grid-column: 2; grid-row: 6; margin-top: 8px; padding: 6px 8px; min-height: 52px; }
+  .retake-support p { font-size: 11px; }
+  .retake-next { display: none; }
+}
+.retake-head.is-trade .retake-blind-stars { display: none; }
+.retake-head.is-trade .retake-head-tag { color: #ffe1c7; background: #743c28; }
+@media (prefers-reduced-motion: reduce) {
+  .retake-flash-path > i { animation: none; }
+  .retake-cover { transition: none; }
+  .flash-retake-screen[data-phase="exposed"] .retake-flash-edge { animation: none; }
+}

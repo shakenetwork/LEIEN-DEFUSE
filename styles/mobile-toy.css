@@ -1,0 +1,289 @@
+/* Use the embedded Toy viewport, not the phone's outer screen. */
+.mobile-home-nav, .mobile-squad-nav, .mobile-password-nav, .mobile-comms-toggle { display: none; }
+@media (max-width:760px), (max-width:1000px) and (max-height:480px) {
+  .site-shell { padding: 0 10px; }
+  body .masthead, body:has(.game-screen) .masthead { height: 44px; min-height: 44px; margin: 0; padding: 0; }
+  .masthead .wordmark { min-height: 44px; gap: 7px; }
+  .masthead .brand-mark, body:has(.game-screen) .brand-mark { width: 20px; height: 24px; font-size: 19px; }
+  .masthead .brand-title { font-size: 13px; letter-spacing: .5px; }
+  .masthead .edition { display: none; }
+  .masthead .sound-button, body:has(.game-screen) .sound-button { width: 44px; height: 44px; min-height: 44px; align-self: flex-start; }
+  body:has(.home-screen) .site-footer, body:has(.intro-screen) .site-footer, body:has(.flash-retake-screen) .site-footer { display: none; }
+  .home-screen { display: flex; flex-direction: column; position: relative; height: calc(100dvh - 45px); min-height: 0; margin: 0; padding: 8px 0 max(8px,env(safe-area-inset-bottom)); gap: 8px; animation: none; }
+  .mobile-home-nav { display: grid; grid-template-columns: 1fr 1fr 1fr 1.35fr; flex: 0 0 48px; gap: 4px; order: 10; margin-top: auto; position: relative; z-index: 3; background: #16232b; }
+  .mobile-home-nav button, .mobile-squad-nav button, .mobile-password-nav button { min-height: 44px; border: 1px solid #657780; background: #1b2a32; color: #d5e0e6; padding: 6px; font-size: 13px; font-weight: 700; border-radius: 3px; }
+  :is(.mobile-home-nav,.mobile-squad-nav,.mobile-password-nav) button[aria-pressed="true"] { background: #d9b84c; color: #192127; border-color: #ffe59c; }
+  .home-screen > :is(.home-copy,.home-visual,.online-panel,.music-kit) { order: 0; min-width: 0; width: 100%; margin: 0; }
+  .home-screen:not([data-home-view="play"]) .home-copy,
+  .home-screen:not([data-home-view="squad"]) .home-visual,
+  .home-screen:not([data-home-view="music"]) .music-kit,
+  .home-screen:not([data-home-view="record"]) .online-panel { display: none; }
+  .home-screen .home-copy { display: flex; flex: 1; min-height: 0; padding: 50px 18px 18px; }
+  .home-screen .mission-copy { display: block; width: 100%; margin-top: auto; }
+  .home-screen .home-copy h1 { margin: 10px 0; }
+  .home-screen .mission-time { font-size: clamp(52px,11vh,82px); }
+  .home-screen .mission-time small { font-size: 22px; }
+  .home-screen .mission-title { font-size: clamp(32px,7vh,48px); }
+  .home-screen .home-actions { display: grid; grid-template-columns: 1.65fr 1fr; gap: 8px; margin-top: 18px; }
+  .home-screen .home-actions .button { min-height: 50px; padding: 10px; }
+  .home-screen .home-location { top: 15px; left: 18px; right: 18px; }
+  .home-screen .home-location img { width: 90px; }
+  .home-screen .home-visual { display: flex; flex-direction: column; gap: 10px; flex: 1; min-height: 0; }
+  .mobile-squad-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .home-screen[data-squad-view="ct"] .enemy-lineup, .home-screen[data-squad-view="t"] .friendly-lineup { display: none; }
+  /* Artwork, caption and selector share one definite size budget. */
+  .home-screen .enemy-lineup { flex: 1; display: flex; flex-direction: column; min-height: 0; max-height: calc(100vw + 190px); }
+  .home-screen .enemy-heading { flex: 0 0 44px; }
+  .home-screen .squad-scene { flex: 1; height: auto; min-height: 0; max-height: none; overflow: hidden; }
+  .home-screen .enemy-slide { display: grid; grid-template-rows: minmax(0,1fr) auto; }
+  .home-screen .hero-agent { position: relative; inset: auto; width: 100%; height: 100%; min-height: 0; overflow: hidden; }
+  .home-screen .hero-agent img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+  .home-screen .enemy-slide .scene-tag { position: relative; inset: auto; width: auto; max-width: none; margin: 0; padding: 9px 12px; min-height: 67px; border: 0; border-top: 1px solid #cbb36d4a; border-left: 3px solid #edc75d; border-radius: 0; background: #202824; transform: none; box-shadow: none; }
+  .home-screen .enemy-slide .agent-name { font-size: 15px; line-height: 1.4; }
+  .home-screen .enemy-slide .agent-name small { font-size: 11px; }
+  .home-screen .enemy-slide .scene-tag b { font-size: 13px; line-height: 1.45; margin-top: 3px; }
+  .home-screen .enemy-picker { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 5px; flex: 0 0 54px; padding: 5px; background: #172127; border-top: 1px solid #73828355; }
+  .enemy-picker button { display: grid; place-items: center; min-width: 0; min-height: 44px; padding: 0; border: 1px solid #6b7c8055; border-radius: 2px; background: #2a3739; color: #e6c464; touch-action: manipulation; }
+  .enemy-picker button[aria-pressed="true"] { background: #5b512f; border-color: #f1ca62; box-shadow: inset 0 -2px #f1ca62; }
+  .enemy-picker img { width: 42px; height: 42px; object-fit: contain; }
+  .enemy-picker button:focus-visible { outline: 2px solid #fff; outline-offset: -3px; }
+  .enemy-picker button:active { transform: scale(.95); }
+
+  .home-screen .friendly-lineup { margin: 0; }
+  .home-screen .squad-roster > div { min-height: 70px; }
+  .home-screen .commander-brief { padding: 9px; min-height: 0; }
+  .home-screen .music-kit { display: grid; grid-template-columns: 100px minmax(0,1fr); padding: 0 12px 16px; }
+  .home-screen .music-kit .audio-loadout-header { grid-column: 1 / -1; margin-inline: -12px; }
+  .home-screen .music-kit-art { padding: 15px 0; }
+  .home-screen .music-kit-info { padding: 15px 0 15px 12px; min-height: 0; align-self: center; }
+  .home-screen .music-kit-name { font-size: 23px; }
+  .home-screen .music-kit-controls { grid-column: 1 / -1; width: 100%; padding: 8px 0 0; }
+  .home-screen .music-kit-choice { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; width: 100%; }
+  .home-screen .music-kit-choice button { min-height: 52px; }
+  .home-screen .online-panel { display: flex; flex-direction: column; align-items: stretch; padding: 16px; gap: 22px; }
+  .home-screen .online-account { display: grid; gap: 12px; }
+  .home-screen .leaderboard-entry { min-height: 58px; }
+  /* Local gameplay has a fixed information budget; long dialogue opens in place. */
+  .game-screen { margin: 4px auto 0; padding: 0 0 6px; animation: none; }
+  .game-screen .game-status { position: relative; min-height: 0; top: auto; padding: 0 0 4px; }
+  .game-screen .game-hud { padding: 0; min-height: 34px; }
+  .game-screen .timer { font-size: 30px; }
+  .game-screen .round-progress { margin: 3px 0 0; }
+  .game-screen .module-heading { margin: 4px 0 0; }
+  .game-screen .module-heading h2 { font-size: 19px; }
+  .game-screen .module-instruction { font-size: 12px; line-height: 1.35; margin: 2px 0 5px; }
+  .game-screen .pressure-panel { margin: 0 0 5px; min-height: 44px; z-index: 28; padding-right: 58px; }
+  .game-screen .operator-card { padding: 5px 7px; height: 42px; grid-template-columns: 24px minmax(0,1fr) auto; gap: 5px; }
+  .game-screen .operator-portrait { width: 24px; height: 28px; }
+  .game-screen:has(.tactical-arena:not([hidden])) .pressure-panel .operator-card { display: grid; }
+  .game-screen .operator-tag, .game-screen .operator-progress { display: none; }
+  .game-screen .operator-name { font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .game-screen .combat-vitals { gap: 7px; }
+  .game-screen .combat-vitals b { font-size: 16px; }
+  .game-screen .combat-team { display: none; }
+  .mobile-comms-toggle { display: block; position: absolute; top: 0; right: 0; height: 44px; width: 56px; border: 0; border-left: 1px solid #5e7986; background: #213a47; color: #cbe9f6; font-size: 12px; }
+  .game-screen .pressure-panel .radio-bubble { display: none; }
+  .game-screen .pressure-panel:has(.mobile-comms-toggle[aria-expanded="true"]) .radio-bubble { display: flex; position: absolute; top: 100%; left: 0; right: 0; margin: 0; padding: 10px; border: 1px solid #7399ad; background: #162c39; box-shadow: 0 7px 14px #0008; }
+  .game-screen .field-narrator { position: relative; top: auto; margin: 0 0 6px; z-index: 2; }
+  .game-screen .field-narrator:is([data-state="clear"],[data-state="evaded"],[data-state="bodyguard"]) .narrator-heading,
+  .game-screen .field-narrator:is([data-state="clear"],[data-state="evaded"],[data-state="bodyguard"]) #threat-detail,
+  .game-screen .field-narrator:is([data-state="clear"],[data-state="evaded"],[data-state="bodyguard"]) .evade-button { display: none; }
+  .game-screen .field-narrator:is([data-state="clear"],[data-state="evaded"],[data-state="bodyguard"]) .pressure-action { padding: 4px 8px; }
+  .game-screen .field-narrator:is([data-state="clear"],[data-state="evaded"],[data-state="bodyguard"]) .pressure-action strong { font-size: 12px; margin: 0; }
+  .game-screen .field-narrator .pressure-action #threat-detail { font-size: 12px; }
+  .game-screen .play-console { padding: 8px; min-height: 0; }
+  .mobile-password-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 7px; }
+  .password-unit[data-password-view="note"] > :is(.code-display,.keypad),
+  .password-unit[data-password-view="keys"] .password-note-wrap { display: none; }
+  .game-screen .password-note-wrap { margin: 8px 0 0; }
+  .game-screen .password-note { min-height: 160px; padding: 14px; }
+  .game-screen .note-readout { margin-top: 8px; }
+  .game-screen .password-unit .code-display { padding: 3px 8px; min-height: 0; }
+  .game-screen .password-unit .code-display > b { font-size: 26px; line-height: 1.1; margin: 0; }
+  .game-screen .password-unit .screen-caption { display: none; }
+  .game-screen .password-unit .screen-foot { line-height: 1.2; }
+  .game-screen .keypad { gap: 4px; margin-top: 6px; }
+  .game-screen .key { height: 44px; min-height: 44px; }
+  .game-screen .wire-status[data-kind] { min-height: 52px; padding: 5px 8px; margin: 6px 0; }
+  .game-screen .signal-housing { width: 40px; height: 40px; flex-basis: 40px; }
+  .game-screen .signal-lens { width: 30px; height: 30px; }
+  .game-screen .signal-copy strong { font-size: 23px; }
+  .game-screen .wire-bank { gap: 5px; margin: 5px 0 0; padding: 0; }
+  .game-screen .wire-legend { display: none; }
+  .game-screen .wire { min-height: 44px; height: 44px; }
+  .game-screen .smoke-cell { min-height: 44px; height: clamp(44px,8dvh,64px); }
+  .game-screen .instruction-tag { margin-block: 5px 0; padding: 6px 8px; font-size: 12px; }
+  .game-screen:has(.field-narrator:not([data-state="clear"]):not([data-state="evaded"]):not([data-state="bodyguard"]):not([data-state="opportunity"])) .play-console { display: none; }
+  .game-screen .tactical-arena { margin: 5px 8px 8px; }
+  .game-screen .duel-field { height: clamp(130px,32dvh,210px); }
+  .game-screen .duel-opponent-card { min-height: 0; padding: 6px; }
+  .game-screen .fire-smoke-grid > button { min-height: 44px; height: clamp(44px,9dvh,64px); }
+  .intro-screen { margin: 6px auto; display: flex; flex-direction: column; height: calc(100dvh - 56px); min-height: 0; }
+  .intro-screen .match-ribbon { flex: 0 0 auto; }
+  .intro-screen .intro-arena { flex: 1 1 auto; }
+  .intro-screen .intro-friend { flex-shrink: 0; }
+  .intro-screen .take-over { flex: 0 0 46px; }
+  .intro-screen .intro-arena { height: clamp(150px,35dvh,280px); min-height: 0; }
+  .intro-screen .intro-lower { margin: 8px 0; }
+  .intro-screen .intro-lower h2 { font-size: 21px; }
+  .intro-screen :is(.intro-note,.intro-steps,.music-now) { display: none; }
+  .intro-screen .intro-friend { margin: 6px 0; min-height: 0; padding: 6px; }
+  .intro-screen .intro-friend p { font-size: 12px; }
+  .intro-screen .take-over { min-height: 46px; margin-top: 8px; }
+  .flash-retake-screen { margin: 5px auto; }
+  .flash-retake-screen .retake-mission { margin: 7px 0; }
+  .flash-retake-screen :is(.retake-kicker,.retake-next) { display: none; }
+  .flash-retake-screen .retake-command { display: none; }
+  .flash-retake-screen .retake-arena { height: clamp(166px,38dvh,320px); }
+  .flash-retake-screen .retake-support { padding: 6px 9px; margin-top: 5px; min-height: 0; }
+  .flash-retake-screen .retake-support p { font-size: 12px; }
+}
+@media (max-width:760px) and (max-height:520px) and (orientation:portrait) {
+  .home-screen { padding-top: 4px; padding-bottom: max(4px,env(safe-area-inset-bottom)); gap: 4px; }
+  .home-screen .home-visual { gap: 6px; }
+  .home-screen .mobile-home-nav { flex-basis: 44px; }
+  .home-screen .enemy-slide .scene-tag { min-height: 60px; padding: 6px 10px; }
+  .home-screen .enemy-slide .scene-tag b { font-size: 12px; }
+  .intro-screen .intro-ct, .intro-screen .intro-friend { display: none; }
+  .home-screen .mission-side { font-size: 11px; }
+  .home-screen .mission-time { font-size: 48px; }
+  .home-screen .mission-title { font-size: 31px; }
+  .home-screen .home-actions { margin-top: 10px; }
+  .home-screen .squad-roster > div { min-height: 59px; }
+  .home-screen .squad-roster > div { padding-block: 5px; }
+  .home-screen .commander-brief p { font-size: 12px; }
+  .game-screen { padding-bottom: 0; }
+  .game-screen:has(.password-unit[data-password-view="keys"]) .module-heading,
+  .game-screen:has(.password-unit[data-password-view="keys"]) .module-instruction { display: none; }
+  .game-screen .hold-orbit { width: 162px; height: 162px; }
+  .game-screen .hold-unit .progress-track { margin-bottom: 4px; }
+  .game-screen .module-instruction { font-size: 11px; }
+  .game-screen .module-heading h2 { font-size: 17px; }
+  .game-screen .game-hud { min-height: 31px; }
+  .game-screen .timer { font-size: 27px; }
+  .game-screen .play-console { padding: 6px; }
+  .mobile-password-nav { margin-bottom: 5px; }
+  .game-screen .password-unit .screen-foot { display: none; }
+  .game-screen .field-narrator:is([data-state="clear"],[data-state="evaded"],[data-state="bodyguard"]) { display: none; }
+  .game-screen .wire-bank { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .game-screen .wire { gap: 7px; }
+  .result-screen .result-actions { order: -1; margin: 0 0 8px; }
+}
+@media (max-width:760px) and (max-height:460px) and (orientation:portrait) {
+  .game-screen { margin-top: 2px; }
+  .game-screen .module-heading { margin-top: 2px; }
+  .game-screen .play-console { padding: 4px; }
+  .game-screen .keypad { gap: 3px; }
+  .game-screen .pressure-panel { min-height: 28px; padding-right: 0; }
+  .game-screen .operator-card { height: 28px; padding: 2px 6px; }
+  .game-screen .operator-portrait { height: 22px; width: 22px; }
+  .game-screen .mobile-comms-toggle { display: none; }
+  .game-screen:has(.password-unit[data-password-view="keys"]) .module-instruction { display: none; }
+  .game-screen:has(.password-unit[data-password-view="keys"]) .module-heading { display: none; }
+  .game-screen .tool-card { height: 74px; }
+  .game-screen .hold-orbit { width: 137px; height: 137px; }
+  .game-screen .hold-button { width: 114px; height: 114px; }
+  .game-screen .hold-meter { margin-block: 4px; }
+  .intro-screen .intro-lower { margin: 5px 0; }
+  .intro-screen .intro-lower h2 { font-size: 18px; }
+  .intro-screen .intro-friend { padding: 4px 6px; gap: 6px; }
+  .intro-screen .intro-friend > img { width: 30px; height: 30px; }
+  .intro-screen .intro-friend p { font-size: 11px; line-height: 1.3; }
+  .intro-screen .intro-arena { min-height: 110px; }
+  .result-screen .result-actions { order: -1; margin: 0 0 8px; }
+}
+@media (max-width:1000px) and (max-height:480px) and (orientation:landscape) {
+  .home-screen .home-copy { padding: 40px 16px 12px; }
+  .home-screen .mission-copy { display: grid; grid-template-columns: minmax(0,1fr) 175px; column-gap: 12px; }
+  .home-screen .home-actions { grid-column: 2; grid-row: 1 / 4; display: grid; grid-template-columns: 1fr; margin: 0; align-self: center; }
+  .home-screen .mission-time { font-size: 40px; }
+  .home-screen .mission-title { font-size: 28px; }
+  .home-screen .mission-side { display: none; }
+  .home-screen .home-copy h1 { margin: 2px 0; }
+  .home-screen .home-copy .tagline { font-size: 12px; }
+  .home-screen .mobile-squad-nav { width: 175px; grid-template-columns: 1fr; align-self: start; grid-auto-rows: 44px; }
+  .home-screen .home-visual { display: grid; grid-template-columns: 175px minmax(0,1fr); gap: 10px; }
+  .home-screen .friendly-lineup { height: 100%; }
+  .home-screen .faction-heading { min-height: 28px; padding: 3px 7px; font-size: 11px; }
+  .home-screen .faction-task, .home-screen .commander-brief, .home-screen .you-marker { display: none; }
+  .home-screen[data-home-view="squad"][data-squad-view="ct"] .home-visual { display: flex; flex-direction: column; gap: 5px; }
+  .home-screen[data-squad-view="ct"] .mobile-squad-nav { width: 100%; grid-template-columns: 1fr 1fr; flex: 0 0 44px; }
+  .home-screen[data-squad-view="ct"] .friendly-lineup { height: auto; }
+  .home-screen .squad-roster { grid-template-columns: repeat(5,minmax(0,1fr)); }
+  .home-screen .squad-roster > div { min-height: 78px; display: flex; flex-direction: column; gap: 2px; padding: 4px; text-align: center; }
+  .home-screen .squad-roster > .roster-player { grid-column: auto; }
+  .home-screen .squad-roster img { height: 30px; width: 30px; }
+  .home-screen .squad-roster b, .home-screen .squad-roster .roster-position { font-size: 10px; }
+  .home-screen .role-secret-wrap { display: block; }
+  .home-screen .music-kit-choice { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .home-screen .online-panel { gap: 10px; flex-direction: row; }
+  .home-screen .online-account { flex: 1; gap: 4px; }
+  .home-screen .leaderboard-entry { width: 175px; }
+  .game-screen { max-width: none; display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); gap: 4px 10px; }
+  .game-screen .game-status { grid-column: 1; grid-row: 1; }
+  .game-screen .module-heading { grid-column: 1; grid-row: 2; }
+  .game-screen .module-instruction { grid-column: 1; grid-row: 3; }
+  .game-screen .pressure-panel { grid-column: 1; grid-row: 4; margin: 0; align-self: start; }
+  .game-screen .operator-portrait { display: none; }
+  .game-screen .operator-card { grid-template-columns: minmax(0,1fr) auto; }
+  .game-screen .operator-name { font-size: 11px; }
+  .game-screen .combat-vitals b { font-size: 14px; }
+  .game-screen .field-narrator { grid-column: 1; grid-row: 5; margin: 0; align-self: start; }
+  .game-screen .field-narrator[data-state="clear"] { display: none; }
+  .game-screen .play-console { grid-column: 2; grid-row: 1 / 7; padding: 6px; align-self: start; }
+  .game-screen .mobile-password-nav { margin-bottom: 4px; }
+  .game-screen .password-unit .screen-foot { display: none; }
+  .game-screen .password-unit .code-display { padding: 0 6px; }
+  .game-screen .password-unit .code-display > b { font-size: 24px; line-height: 1; }
+  .game-screen .password-unit > .unit-top { display: none; }
+  .game-screen .keypad { gap: 3px; margin-top: 3px; }
+  .game-screen .key { min-height: 44px; height: 44px; }
+  .game-screen .field-narrator:not([data-state="clear"]):not([data-state="evaded"]):not([data-state="bodyguard"]):not([data-state="opportunity"]) { grid-column: 2; grid-row: 1 / 7; }
+  .game-screen .narrator-heading { padding: 4px 7px 0; }
+  .game-screen .field-narrator #threat-detail { font-size: 11px; }
+  .game-screen .field-narrator .pressure-action strong { font-size: 15px; }
+  .game-screen .duel-opponent-card { display: none; }
+  .game-screen .duel-field { height: 160px; }
+  .game-screen .smoke-cell, .game-screen .fire-smoke-grid > button { height: 44px; }
+  .game-screen .wire-status[data-kind] { min-height: 40px; margin: 4px 0; padding: 3px 6px; }
+  .game-screen .signal-housing { width: 30px; height: 30px; flex-basis: 30px; }
+  .game-screen .signal-lens { width: 23px; height: 23px; }
+  .game-screen .signal-copy strong { font-size: 19px; }
+  .game-screen .instruction-tag { font-size: 11px; padding: 4px; margin-top: 0; }
+  .game-screen .wire-bank { gap: 3px; }
+  .game-screen .wire-unit { padding: 0; }
+  .game-screen .wire-unit > .instruction-tag { line-height: 1.2; margin-top: 0; }
+  .game-screen .hold-orbit { width: 145px; height: 145px; }
+  .game-screen .hold-button { width: 120px; height: 120px; }
+  .game-screen .hold-meter { margin: 4px 0; }
+  .flash-retake-screen { margin-top: 4px; gap: 4px 10px; }
+  .flash-retake-screen .retake-round-strip { margin-bottom: 0; }
+  .flash-retake-screen .retake-arena { height: 224px; grid-row: 2 / 8; }
+  .flash-retake-screen .retake-support { grid-column: 2; grid-row: 6; }
+  .flash-retake-screen .retake-action-bar { flex-wrap: nowrap; }
+  .flash-retake-screen .retake-entry { width: auto; }
+  .intro-screen { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 10px; max-width: none; }
+  .intro-screen .match-ribbon { grid-column: 1 / -1; margin: 0; }
+  .intro-screen .intro-arena { grid-column: 1; grid-row: 2 / 7; height: 220px; }
+  .intro-screen :is(.intro-lower,.intro-progress,.intro-friend,.take-over) { grid-column: 2; }
+}
+
+/* Portrait guard is independent of page state and wins over game overlays. */
+#portrait-guard { display: none; position: fixed; inset: 0; width: 100%; max-width: none; height: 100%; height: 100dvh; max-height: none; margin: 0; padding: 12px; border: 0; border-radius: 0; box-sizing: border-box; color: #f2f5f4; background: radial-gradient(ellipse at 50% 35%,#233e49 0,#111b23 65%); z-index: 2147483647; text-align: center; touch-action: none; overscroll-behavior: none; }
+#portrait-guard::backdrop { background: #111b23; }
+html[data-portrait-blocked="true"] { overflow: hidden; }
+html[data-portrait-blocked="true"] body { overflow: hidden; }
+html[data-portrait-blocked="true"] #portrait-guard { display: flex; align-items: center; justify-content: center; }
+html[data-portrait-blocked="true"] .site-shell { visibility: hidden; pointer-events: none; }
+#portrait-guard .portrait-message { max-width: 540px; }
+#portrait-guard .portrait-phone { display: block; width: clamp(54px,22dvh,88px); height: clamp(54px,22dvh,88px); margin: 0 auto 6px; fill: none; stroke: #f0ca57; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+#portrait-guard .portrait-label { color: #f0ca57; font-size: 12px; letter-spacing: 3px; }
+#portrait-guard h1 { font-size: clamp(28px,10dvh,44px); line-height: 1.2; margin: 10px 0; color: #fff; outline: none; }
+#portrait-guard p { font-size: 14px; line-height: 1.5; margin: 0; color: #d4e3e9; }
+#portrait-guard small { display: block; margin-top: 14px; font-size: 11px; color: #9fb4c0; }
+
+@media (max-height:260px) {
+  #portrait-guard .portrait-phone { display: none; }
+  #portrait-guard h1 { margin: 8px 0; }
+  #portrait-guard small { margin-top: 8px; }
+}

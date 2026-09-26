@@ -1,0 +1,135 @@
+/* CS2 equipment-menu references: matte surfaces, a fine lit edge and
+   faction colour. No new stacking contexts on the in-game sticky HUD. */
+.home-screen :is(.home-copy, .enemy-lineup, .friendly-lineup, .music-kit) {
+  position: relative;
+  border-radius: 4px;
+  border-color: #a9bbc347;
+  box-shadow: 0 2px 3px #0005, 0 12px 25px #0003, inset 0 1px #e6f2fa26;
+}
+.home-screen :is(.home-copy, .enemy-lineup, .friendly-lineup, .music-kit)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 1px #ffffff27, inset 0 -1px #0009;
+}
+.home-screen .home-copy { border-color: #94b2bf66; }
+.home-screen .enemy-lineup { border-color: #b8a56e77; background: #262724; }
+.home-screen .friendly-lineup { border-color: #7aadc16b; background: #1c2b35; }
+.home-screen .faction-heading,
+.home-screen .audio-loadout-header {
+  position: relative;
+  box-shadow: inset 0 1px #ffffff0e, 0 1px #0006;
+}
+.home-screen .faction-heading::before,
+.home-screen .audio-loadout-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../assets/ui/cs2-panel-pattern.svg') right center / cover no-repeat;
+  opacity: .055;
+  pointer-events: none;
+}
+.home-screen .enemy-heading {
+  background: linear-gradient(105deg, #544b35, #32322b 60%, #282b29);
+  color: #f4d68a;
+  border-bottom-color: #d8bd6c55;
+}
+.home-screen .friendly-heading {
+  background: linear-gradient(105deg, #355565, #253d4a 66%, #27343d);
+  border-bottom-color: #c1e5f235;
+}
+.home-screen .squad-scene { isolation: isolate; background: #252b2c; }
+.home-screen .enemy-backdrop { position: absolute; inset: 0; z-index: -2; pointer-events: none; }
+.home-screen .enemy-backdrop img {
+  width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 48%;
+  filter: saturate(.68) brightness(.83);
+}
+.home-screen .scene-haze {
+  z-index: -1;
+  background: radial-gradient(ellipse at 78% 24%, #dba66038, transparent 65%),
+    linear-gradient(90deg, #11191e42, transparent 60%), linear-gradient(0deg, #192125d6, transparent 48%);
+}
+.home-screen .hero-agent { right: 1%; }
+.home-screen .hero-agent img { filter: drop-shadow(-7px 4px 12px #0008); }
+.home-screen .scene-tag {
+  border: 1px solid #c4b67a50;
+  border-left: 3px solid #efc85e;
+  background: linear-gradient(110deg, #31372ff5, #1d282af2);
+  border-radius: 2px;
+  box-shadow: inset 0 1px #ffffff14, 0 4px 16px #0006;
+}
+.home-screen .scene-tag .agent-name { color: #f1d47b; }
+.home-screen .scene-tag b { color: #f6f4ea; }
+.home-screen .commander-brief {
+  background: linear-gradient(110deg, #364b5599, #1d2c35f5);
+  border-bottom: 1px solid #b0d3e025;
+  box-shadow: inset 0 -1px #07131d66;
+}
+.home-screen .commander-avatar { filter: drop-shadow(0 2px 3px #0005); }
+.home-screen .squad-roster { background: #1e2b34; }
+.home-screen .squad-roster > div {
+  background: linear-gradient(145deg, #ffffff08, #0a151c26 80%);
+  box-shadow: inset 0 1px #e4f5ff06;
+}
+.home-screen .squad-roster img:not(.profile-portrait) { filter: drop-shadow(0 3px 3px #0006); }
+.home-screen .squad-roster img.profile-portrait { border: 1px solid #d6e7ed55; box-shadow: 0 2px 7px #0006; }
+.home-screen .squad-roster > .roster-player {
+  background: radial-gradient(ellipse at 50% 0, #9bd8fa21, transparent 80%), linear-gradient(145deg, #335164, #213c4d);
+  box-shadow: inset 0 -2px #a5ddf8, inset 0 1px #d5f0ff24;
+}
+.home-screen .music-kit {
+  background: radial-gradient(ellipse at 8% 50%, #6d76652b, transparent 60%), linear-gradient(125deg, #303a3d, #222b2e 72%);
+  border-color: #b8c7bc4d;
+  overflow: hidden;
+}
+.home-screen .music-kit::after {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background: url('../assets/ui/cs2-panel-pattern.svg') right center / cover;
+  opacity: .045; pointer-events: none;
+}
+.home-screen .music-kit > * { position: relative; z-index: 1; }
+.home-screen .audio-loadout-header { background: linear-gradient(90deg, #29342cf2, #1b2729ec); border-bottom-color: #dce6dc22; }
+.home-screen .audio-art-frame { background: radial-gradient(ellipse, #c4c89b20, transparent 70%); }
+.home-screen .audio-art-frame img { filter: drop-shadow(0 4px 5px #0006); }
+.home-screen .music-kit-choice {
+  gap: 6px;
+  padding: 3px;
+  background: #0e181b77;
+  border: 1px solid #bccacf16;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 4px #0004;
+}
+.home-screen .music-kit-controls { grid-template-rows: auto; }
+.home-screen .music-kit-choice button {
+  background: linear-gradient(150deg, #3c4649b3, #27323777);
+  border-color: #b5c7d030;
+  box-shadow: inset 0 1px #ffffff0d, 0 1px 2px #0005;
+  color: #d1dbdf;
+}
+.home-screen .music-kit-choice button[aria-pressed="true"] {
+  background: linear-gradient(140deg, #82692e9c, #54492480);
+  border-color: #e2c16bcc;
+  box-shadow: inset 0 -2px #efd075, inset 0 1px #fff0b530, 0 0 9px #e6bd4712;
+  color: #ffdf82;
+}
+.home-screen .home-actions .primary {
+  background: linear-gradient(115deg, #f7d26d, #e8b741);
+  box-shadow: inset 0 1px #fff6ca, inset 0 -1px #8d6b2b55, 0 3px 0 #806426, 0 6px 16px #0004;
+}
+.home-screen .home-actions .secondary { background: linear-gradient(135deg, #3a454e88, #232e3566); box-shadow: inset 0 1px #ffffff13; }
+@media (hover: hover) and (pointer: fine) {
+  .home-screen .music-kit-choice button:hover { border-color: #e6c969; background-color: #69756733; }
+  .home-screen .home-actions .primary:hover { background: linear-gradient(115deg, #ffe3a0, #efc150); }
+}
+.home-screen .music-kit-choice button:active,
+.home-screen .home-actions .button:active { box-shadow: inset 0 2px 7px #0005; }
+@media (max-width: 760px) {
+  .home-screen :is(.home-copy, .enemy-lineup, .friendly-lineup, .music-kit) { box-shadow: 0 3px 10px #0003, inset 0 1px #ffffff20; }
+  .home-screen .enemy-backdrop img { object-position: center 50%; }
+  .home-screen .music-kit-choice { gap: 5px; padding: 3px; }
+  .home-screen .music-kit-choice button { font-size: 12px; min-height: 46px; }
+  .home-screen .hero-agent { right: 0; }
+}

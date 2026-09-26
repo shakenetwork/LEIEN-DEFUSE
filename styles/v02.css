@@ -1,0 +1,54 @@
+/* V0.2: gallery pools grow, while both squads stay five players per match. */
+.rare-support-card { display:flex; align-items:center; gap:10px; padding:9px 12px; border-top:1px solid #b6c2a84a; background:linear-gradient(105deg,#27362f,#1b2930); }
+.rare-support-card>img { width:52px; height:56px; object-fit:contain; object-position:center bottom; }
+.rare-support-card>div { min-width:0; flex:1; }
+.rare-support-card span { display:block; color:#c0d6a8; font-size:10px; letter-spacing:1px; }
+.rare-support-card b { display:block; margin:3px 0; font-size:13px; color:#e6ecdc; }
+.rare-support-card p { margin:0; font-size:11px; color:#a7b7bb; }
+.rare-support-card em { color:#c6cc95; font:700 10px var(--mono); }
+.intro-arena.ct-down { background-image:linear-gradient(180deg,#13212726,#0d182080),url('../assets/scenes/dust2-ct-return.webp'); background-size:cover; background-position:center; }
+.result-screen.victory .result-scene { background:linear-gradient(90deg,#111e2acc,#111e2a40),url('../assets/scenes/dust2-ct-return.webp') center 58%/cover; border:1px solid #7ba2b844; }
+.result-screen.victory .result-speech { background:#14232de6; }
+@media(max-width:760px) {
+ .home-screen .enemy-picker { grid-template-columns:repeat(4,minmax(0,1fr)); flex:0 0 101px; grid-auto-rows:44px; gap:3px; }
+ .home-screen .enemy-picker button:last-child { grid-column:span 2; }
+ .rare-support-card { padding:6px 9px; gap:8px; }
+ .rare-support-card>img { width:44px; height:46px; }
+ .rare-support-card p { font-size:10px; }
+ .result-screen.victory .result-scene { background-position:center; }
+}
+@media(max-width:760px) and (max-height:560px) {
+ .home-screen .commander-brief { padding-block:5px; }
+ .home-screen .commander-brief p { font-size:10px; }
+ .rare-support-card { padding-block:4px; }
+ .rare-support-card>img { width:36px; height:36px; }
+ .rare-support-card p { display:none; }
+ .rare-support-card b { font-size:11px; margin:2px 0; }
+}
+
+/* The seven-agent pool uses one button row in a short embedded portrait viewport. */
+.enemy-pager { display:none; }
+@media (max-width:760px) and (max-height:560px) {
+ .home-screen .enemy-picker { display:none; }
+ .home-screen .enemy-pager { display:grid; grid-template-columns:44px minmax(0,1fr) 44px; align-items:center; gap:8px; flex:0 0 54px; padding:4px 8px 5px; border-top:1px solid #73828355; background:#172127; }
+ .enemy-pager button { width:44px; height:44px; min-height:44px; padding:0; border:1px solid #7c88746b; border-radius:3px; color:#ead18a; background:#2a3739; font:28px/1 sans-serif; touch-action:manipulation; }
+ .enemy-pager button:active { background:#675633; border-color:#efcc70; }
+ .enemy-pager button:focus-visible { outline:2px solid #f0d994; outline-offset:-3px; }
+ .enemy-pager>span { text-align:center; color:#c4ccc9; font:700 12px/1.3 var(--mono); letter-spacing:2px; }
+ .home-screen .home-visual { gap:4px; }
+ .home-screen .rare-support-card { padding:2px 9px; gap:7px; min-height:0; }
+ .home-screen .rare-support-card>img { width:30px; height:30px; flex:0 0 30px; }
+ .home-screen .rare-support-card span { font-size:9px; line-height:1.35; letter-spacing:.5px; }
+ .home-screen .rare-support-card b { font-size:11px; line-height:1.25; margin:1px 0; white-space:nowrap; }
+ .home-screen .rare-support-card em { font-size:9px; }
+}
+@media (max-width:760px) and (max-height:560px) {
+ .home-screen .commander-brief { padding:2px 7px; gap:6px; }
+ .home-screen .commander-avatar, .home-screen .commander-avatar img { width:30px; height:36px; min-height:0; }
+ .home-screen .commander-brief p { margin-top:2px; line-height:1.35; }
+ .home-screen .squad-roster>div { min-height:0; padding-block:0; }
+ .home-screen .squad-roster .roster-meta { margin-top:0; }
+ .home-screen .squad-roster>.roster-player { min-height:40px; }
+}
+/* Press feedback keeps the full 44px hit area. */
+.home-screen .enemy-pause:active, .home-screen .enemy-picker button:active, .home-screen .enemy-pager button:active { transform:none; filter:brightness(1.16); }

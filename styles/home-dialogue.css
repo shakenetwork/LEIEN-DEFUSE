@@ -1,0 +1,82 @@
+/* A shared name / position / optional secret grid keeps the squad aligned. */
+.home-screen .squad-roster > div { padding-bottom: 8px; }
+.home-screen .squad-roster > div > span { display: block; width: 100%; }
+.home-screen .squad-roster > div > span > b { min-height: 18px; line-height: 18px; }
+.home-screen .squad-roster .roster-meta {
+  display: block; min-height: 44px; margin: 3px 0 0;
+  color: #b9cbd3; font-size: 11px; line-height: 16px;
+}
+.home-screen .squad-roster .roster-position {
+  display: block; margin: 0; padding-top: 4px;
+  font-size: 11px; line-height: 16px; color: inherit;
+}
+/* Optional squad jokes: tap to reveal, never on hover. Keep the space stable. */
+.home-screen .squad-roster .role-reveal {
+  display: grid;
+  grid-template-rows: 16px 16px;
+  justify-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 76px;
+  min-height: 44px;
+  height: 44px;
+  width: 100%;
+  max-width: 100%;
+  padding: 4px 0;
+  margin: 0;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color .16s;
+}
+.home-screen .squad-roster .role-secret-wrap {
+  position: relative; display: block; width: 76px; height: 16px;
+  margin: 0; padding: 0; line-height: 16px; text-align: center;
+}
+.home-screen .squad-roster .role-secret {
+  display: block; margin: 0; font-size: 11px; line-height: 16px;
+  white-space: nowrap; color: #f1d887; opacity: 0;
+}
+.role-secret-wrap::after {
+  content: ""; position: absolute; inset: 1px 0;
+  border-radius: 2px;
+  background-color: #375262;
+  background-image: repeating-conic-gradient(#708996 0% 25%, #466574 0% 50%, #607987 0% 75%, #324955 0%);
+  background-size: 8px 8px;
+  box-shadow: inset 0 0 0 1px #a2bac52d;
+  pointer-events: none;
+}
+.home-screen .squad-roster .role-reveal[aria-expanded="true"] { background-color: #dcc16b0b; }
+.home-screen .squad-roster .role-reveal[aria-expanded="true"] .role-secret { opacity: 1; }
+.role-reveal[aria-expanded="true"] .role-secret-wrap::after { display: none; }
+.home-screen .squad-roster .role-reveal .role-secondary { margin: 0; font-size: 11px; line-height: 16px; color: inherit; letter-spacing: 0; }
+.role-reveal:focus-visible { outline: 2px solid #f0ce73; outline-offset: 3px; }
+.home-screen .squad-roster .role-reveal:active { background-color: #7093a440; }
+.site-footer.version-footer { grid-template-columns: minmax(0, 1fr) auto; justify-content: space-between; }
+.footer-author-link {
+  display: inline-flex; align-items: center; justify-self: start; gap: 4px;
+  min-height: 44px; max-width: 100%; color: #b9c9cf;
+  font: 400 12px/1.5 var(--sans); text-decoration: none;
+}
+.footer-author-link b { color: #dce6e9; font-weight: 600; }
+.footer-author-link > span:last-child { margin-left: 3px; color: #91a9b4; }
+.footer-author-link:focus-visible { outline: 2px solid #edcf7b; outline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  .home-screen .squad-roster .role-reveal:hover { background-color: #a5c7d10b; }
+  .footer-author-link:hover b { color: #f2d07b; text-decoration: underline; text-underline-offset: 4px; }
+}
+@media (max-width: 1000px) {
+  .home-screen .squad-roster > div { padding-block: 6px; }
+  .home-screen .squad-roster .role-reveal { justify-content: start; justify-items: start; }
+  .home-screen .squad-roster .role-secret-wrap { text-align: left; }
+  .home-screen .squad-roster > .roster-player .roster-meta { min-height: 16px; }
+  .home-screen .squad-roster > .roster-player .roster-position { padding-top: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-screen .squad-roster .role-reveal { transition: none; }
+}

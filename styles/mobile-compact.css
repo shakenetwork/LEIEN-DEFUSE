@@ -1,0 +1,132 @@
+/* Phone play keeps the clock and radio near the controls, without scaling taps. */
+@media (max-width: 760px), (max-height: 480px) and (max-width: 1000px) {
+  body:has(.game-screen) .masthead { height: 48px; }
+  body:has(.game-screen) .masthead .edition { display: none; }
+  body:has(.game-screen) .wordmark { font-size: 15px; gap: 8px; }
+  body:has(.game-screen) .brand-mark { width: 24px; height: 27px; font-size: 21px; }
+  body:has(.game-screen) .sound-button { width: 44px; height: 44px; }
+  body:has(.game-screen) .site-footer { display: none; }
+  .game-screen { --phone-hud-height: 62px; margin: 4px auto 12px; }
+  .game-screen > .match-ribbon,
+  .game-screen > .music-now,
+  .game-screen .module-heading .eyebrow,
+  .game-screen .module-id { display: none; }
+  .game-status {
+    position: sticky;
+    top: 0;
+    z-index: 18;
+    min-height: var(--phone-hud-height);
+    padding: 5px 0 4px;
+    background: #12191cf5;
+    border-bottom: 1px solid #7e8c7933;
+  }
+  .game-status .timer-block .eyebrow { display: none; }
+  .game-status .timer { font-size: 34px; line-height: 1.15; }
+  .game-status .timer small { font-size: 17px; }
+  .game-status .hud-stats { gap: 16px; }
+  .game-status .hud-stats > div { flex-direction: row; align-items: baseline; gap: 5px; }
+  .game-status .hud-stats > div > span { font-size: 11px; }
+  .game-status .hud-stats b { font-size: 18px; }
+  .game-status .round-progress { margin: 5px 0 0; }
+  .game-screen .module-heading { margin-top: 6px; }
+  .game-screen .module-heading h2 { font-size: 20px; line-height: 1.3; margin: 0; }
+  .game-screen .module-instruction { display: block; margin: 3px 0 7px; font-size: 12px; }
+  .game-screen .pressure-panel { top: var(--phone-hud-height); margin-bottom: 8px; }
+  .game-screen:has(.tactical-arena:not([hidden])) .pressure-panel { top: var(--phone-hud-height); }
+  .game-screen .pressure-top { display: none; }
+  .game-screen .operator-card { grid-template-columns: 34px minmax(0, 1fr) auto; padding: 6px 9px; gap: 8px; }
+  .game-screen .operator-portrait { width: 34px; height: 36px; }
+  .game-screen .operator-name { font-size: 13px; }
+  .game-screen .operator-action { display: none; }
+  .game-screen .operator-progress { margin-top: 4px; }
+  .game-screen .combat-vitals { gap: 10px; }
+  .game-screen .combat-vitals > div { display: flex; align-items: center; gap: 4px; }
+  .game-screen .combat-vitals b { font-size: 19px; margin: 0; }
+  .game-screen .combat-vitals .vital-track { display: none; }
+  .game-screen .pressure-panel .radio-bubble { min-height: 52px; margin-inline: 9px; padding-block: 5px; gap: 7px; }
+  .game-screen .pressure-panel .radio-avatar { width: 28px; height: 33px; }
+  .game-screen .pressure-panel .radio-avatar img { width: 33px; height: 35px; }
+  .game-screen .pressure-panel .radio-avatar img.profile-portrait { width: 28px; height: 28px; }
+  .game-screen .pressure-panel #radio-label { font-size: 11px; padding-right: 0; margin-bottom: 0; }
+  .game-screen .pressure-panel #radio-label i { display: none; }
+  .game-screen .pressure-panel #radio-text { font-size: 13px; line-height: 1.35; margin-top: 2px; }
+  .game-screen .combat-team { padding: 4px 9px 5px; }
+  .game-screen .teammate-chip img { width: 18px; height: 19px; }
+  .game-screen .pressure-panel[data-state="clear"] .pressure-action { display: none; }
+  .game-screen .play-console { padding: 10px; }
+  .game-screen .password-unit .unit-top,
+  .game-screen .password-unit .screen-caption,
+  .game-screen .note-heading,
+  .game-screen .hold-unit > .eyebrow,
+  .game-screen .wire-legend { display: none; }
+  .game-screen .password-unit .code-display { padding: 5px 10px; }
+  .game-screen .password-unit .code-display > b { font-size: 28px; line-height: 1.25; margin-block: 2px 5px; }
+  .game-screen .password-unit .screen-foot { font-size: 10px; }
+  .game-screen .password-note-wrap { margin: 10px 0 8px; }
+  .game-screen .password-note { min-height: 83px; padding: 8px 10px; }
+  .game-screen .note-tape { height: 12px; top: -6px; width: 52px; }
+  .game-screen .note-code-window { min-height: 35px; margin: 1px 0 4px; }
+  .game-screen .note-code { font-size: 27px; line-height: 1.2; letter-spacing: 5px; }
+  .game-screen .note-footer { font-size: 12px; }
+  .game-screen #note-help { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .game-screen .keypad { gap: 5px; margin-top: 8px; }
+  .game-screen .key { height: 46px; min-height: 46px; }
+  .game-screen .hold-orbit { width: 162px; height: 162px; margin: 3px auto 6px; }
+  .game-screen .hold-button { width: 134px; height: 134px; }
+  .game-screen .hold-meter { margin-block: 6px; }
+  .game-screen .hold-unit .instruction-tag { margin-top: 8px; }
+  .game-screen .tools-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .game-screen .tool-card { height: 82px; gap: 4px; padding: 8px 4px; }
+  .game-screen .tool-card > small { display: none; }
+  .game-screen .tool-card > b { font-size: 12px; }
+  .game-screen .tool-graphic > .icon { width: 30px; height: 30px; }
+  .game-screen .inventory-heading { margin-bottom: 8px; }
+  .game-screen .tools-unit .instruction-tag { margin-top: 8px; }
+  .game-screen .wire-bank { gap: 6px; margin-block: 8px 0; }
+  .game-screen .wire { height: 48px; }
+  .game-screen .wire-status { margin-block: 7px; padding: 6px 8px; }
+  .game-screen .smoke-status { margin-bottom: 8px; }
+  .game-screen .smoke-grid { padding: 6px; gap: 5px; }
+  .game-screen .smoke-cell { height: 52px; min-height: 48px; }
+  .game-screen .smoke-unit .instruction-tag { margin-top: 8px; }
+}
+
+@media (max-width: 760px) {
+  .home-screen { padding-block: 16px; gap: 12px; }
+  .home-screen .home-copy .status-label { display: none; }
+  .home-screen .home-copy h1 { font-size: clamp(36px, 10vw, 44px); }
+  .home-screen .squad-scene { height: 176px; }
+  .home-screen .hero-agent { height: 120%; width: 72%; right: 0; bottom: -17%; }
+  .home-screen .visual-topline { padding-block: 8px; }
+  .home-screen .squad-roster > div { min-height: 48px; padding-block: 4px; }
+  .home-screen .squad-roster img,
+  .home-screen .squad-roster img.profile-portrait { height: 36px; }
+  .home-screen .squad-roster > .roster-player { padding-block: 4px; }
+  .home-screen .squad-roster .roster-player img.profile-portrait { height: 36px; width: 36px; }
+  .home-screen .audio-loadout-header { padding-block: 8px; }
+  .home-screen .music-kit-info { min-height: 80px; }
+  .home-screen .audio-art-frame { height: 76px; }
+  .home-screen .module-strip { display: none; }
+  .site-footer { padding-block: 16px; gap: 8px; }
+  body:has(.result-screen) .site-footer { display: none; }
+  .result-screen { display: flex; flex-direction: column; margin-block: 12px; }
+  .result-screen .result-scene { display: none; }
+  .result-screen .victory-banner { padding-block: 14px; }
+  .result-screen .victory-banner .faction-mark { width: 44px; height: 44px; margin-bottom: 8px; }
+  .result-screen .victory-banner h1 { font-size: 26px; margin-block: 8px; }
+  .result-screen .result-subtitle { margin-block: 12px; }
+  .result-screen .result-actions { order: 1; padding: 8px 0 max(8px, env(safe-area-inset-bottom)); }
+  .result-screen .result-stats { order: 2; margin-block: 12px; }
+  .result-screen .combat-summary { order: 3; }
+  .result-screen .friend-reaction { order: 4; margin-block: 12px; padding: 10px; }
+  .result-screen .friend-reaction img { width: 36px; height: 36px; }
+  .result-screen .friend-reaction p { font-size: 13px; }
+  .result-screen .restart-hint,
+  .result-screen .result-footnote { display: none; }
+}
+
+@media (max-width: 760px) and (max-height: 700px) {
+  .game-screen .pressure-panel[data-state="clear"] .combat-team { display: none; }
+  .game-screen .operator-card { padding-block: 4px; }
+  .game-screen .key { height: 44px; min-height: 44px; }
+}

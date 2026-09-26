@@ -1,0 +1,53 @@
+/* Surrender is a compact, explicit escape hatch; it never looks like a module action. */
+.surrender-button { min-width: 52px; min-height: 44px; padding: 5px 9px; border: 1px solid #c8b77d66; border-radius: 2px; background: #171f22b8; color: #d9c88f; font: 700 11px/1 var(--sans, sans-serif); letter-spacing: .3px; cursor: pointer; touch-action: manipulation; }
+[data-open-surrender][hidden], .lobby-mode[hidden] { display:none !important; }
+.settings-surrender { width:100%; margin-top:10px; }
+.lobby-surrender { flex:0 0 auto; }
+.surrender-button:hover { border-color: #e7ca7b; background: #322d20; color: #f4dea1; }
+.surrender-button:focus-visible { outline: 2px solid #e5c875; outline-offset: 2px; }
+.game-screen .match-ribbon { position: relative; }
+#surrender-dialog { width: min(440px, calc(100% - 24px)); margin: auto; padding: 0 22px 20px; border: 1px solid #c7aa5d76; border-top: 2px solid #e4c26c; border-radius: 4px; background: linear-gradient(145deg,#29342f,#151d1d 78%); color: #ecf0e7; box-shadow: 0 22px 70px #000b, inset 0 1px #fff2; }
+#surrender-dialog::backdrop { background: #05090bd9; backdrop-filter: blur(5px); }
+#surrender-dialog .surrender-header { display:flex; align-items:center; justify-content:space-between; min-height:58px; margin:0 -22px 16px; padding:6px 10px 6px 22px; border-bottom:1px solid #b9b58d2b; background:#202a26f5; }
+#surrender-dialog .surrender-header .eyebrow { color:#d0bc7c; letter-spacing:1px; }
+#surrender-dialog .surrender-header .icon-button { width:44px; min-width:44px; height:44px; border:1px solid #aeb6a833; background:#303932; color:#e2e8de; }
+#surrender-dialog h2 { margin:0 0 7px; font-size:25px; line-height:1.25; }
+#surrender-dialog #surrender-detail { margin:0; color:#c3cec5; font-size:14px; line-height:1.6; }
+.surrender-score { display:flex; align-items:center; justify-content:center; gap:20px; margin:18px 0 12px; padding:11px; border:1px solid #96b3b344; background:#12232a; }
+.surrender-score span { display:flex; align-items:baseline; gap:7px; color:#acd9ee; }
+.surrender-score span:last-child { color:#e4c77e; }
+.surrender-score small { font:700 11px/1 var(--mono,monospace); }
+.surrender-score b { font:800 31px/1 var(--mono,monospace); }
+.surrender-score i { color:#9da9a7; font-style:normal; }
+.surrender-penalty { margin:0 0 17px; padding:10px 11px; border-left:2px solid #d7bd69; background:#80692a22; color:#e6d59a; font-size:13px; line-height:1.45; }
+.surrender-actions { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.35fr); gap:9px; }
+.surrender-actions .button { min-height:48px; padding:10px 12px; font-size:14px; }
+.surrender-actions .primary { border-color:#e8c66a; background:linear-gradient(110deg,#e8c25b,#cfa541); color:#211f15; }
+#surrender-dialog :is(button):focus-visible { outline:2px solid #e8d692; outline-offset:3px; }
+@media (max-width:760px) {
+  .surrender-button { min-width:44px; min-height:44px; padding-inline:9px; font-size:11px; }
+  #surrender-dialog { width:calc(100% - 20px); padding:0 16px 16px; }
+  #surrender-dialog .surrender-header { margin-inline:-16px; padding-left:16px; }
+  #surrender-dialog h2 { font-size:23px; }
+  #surrender-dialog #surrender-detail { font-size:13px; }
+  .surrender-score { margin-block:14px 10px; }
+  .surrender-actions .button { min-height:46px; font-size:13px; }
+}
+@media (max-width:359px) {
+  #surrender-dialog { width:calc(100% - 14px); }
+  .surrender-actions { grid-template-columns:1fr; }
+  .surrender-actions .primary { order:-1; }
+}
+#instructions .manual-note { grid-column:1/-1; margin:8px 0; padding:8px 10px; font-size:12px; line-height:1.5; }
+@media (max-height:550px) {
+  #instructions .dialog-header { margin-bottom:5px; }
+  #instructions .rules li { padding-top:5px; padding-bottom:5px; }
+  #instructions .rules b { margin-bottom:1px; }
+  #instructions h2 { margin:0; font-size:21px; }
+  #instructions { padding-bottom:8px; }
+  #instructions[open] { gap:4px; }
+  #instructions .manual-note { margin:2px 0; padding:6px 8px; font-size:11px; line-height:1.4; }
+  #surrender-dialog .surrender-header { margin-bottom:10px; min-height:50px; }
+  .surrender-score { margin:10px 0; padding:8px; }
+  .surrender-penalty { margin-bottom:12px; }
+}

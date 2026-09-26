@@ -1,0 +1,247 @@
+.pressure-panel {
+  position: sticky;
+  top: 8px;
+  z-index: 25;
+  margin: 0 0 16px;
+  background: #15222c;
+  border: 1px solid #354955;
+  box-shadow: 0 5px 20px #0004;
+  --threat: #83bad5;
+}
+.pressure-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid #ffffff12;
+  gap: 8px;
+}
+.pressure-label {
+  font: 11px var(--mono);
+  letter-spacing: 1px;
+  color: #9bb1bd;
+}
+.combat-vitals {
+  display: flex;
+  gap: 16px;
+  color: #8dcced;
+  font: 14px var(--mono);
+  white-space: nowrap;
+}
+.combat-vitals b {
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+}
+.pressure-action {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 11px 12px;
+  min-height: 80px;
+}
+.pressure-action > div {
+  flex: 1;
+  min-width: 0;
+}
+.pressure-action strong {
+  display: block;
+  font-size: 17px;
+  color: var(--threat);
+  margin-bottom: 5px;
+}
+.pressure-action #threat-detail {
+  display: block;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #b2c2cc;
+  min-height: 18px;
+}
+.evade-button {
+  flex-shrink: 0;
+  min-width: 90px;
+  min-height: 48px;
+  border: 1px solid var(--threat);
+  background: var(--threat);
+  color: #13202a;
+  padding: 10px 12px;
+  font-size: 16px;
+  font-weight: 800;
+  touch-action: manipulation;
+}
+.evade-button:disabled {
+  color: #91a7b4;
+  border-color: #374953;
+  background: #20323e;
+  cursor: default;
+}
+.evade-button:active:not(:disabled) {
+  transform: translateY(2px);
+}
+.threat-track {
+  height: 3px;
+  background: #101820;
+}
+.threat-track span {
+  display: block;
+  height: 100%;
+  background: var(--threat);
+  width: 0;
+}
+.pressure-panel[data-state="warning"],
+.pressure-panel[data-state="firing"] {
+  --threat: #ff826e;
+  border-color: #b86152;
+}
+.pressure-panel[data-state="flash-warning"],
+.pressure-panel[data-state="blinded"] {
+  --threat: #f0cf7c;
+  border-color: #8d7748;
+}
+.pressure-panel[data-state="evaded"] {
+  --threat: #99d8c2;
+  border-color: #527b6b;
+}
+.low-health .combat-vitals span:first-child,
+.low-health .game-bottom em {
+  color: #ff806e;
+}
+.low-health .pressure-top {
+  background: #75332e35;
+}
+.combat-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+  --hit: 0;
+  --blind: 0;
+}
+.hit-vignette {
+  position: absolute;
+  inset: 0;
+  border: 4px solid #ff514c;
+  box-shadow: inset 0 0 100px 25px #9f14148c;
+  opacity: var(--hit);
+}
+.hit-direction {
+  position: absolute;
+  top: 32%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 9px 15px;
+  background: #862e27e8;
+  color: #fff5ef;
+  border-top: 3px solid #ff7869;
+  opacity: var(--hit);
+  font-weight: 800;
+  white-space: nowrap;
+}
+.hit-direction:before {
+  content: "▼";
+  margin-right: 9px;
+}
+.combat-overlay[data-direction="left"] .hit-direction:before {
+  content: "▶";
+}
+.combat-overlay[data-direction="right"] .hit-direction:before {
+  content: "◀";
+}
+.damage-number {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ff826e;
+  text-shadow: 0 2px 10px #000;
+  font: 900 36px var(--mono);
+  opacity: var(--hit);
+}
+.flash-veil {
+  position: absolute;
+  inset: 0;
+  background: #f4eee0;
+  opacity: calc(var(--blind) * 0.94);
+}
+.soft-flash .flash-veil {
+  background: #263848;
+  opacity: calc(var(--blind) * 0.93);
+}
+.game-screen .play-console {
+  filter: blur(var(--blind-blur, 0px));
+}
+.combat-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  margin: 0 0 25px;
+  color: #9cb5c1;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.game-bottom > em {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.game-bottom > em b {
+  display: inline;
+  letter-spacing: 0;
+}
+.combat-summary b {
+  color: #e2ebec;
+  font-family: var(--mono);
+}
+.flash-setting {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 48px;
+  margin: 14px 0 20px;
+  font-size: 14px;
+  color: #b8ccd5;
+  cursor: pointer;
+}
+.flash-setting input {
+  width: 20px;
+  height: 20px;
+  accent-color: #e9bd45;
+}
+.result-screen.eliminated .result-scene > strong {
+  font-size: clamp(35px, 9vw, 65px);
+}
+@media (max-width: 430px) {
+  .pressure-label {
+    font-size: 10px;
+    letter-spacing: 0;
+  }
+  .combat-vitals {
+    gap: 11px;
+  }
+  .pressure-action {
+    gap: 8px;
+    padding: 10px;
+  }
+  .pressure-action strong {
+    font-size: 16px;
+  }
+  .evade-button {
+    min-width: 80px;
+    padding: 9px;
+    font-size: 15px;
+  }
+  .pressure-panel {
+    top: max(6px, env(safe-area-inset-top));
+  }
+  .hit-vignette {
+    box-shadow: inset 0 0 55px 12px #9f14148c;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hit-vignette {
+    box-shadow: none;
+    border-width: 3px;
+  }
+  .damage-number {
+    font-size: 30px;
+  }
+}

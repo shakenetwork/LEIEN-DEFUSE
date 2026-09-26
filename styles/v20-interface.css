@@ -1,0 +1,266 @@
+/* V20: charcoal equipment surfaces, faction accents, generous touch targets.
+   Do not transform or clip the sticky combat HUD's ancestors. */
+:root {
+  --bg: #15191c;
+  --panel: #242a2d;
+  --line: #a3b1b52b;
+  --muted: #b0b9ba;
+  --yellow: #f0c24c;
+  --ink: #f2f3ef;
+}
+body {
+  background: radial-gradient(ellipse at 85% 5%, #c9aa6520, transparent 52%), #15191c;
+}
+body::before { display: none; }
+.ambient-grid { opacity: .035; }
+.masthead { height: 76px; border-bottom-color: #d1d9d222; }
+.brand-mark { box-shadow: inset 0 1px #fff8, 0 2px 8px #0003; }
+.icon-button {
+  background: linear-gradient(145deg, #30373877, #161c20);
+  border-color: #bcc8c233;
+  box-shadow: inset 0 1px #ffffff09;
+}
+.button, .key, .wire, .tool-card, .music-kit-choice button,
+.tactical-actions button, .fire-smoke-grid button, .evade-button {
+  transition: transform 90ms ease, background-color 120ms ease, border-color 120ms ease, box-shadow 90ms ease;
+}
+.button.primary {
+  background: linear-gradient(112deg, #f5cf61, #e6b43a);
+  border: 1px solid #ffde8099;
+  color: #212219;
+  box-shadow: inset 0 1px #fff5c980, 0 3px 0 #806022, 0 8px 18px #0002;
+}
+.button.secondary { background: linear-gradient(120deg, #30363888, #202729); border-color: #bac5c233; }
+.button:active:not(:disabled), .music-kit-choice button:active:not(:disabled),
+.key:active:not(:disabled), .tool-card:active:not(:disabled), .wire:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: inset 0 2px 8px #0004;
+}
+.home-screen { gap: 28px 44px; padding-block: 36px 22px; }
+.home-screen::before { opacity: .085; height: 270px; top: 36px; }
+.home-screen .home-copy h1 { letter-spacing: -2px; }
+.home-screen .home-copy h1 em { color: #f0c24c; text-shadow: 0 3px 22px #edbb3517; }
+.home-screen .tagline { color: #c5cccc; }
+.home-screen .brief-line { color: #ccd0c9; }
+.home-screen .home-actions { margin-top: 26px; }
+.home-screen .enemy-lineup, .home-screen .friendly-lineup {
+  border-radius: 3px;
+  box-shadow: inset 0 1px #ffffff16, 0 10px 26px #0003;
+}
+.enemy-lineup { border-color: #c5a86166; }
+.friendly-lineup { border-color: #8db2c95c; }
+.faction-heading { padding-block: 10px; }
+.enemy-heading { background: linear-gradient(90deg, #423b27, #252824); color: #f4cf76; }
+.friendly-heading { background: linear-gradient(90deg, #2e4a58, #1b2b34); color: #d2edfa; }
+.faction-heading > b { font-size: 14px; }
+.home-screen .squad-scene { height: 308px; background-position: center 48%; }
+.home-screen .hero-agent { height: 328px; width: 88%; bottom: -18px; }
+.home-screen .scene-type { display: none; }
+.home-screen .scene-haze { background: linear-gradient(0deg, #1f2424e8, transparent 65%), linear-gradient(90deg, #231f1d36, transparent 55%); }
+.home-screen .scene-tag {
+  left: 14px; bottom: 14px; padding: 10px 12px;
+  border: 0; border-left: 2px solid #edc664;
+  background: linear-gradient(110deg, #202624f7, #202624df);
+  box-shadow: 0 5px 16px #0005;
+  transform: none;
+}
+.home-screen .scene-tag span { margin-bottom: 5px; }
+.home-screen .commander-brief { background: linear-gradient(110deg, #273b4388, #1d292f); }
+.home-screen .commander-brief p { color: #d8e1e4; }
+.home-screen .squad-roster { background: #1b282e; gap: 1px; }
+.home-screen .squad-roster > div { background: linear-gradient(160deg, #ffffff04, transparent); border-color: #bfd7e414; }
+.home-screen .squad-roster img.profile-portrait { border-radius: 2px; box-shadow: 0 2px 8px #0004; }
+.home-screen .squad-roster > .roster-player { background: linear-gradient(120deg, #36607580, #273f4d); }
+.home-screen .music-kit {
+  border-radius: 3px; border-color: #c1c7be30;
+  background: linear-gradient(115deg, #303532, #232929 80%);
+  box-shadow: inset 0 1px #ffffff0a, 0 10px 24px #0002;
+}
+.home-screen .audio-loadout-header { background: #141b1cb3; border-color: #c1c7be22; }
+.home-screen .music-kit h2 { letter-spacing: -.3px; }
+.home-screen .music-artist { color: #bdc5c4; }
+.home-screen .music-kit-choice { gap: 6px; }
+.home-screen .music-kit-choice button { border-radius: 2px; background: #151c1edb; border-color: #9facaa40; color: #c4cdcd; }
+.home-screen .music-kit-choice button[aria-pressed="true"] {
+  background: linear-gradient(120deg, #64532970, #39382b);
+  color: #ffe08b; border-color: #e6c15a;
+  box-shadow: inset 0 -3px #e6c15a, inset 0 1px #fff3;
+}
+.site-footer { color: #a0adae; }
+.site-footer .footer-build { opacity: .65; }
+
+/* In play, brighter edges separate the radio, device, and actual controls. */
+.game-status { border-color: #a0b7c02e; }
+.game-screen .timer { text-shadow: 0 0 16px #f0c44f10; }
+.game-screen .pressure-panel {
+  background: linear-gradient(120deg, #243239, #1b252c 82%);
+  border-radius: 3px;
+  box-shadow: inset 0 1px #ffffff0c, 0 6px 18px #0004;
+}
+.game-screen .pressure-top { background: #131c2280; }
+.game-screen .operator-card { background: linear-gradient(100deg, #7ab3d010, transparent); }
+.game-screen .operator-portrait { border-radius: 2px; border-color: #b3d5e575; }
+.game-screen .radio-command { border-color: #92cae5; }
+.game-screen .radio-miscall { background: #e3bb5010; }
+.game-screen .play-console {
+  border-color: #a7b0b25c;
+  border-radius: 3px;
+  background: linear-gradient(135deg, #424b4e, #2a3236 62%, #242c30);
+  box-shadow: inset 0 1px #ffffff20, inset 0 -1px #0005, 0 8px 22px #0004;
+}
+.console-corner { border-color: #dce5dfa0; }
+.game-screen .instruction-tag { background: #edc6530d; color: #f1d17b; }
+.game-screen .key:not(.confirm-key) {
+  border-color: #98a6aa85; border-bottom-color: #131b1f;
+  background: linear-gradient(#546064, #343f44);
+  box-shadow: inset 0 1px #dbe6e322, 0 2px 3px #0003;
+  color: #f3f4ed;
+}
+.game-screen .key.confirm-key { background: linear-gradient(110deg, #f2cf67, #e5b643); box-shadow: inset 0 1px #fff8; }
+.game-screen .code-display { border: 3px solid #26352d; outline: 1px solid #96a29066; border-radius: 2px; }
+.game-screen .wire { background: linear-gradient(110deg, #19252b, #233038); border-color: #9cb7c266; border-radius: 2px; box-shadow: inset 0 1px #ffffff0a; }
+.game-screen .wire-terminal { background: #46535b; border-color: #85989f88; }
+.game-screen .tool-card { background: linear-gradient(145deg, #41545e, #283b44); border-color: #a1bdc652; border-radius: 3px; box-shadow: inset 0 1px #ffffff12, 0 2px 3px #0002; }
+.game-screen .hold-orbit { border-color: #242e31; }
+.game-screen .hold-orbit::before { background: #222e32; }
+.game-screen .hold-button { background: radial-gradient(circle at 35% 15%, #607178, #314249 80%); border-color: #a0b5bd77; border-bottom-color: #142127; }
+.game-screen .hold-button.holding { background: radial-gradient(circle at 35% 15%, #827449, #454834); border-color: #d8ba5f; }
+.tactical-arena { border-radius: 3px; box-shadow: inset 0 1px #fff1; }
+.duel-opponent-card { background: linear-gradient(105deg, #44352a, #202b30 80%); }
+.duel-field { background-image: linear-gradient(#111a2338, #111a2366), url('../assets/scenes/dust2-b-site.jpg'); }
+.tactical-actions button, .evade-button { border-radius: 2px; box-shadow: inset 0 1px #ffffff25, 0 2px 0 #0004; }
+.pressure-panel[data-state="clear"] .threat-track { background: #a6d8ec25; height: 1px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .button.primary:hover { background: linear-gradient(112deg, #ffe194, #efc34e); }
+  .home-screen .music-kit-choice button:hover { border-color: #e5c871; color: #ffe4a0; }
+  .game-screen .key:not(.confirm-key):hover { background: linear-gradient(#647176, #435259); }
+  .game-screen .tool-card:hover, .game-screen .wire:hover { border-color: #c7dce2; }
+}
+@media (max-width: 760px) {
+  .site-shell { padding-inline: max(12px, env(safe-area-inset-left)) max(12px, env(safe-area-inset-right)); }
+  .masthead { height: 62px; }
+  .masthead .edition { display: none; }
+  .masthead .wordmark { font-size: 17px; gap: 10px; }
+  .masthead .brand-mark { width: 28px; height: 32px; }
+  .home-screen { padding-block: 16px 12px; gap: 12px; min-height: auto; }
+  .home-screen::before { top: 12px; height: 245px; opacity: .09; }
+  .home-screen .home-copy { gap: 12px; }
+  .home-screen .home-copy h1 { font-size: clamp(37px, 10.6vw, 45px); letter-spacing: -1.5px; line-height: 1.1; }
+  .home-screen .tagline { font-size: 14px; line-height: 1.5; }
+  .home-screen .home-copy .brief-line { font-size: 12px; gap: 10px; margin: 0; }
+  .home-screen .brief-line b { font-size: 20px; }
+  .home-screen .home-actions { margin: 2px 0 3px; gap: 8px; }
+  .home-screen .home-actions .button { min-height: 52px; font-size: 15px; }
+  .home-screen .home-actions .primary { box-shadow: inset 0 1px #fff5c980, 0 3px 0 #806022, 0 6px 14px #0003; }
+  .home-screen .home-visual { gap: 9px; }
+  .faction-heading { padding: 7px 10px; }
+  .faction-heading > b { font-size: 12px; }
+  .home-screen .squad-scene { height: 152px; background-position: center 42%; }
+  .home-screen .hero-agent { height: 184px; width: 74%; bottom: -32px; right: -1%; }
+  .home-screen .scene-tag { left: 10px; bottom: 10px; padding: 8px 9px; }
+  .home-screen .scene-tag span { margin-bottom: 3px; }
+  .home-screen .scene-tag b { font-size: 12px; }
+  .home-screen .commander-brief { padding: 8px 9px; gap: 8px; }
+  .home-screen .commander-brief p { font-size: 12px; line-height: 1.4; }
+  .home-screen .commander-signal { display: none; }
+  .home-screen .squad-roster > div { min-height: 50px; padding-block: 5px; }
+  .home-screen .squad-roster b { color: #eff4f4; }
+  .home-screen .squad-roster small { color: #bacbd2; }
+  .home-screen .squad-roster .role-secondary { color: #9eb5bf; }
+  .home-screen .music-kit { grid-template-columns: 64px minmax(0, 1fr); gap: 8px 12px; padding-bottom: 12px; }
+  .home-screen .music-kit-info { min-height: 64px; }
+  .home-screen .audio-art-frame { height: 60px; }
+  .home-screen .audio-loadout-header { padding-block: 8px; }
+  .home-screen .music-kit h2 { font-size: 19px; margin-bottom: 3px; }
+  .home-screen .music-kit-choice button { font-weight: 600; }
+  .site-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2px 12px; padding-block: 8px max(12px, env(safe-area-inset-bottom)); font-size: 11px; letter-spacing: 0; }
+  .site-footer .footer-build { display: none; }
+  .site-footer .footer-profile { min-height: 44px; display: flex; align-items: center; }
+  .game-status { background: #151e22fa; padding-inline: 3px; }
+  .game-status .timer { letter-spacing: -1.7px; }
+  .game-screen .module-heading h2 { font-weight: 800; }
+  .game-screen .module-instruction { color: #c4ced0; }
+  .game-screen .pressure-panel { margin-bottom: 9px; }
+  .game-screen .operator-card { padding-inline: 9px; }
+  .game-screen .play-console { padding: 10px; }
+  .game-screen .wire-status { border-style: solid; border-color: #9db3ba40; }
+  .game-screen .keypad { gap: 6px; }
+}
+@media (max-width: 359px) {
+  .home-screen .tagline { font-size: 13px; }
+  .home-screen .music-kit h2 { font-size: 17px; }
+  .home-screen .scene-tag { padding: 7px 8px; }
+  .home-screen .scene-tag .agent-name, .home-screen .scene-tag b { font-size: 11px; }
+  .home-screen .hero-agent { right: -4%; width: 77%; }
+  .game-screen .keypad { gap: 5px; }
+}
+/* During a threat, choices share one row instead of pushing each other away. */
+@media (max-width: 760px), (max-height: 480px) and (max-width: 1000px) {
+  .game-screen .pressure-panel { backdrop-filter: none; }
+  .game-screen .pressure-panel:not([data-state="clear"]):not(:has(.tactical-arena:not([hidden]))) {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 8px;
+  }
+  .game-screen .pressure-panel:not([data-state="clear"]) > :is(.pressure-top, .operator-card, .radio-bubble, .threat-track) { grid-column: 1 / -1; }
+  .game-screen .pressure-panel:not([data-state="clear"]) .combat-team { display: none; }
+  .game-screen .pressure-panel:not([data-state="clear"]):not(:has(.tactical-arena:not([hidden]))) .pressure-action { display: contents; }
+  .game-screen .pressure-panel:not([data-state="clear"]):not(:has(.tactical-arena:not([hidden]))) .pressure-action > div { grid-column: 1 / -1; padding: 8px 10px; }
+  .game-screen .pressure-panel:not([data-state="clear"]) .pressure-action strong { font-size: 16px; margin-bottom: 3px; }
+  .game-screen .pressure-panel:not([data-state="clear"]):not(:has(.tactical-arena:not([hidden]))) .evade-button { grid-column: 1; margin: 0 0 10px 10px; min-height: 48px; padding-block: 8px; }
+  .game-screen .pressure-panel:not([data-state="clear"]):not(:has(.tactical-arena:not([hidden]))) .tactical-actions { grid-column: 2; padding: 0 10px 10px 0; min-width: 142px; }
+  .game-screen .pressure-panel:not([data-state="clear"]):not(:has(.tactical-arena:not([hidden]))):not(:has(.tactical-actions > button:not([hidden]))) .evade-button { margin-right: 10px; }
+  .game-screen .pressure-panel:not([data-state="clear"]) .radio-bubble { min-height: 44px; }
+  .game-screen:has(.tactical-arena:not([hidden])) .pressure-panel { top: var(--phone-hud-height); }
+  .game-screen:has(.tactical-arena:not([hidden])) .pressure-panel :is(.operator-card, .radio-bubble, .combat-team, .pressure-action, .tactical-actions) { display: none; }
+  .game-screen:has(.tactical-arena:not([hidden])) .tactical-arena { margin: 8px; }
+  .game-screen .duel-opponent-kicker, .game-screen .duel-opponent-status { display: none; }
+  .game-screen .duel-opponent-card { min-height: 50px; padding-block: 6px; }
+}
+/* Roomier phones get larger controls, not additional explanatory text. */
+@media (min-width: 375px) and (max-width: 760px) and (min-height: 800px) {
+  .game-screen .key { height: 50px; min-height: 50px; }
+  .game-screen .tool-card { height: 92px; }
+  .game-screen .wire { height: 54px; }
+  .game-screen .smoke-cell { height: 58px; }
+  .game-screen .hold-orbit { width: 178px; height: 178px; }
+  .game-screen .hold-button { width: 148px; height: 148px; }
+}
+/* Landscape is an intentionally compact phone layout, not a narrow desktop. */
+@media (orientation: landscape) and (max-height: 480px) and (max-width: 1000px) {
+  .site-shell { padding-inline: max(16px, env(safe-area-inset-left)) max(16px, env(safe-area-inset-right)); }
+  .masthead { height: 52px; }
+  .masthead .edition { display: none; }
+  .home-screen { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: 16px 24px; padding-block: 18px; min-height: auto; }
+  .home-screen .home-copy { display: block; align-self: start; padding: 6px 0 0; }
+  .home-screen .home-copy .status-label { display: none; }
+  .home-screen .home-copy h1 { font-size: clamp(33px, 4.7vw, 41px); line-height: 1.12; margin: 0 0 12px; }
+  .home-screen .home-copy h1 br { display: block; }
+  .home-screen .tagline { font-size: 13px; line-height: 1.5; }
+  .home-screen .home-copy .brief-line { display: flex; position: static; visibility: visible; font-size: 12px; margin-top: 12px; }
+  .home-screen .home-actions { display: grid; grid-template-columns: minmax(0, 1fr) 96px; gap: 8px; margin-top: 15px; max-width: none; }
+  .home-screen .home-actions .button { padding: 10px 12px; font-size: 14px; min-height: 48px; }
+  .home-screen .home-visual { order: 0; gap: 8px; }
+  .home-screen .squad-scene { height: 152px; }
+  .home-screen .hero-agent { height: 182px; bottom: -30px; width: 76%; }
+  .home-screen .faction-heading { padding: 6px 9px; }
+  .home-screen .faction-heading .faction-mark { width: 24px; height: 24px; }
+  .home-screen .faction-heading > b { font-size: 12px; }
+  .home-screen .faction-task { font-size: 10px; }
+  .home-screen .scene-tag { left: 9px; bottom: 9px; padding: 7px 9px; }
+  .home-screen .scene-tag b, .home-screen .scene-tag .agent-name { font-size: 11px; }
+  .home-screen .music-kit { grid-column: 1 / -1; grid-template-columns: 64px minmax(0,1fr) minmax(270px, 42%); gap: 8px 14px; padding-inline: 12px; }
+  .home-screen .audio-loadout-header { margin-inline: -12px; }
+  .home-screen .music-kit-info { min-height: 62px; }
+  .home-screen .audio-art-frame { height: 60px; }
+  .home-screen .music-kit-controls { grid-column: auto; }
+  .home-screen .module-strip { display: none; }
+  .game-screen .pressure-panel[data-state="clear"] { position: relative; top: auto; z-index: 1; }
+  .game-screen .pressure-panel:not([data-state="clear"]) .radio-bubble { display: none; }
+  .game-screen .pressure-panel:not([data-state="clear"]) .operator-card { padding-block: 4px; }
+  .game-screen:has(.tactical-arena:not([hidden])) .pressure-panel { top: var(--phone-hud-height); }
+  .game-screen .tactical-arena .duel-field { height: 112px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .button, .key, .wire, .tool-card, .music-kit-choice button,
+  .tactical-actions button, .fire-smoke-grid button, .evade-button { transition: none; }
+}

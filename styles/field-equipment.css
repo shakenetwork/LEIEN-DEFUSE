@@ -1,0 +1,87 @@
+/* Quiet static materials: warm equipment, cold radio, red only for live danger. */
+.game-screen { --equipment: #5e5340; --equipment-edge: #a29470; --module-accent: #eacb78; }
+.game-screen[data-module="password"] { --equipment: #60583d; --equipment-edge: #b4a272; --module-accent: #edcf87; }
+.game-screen[data-module="hold"] { --equipment: #3d5043; --equipment-edge: #8fa788; --module-accent: #b9d69d; }
+.game-screen[data-module="tools"] { --equipment: #57493e; --equipment-edge: #af8f70; --module-accent: #eac394; }
+.game-screen[data-module="smoke"] { --equipment: #414b56; --equipment-edge: #889db2; --module-accent: #bfd5e9; }
+.game-screen .play-console {
+  background: linear-gradient(135deg, #ffffff0a, #0005), var(--equipment);
+  border: 1px solid var(--equipment-edge); border-top: 3px solid var(--module-accent);
+  border-radius: 5px; box-shadow: inset 0 1px #e7dcc133, inset 0 -5px 12px #0c0e1055, 0 5px 12px #0004;
+  isolation: isolate;
+}
+.game-screen .play-console::before, .device-art::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  background:
+    radial-gradient(ellipse at 0 0, #c8b7854d, transparent 35%),
+    radial-gradient(ellipse at 99% 100%, #0c0b0866, transparent 34%),
+    linear-gradient(162deg, transparent 18%, #efe0b522 18.1%, transparent 18.3% 92%, #efe0b50d 92.2%, transparent 92.4%),
+    radial-gradient(ellipse at 2% 62%,#b6a27433,transparent 18%),
+    url('../assets/ui/field-grain.svg');
+  background-size: auto, auto, auto, auto, 160px 160px;
+}
+.device-art::after { z-index: 4; opacity: .48; inset: 18% 12% 6%; }
+.game-screen #module-root { z-index: 1; }
+.game-screen #pass-stamp { z-index: 2; }
+.game-screen .console-corner { border-color: #e9dcb377; }
+.game-screen .instruction-tag { background: #181914b8; border-color: #e3c575; color: #ffe3a1; border-radius: 2px; }
+.game-screen .pressure-panel { background: linear-gradient(120deg, #253d4c, #162732); box-shadow: inset 0 1px #b6d9ed20, 0 3px 8px #0003; }
+.game-screen .pressure-top { background: #101f2cb3; }
+.game-screen .module-heading .eyebrow { color: var(--module-accent); }
+.game-screen .code-display { background: linear-gradient(#303b2a, #222d1e); border-color: #82986a; box-shadow: inset 0 2px 7px #0009, 0 1px #ddd1a633; color: #ddebaf; }
+.game-screen .play-console .key { background: linear-gradient(#373a37, #232825); border-color: #92928080; box-shadow: inset 0 1px #d9d9bb33, 0 3px 0 #111812; }
+.game-screen .play-console .confirm-key { background: linear-gradient(#e2c877, #bda055); color: #25291e; }
+.game-screen .wire { background: linear-gradient(#252b2c, #1c2223); border-color: #a397766b; box-shadow: inset 0 1px #eee5c714, 0 2px 3px #0004; }
+.game-screen .wire-terminal { background: #45463b; color: #ddd7b9; border-color: #96927a; }
+.game-screen .wire-legend { color: #d4ccb4; border-color: #d4ccb42e; }
+.wire-status[data-kind] { display: flex; align-items: center; gap: 15px; padding: 12px 16px; min-height: 84px; border: 1px solid #baa77b99; border-radius: 4px; background: linear-gradient(105deg, #25271f, #373a2e); box-shadow: inset 0 1px #fbefd325, 0 2px 4px #0003; }
+.wire-status[data-lit]::before { display: none; }
+.signal-housing { width: 60px; height: 60px; flex: 0 0 60px; display: grid; place-items: center; border: 1px solid #aaa89a; border-radius: 50%; background: linear-gradient(135deg, #b2b2a2, #333c3b 42%, #111b1c 62%, #8b9084); box-shadow: 0 2px 5px #000a, inset 0 1px #fff8; }
+.signal-lens { width: 42px; height: 42px; border: 3px solid #151a18; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #795953, #382728 50%, #241e1c 80%); box-shadow: inset 0 3px 5px #000a; }
+.wire-status[data-lit="true"] { border-color: #df8e73; background: linear-gradient(105deg, #422922, #2c2b25 72%); }
+.wire-status[data-lit="true"] .signal-lens { background: radial-gradient(circle at 35% 30%, #fff2c7 0 5%, #ffb096 14%, #ff5b35 42%, #bf2516 78%); box-shadow: 0 0 0 3px #ff785b26, 0 0 23px #f757368c, inset 0 0 5px #ffcab6; }
+.signal-copy { display: grid; gap: 2px; }
+.signal-copy small { color: #d1c6b4; font: 12px var(--sans); }
+.signal-copy strong { font: 800 30px/1.15 var(--sans); color: #eee7d6; }
+.wire-status[data-lit="true"] .signal-copy strong { color: #ffb89c; }
+.signal-state { margin-left: auto; font: 700 12px var(--mono); color: #d8c8b3; }
+.wire-status[data-lit="true"] .signal-state { color: #ffb89c; }
+.wire-status[data-kind="serial"] { justify-content: space-between; min-height: 64px; gap: 8px; }
+.serial-label { font: 12px var(--sans); color: #c6c6ab; }
+.serial-number { font: 700 24px var(--mono); letter-spacing: 2px; color: #edf2c4; }
+/* Each hidden digit has its own dust patch; exposed positions remain readable. */
+.note-code { display: grid; grid-template-columns: repeat(7,minmax(0,1fr)); gap: 3px; letter-spacing: 0; text-align: center; }
+.note-digit { position: relative; display: block; min-width: 0; }
+.note-digit > span { visibility: hidden; }
+.note-digit[data-visible="true"] > span { visibility: visible; }
+.digit-dust { position: absolute; inset: 0 -1px; border-radius: 35% 18% 24% 12%; background: url('../assets/ui/field-grain.svg'),radial-gradient(ellipse at 30% 60%, #958873, transparent 75%),#726e5e; background-size: 80px 80px,auto,auto; box-shadow: 0 0 3px 2px #79715e; pointer-events: none; }
+.note-digit:nth-child(even) .digit-dust { transform: rotate(3deg); }
+.note-digit[data-visible="true"] .digit-dust { display: none; }
+.note-code-window { padding-inline: 5px; }
+.password-note[data-state="clean"] .note-progress { opacity: .45; }
+/* A compact CS-style elimination ribbon, with team colours and a separate weapon slot. */
+.intro-screen .kill-feed:not(:empty) { gap: 0; padding: 0; min-height: 38px; background: #101519f2; border: 1px solid #b4b9ad9c; border-radius: 3px; box-shadow: 0 3px 9px #0007, inset 0 1px #fff2; }
+.intro-screen .kill-feed > span { padding: 10px 11px; font-weight: 700; font-size: 12px; }
+.intro-screen .kill-feed > .ct-text { color: #adddf5; background: #49768a28; }
+.intro-screen .kill-feed > .t-text { color: #f4cf77; background: #b08e3224; }
+.intro-screen .kill-feed > b { display: flex; align-items: center; gap: 6px; padding: 8px; color: #f0f0e6; border-inline: 1px solid #dde1d02b; }
+.kill-weapon-icon { width: 43px; height: 15px; fill: currentColor; }
+.kill-marker { font: 18px var(--mono); color: #f0dbc0; }
+.retake-command, .retake-support { background: linear-gradient(105deg,#244250,#182a34); }
+.retake-action-bar { background: linear-gradient(110deg,#514634,#342f26); border-color: #a38d5f88; }
+.flash-retake-screen[data-phase="waiting"] .retake-arena { background-image: linear-gradient(180deg,#13212955,transparent 40%,#131c27a6),url('../assets/scenes/dust2-b-doors.webp'); background-position: center,52% 60%; }
+.flash-retake-screen .retake-cover { background: linear-gradient(90deg,#1b252958,#1b25290d); border-right: 0; box-shadow: none; }
+.flash-retake-screen .retake-cover::after { display: none; }
+.retake-waiting b { justify-self: center; padding: 6px 12px; border-left: 2px solid #edcf87; background: #182124cf; }
+@media(max-width:760px) {
+  .game-screen .wire-status[data-kind] { padding: 9px 12px; min-height: 72px; gap: 12px; margin-block: 10px; }
+  .signal-housing { width: 52px; height: 52px; flex-basis: 52px; }
+  .signal-lens { width: 37px; height: 37px; }
+  .signal-copy strong { font-size: 26px; }
+  .wire-status[data-kind="serial"] .serial-number { font-size: 21px; }
+  .intro-screen .kill-feed > span { font-size: 10px; padding: 8px 6px; }
+  .intro-screen .kill-feed > b { gap: 3px; padding: 6px; font-size: 9px; }
+  .kill-weapon-icon { width: 30px; height: 12px; }
+  .game-screen .note-code { font-size: clamp(25px,7.5vw,34px); letter-spacing: 0; }
+}
+@media(max-width:359px) { .signal-state { font-size: 10px; } .intro-screen .kill-feed > b > span { max-width: 44px; font-size: 8px; } }

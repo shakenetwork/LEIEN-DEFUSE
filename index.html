@@ -1,0 +1,396 @@
+
+<!doctype html>
+<html lang="zh-CN">
+  <head><script>(function(){try{
+var W=window;if(W.__TOY_PERF__){return;}
+var P=W.performance;if(!P||!P.getEntriesByType){return;}
+var M={fw:[],sent:false};W.__TOY_PERF__=M;
+M.pnow=function(){try{return P.now?P.now():(Date.now()-M.t0);}catch(e){return 0;}};
+M.head=Math.round(P.now?P.now():0);
+M.t0=Math.round((P.timeOrigin!==undefined&&P.timeOrigin!==null)?P.timeOrigin:
+ ((P.timing&&P.timing.navigationStart)||Date.now()));
+M.sid=(W.crypto&&W.crypto.randomUUID)?W.crypto.randomUUID():
+ (Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,10));
+M.fcp=undefined;
+M.readFCP=function(){try{
+ if(M.fcp!==undefined){return M.fcp;}
+ var es=P.getEntriesByType("paint")||[];
+ for(var i=0;i<es.length;i++){
+  if(es[i].name==="first-contentful-paint"){M.fcp=Math.round(es[i].startTime);return M.fcp;}}
+}catch(e){}
+return M.fcp;};
+try{var po=new W.PerformanceObserver(function(l){try{
+ var es=l.getEntries();for(var i=0;i<es.length;i++){
+  if(es[i].name==="first-contentful-paint"&&M.fcp===undefined){M.fcp=Math.round(es[i].startTime);
+   try{if(M.onFCP){M.onFCP();}}catch(e){}}}
+}catch(e){}});
+try{po.observe({type:"paint",buffered:true});}catch(e){po.observe({entryTypes:["paint"]});}
+}catch(e){}
+M.probe=function(){try{
+ var hit=[];var d=document;
+ var add=function(k){if(hit.indexOf(k)<0){hit.push(k);}};
+ if(W.unityInstance||W.UnityLoader||W.createUnityInstance){add("unity");}
+ if(W.vm||W.Scratch||W.ScratchVM){add("scratch");}
+ if(W.cc||W.cocos){add("cocos");}
+ if(W.Godot){add("godot");}
+ if(W.PIXI){add("pixi");}
+ if(W.Phaser){add("phaser");}
+ if(W.THREE){add("three");}
+ if(W.BABYLON){add("babylon");}
+ if(W.WebAssembly&&W.Module&&(W.Module.asm||W.Module.wasmBinary||W._malloc)){add("wasm");}
+ if(W.Vue||d.querySelector&&d.querySelector("[data-v-app]")){add("vue");}
+ if(W.React||W.ReactDOM){add("react");}
+ for(var i=0;i<hit.length;i++){if(M.fw.indexOf(hit[i])<0){M.fw.push(hit[i]);}}
+}catch(e){}};
+M.kind=function(){try{
+ var cv=document.getElementsByTagName?document.getElementsByTagName("canvas"):[];
+ var engine=["unity","scratch","cocos","godot","pixi","phaser","three","babylon"];
+ var hasEngine=false;
+ for(var i=0;i<engine.length;i++){if(M.fw.indexOf(engine[i])>=0){hasEngine=true;break;}}
+ if(cv&&cv.length>0){return hasEngine?"canvas-engine":"canvas";}
+ return hasEngine?"dom-engine":"dom";
+}catch(e){return "unknown";}};
+M.collect=function(withKind){try{
+ var nav=(P.getEntriesByType("navigation")||[])[0]||{};
+ var o={toy_id:M.toyID,render_mode:M.renderMode,layer:M.layer,
+  session_id:M.sid,time_origin:M.t0};
+ var put=function(k,v){try{var x=Math.round(v||0);if(x>0){o[k]=x;}}catch(e){}};
+ put("ttfb",nav.responseStart);put("dcl",nav.domContentLoadedEventEnd);
+ put("load",nav.loadEventEnd);put("doc_bytes",nav.decodedBodySize);
+ put("head_ms",M.head);put("transfer_bytes",nav.transferSize);
+ put("encoded_bytes",nav.encodedBodySize);
+ if(withKind){M.probe();o.kind=M.kind();o.fw=M.fw.join(",");}
+ var fcp=M.readFCP();
+ if(fcp!==undefined){o.fcp=fcp;}
+ if(M.fcpEst!==undefined){o.fcp_est=M.fcpEst;}
+ if(M.selfArmed){put("ff_self",M.ffSelf);o.ff_self_src=M.ffSrc||(M.selfDone?"none":"pending");}
+ return o;
+}catch(e){return null;}};
+}catch(e){}})();(function(){try{
+var W=window;var M=W.__TOY_PERF__;if(!M){return;}
+var P=W.performance;if(!P){return;}
+M.fcpEst=undefined;
+M.armEst=function(){try{
+ if(M.estArmed){return;}M.estArmed=true;
+ if(!W.MutationObserver){return;}
+ var D=document;
+ var SKIP={SCRIPT:1,STYLE:1,LINK:1,META:1,HEAD:1,TITLE:1,NOSCRIPT:1,TEMPLATE:1};
+ var INK={IMG:1,SVG:1,VIDEO:1,INPUT:1,BUTTON:1,TEXTAREA:1,SELECT:1};
+ var vis=function(n){try{var s=W.getComputedStyle(n);
+  return !s||(s.display!=="none"&&s.visibility!=="hidden"&&s.opacity!=="0");
+ }catch(e){return true;}};
+ var scan=function(n,dep){try{
+  if(dep>14){return false;}
+  if(n.nodeType===3){return /\S/.test(n.nodeValue||"");}
+  if(n.nodeType!==1){return false;}
+  if(SKIP[n.tagName]){return false;}
+  if(!vis(n)){return false;}
+  if(INK[n.tagName]){return true;}
+  try{var s=W.getComputedStyle(n);
+   if(s&&s.backgroundImage&&s.backgroundImage!=="none"){return true;}}catch(e){}
+  var c=n.childNodes||[];
+  for(var i=0;i<c.length;i++){if(scan(c[i],dep+1)){return true;}}
+  return false;
+ }catch(e){return false;}};
+ var anc=function(n){try{var p=n.parentNode;
+  while(p&&p.nodeType===1){if(SKIP[p.tagName]||!vis(p)){return false;}p=p.parentNode;}
+  return true;
+ }catch(e){return true;}};
+ var ink=function(n){try{
+  if(!n||!D.body){return false;}
+  if(n!==D.body&&(!D.body.contains||!D.body.contains(n))){return false;}
+  if(!anc(n)){return false;}
+  return scan(n,0);
+ }catch(e){return false;}};
+ var now=function(){try{return Math.round(P.now?P.now():(Date.now()-M.t0));}catch(e){return 0;}};
+ var mark=function(){try{
+  if(M.fcpEst!==undefined){return;}
+  var set=function(){try{if(M.fcpEst===undefined){M.fcpEst=now();}}catch(e){}};
+  if(W.requestAnimationFrame){W.requestAnimationFrame(function(){try{setTimeout(set,0);}catch(e){set();}});}
+  else{setTimeout(set,16);}
+ }catch(e){}};
+ var both=function(){try{mark();if(M.selfMark){M.selfMark();}}catch(e){}};
+ var mo=new W.MutationObserver(function(rs){try{
+  for(var i=0;i<rs.length;i++){
+   var a=rs[i].addedNodes||[];
+   for(var j=0;j<a.length;j++){if(ink(a[j])){both();mo.disconnect();return;}}
+   if(rs[i].type==="characterData"&&ink(rs[i].target)){both();mo.disconnect();return;}}
+ }catch(e){}});
+ mo.observe(D,{childList:true,subtree:true,characterData:true});
+}catch(e){}};
+}catch(e){}})();(function(){try{
+var W=window;var M=W.__TOY_PERF__;if(!M){return;}
+var P=W.performance;if(!P){return;}
+M.ffSelf=undefined;M.ffSrc=undefined;M.cvs=[];
+var hit=function(src){try{
+ if(M.ffSelf!==undefined){return;}
+ M.ffSelf=Math.round(M.pnow());M.ffSrc=src;M.unhookCtx();
+ try{if(M.onSelf){M.onSelf();}}catch(e){}
+}catch(e){}};
+M.unhookCtx=function(){try{
+ var H=W.HTMLCanvasElement;
+ if(M.gcOrig&&H&&H.prototype&&H.prototype.getContext===M.gcWrap){H.prototype.getContext=M.gcOrig;}
+ M.gcOrig=null;M.gcWrap=null;M.cvs=[];
+}catch(e){}};
+M.selfMark=function(){try{
+ if(M.ffSelf!==undefined||!W.requestAnimationFrame){return;}
+ W.requestAnimationFrame(function(){try{
+  W.requestAnimationFrame(function(){try{hit("raf2");}catch(e){}});
+ }catch(e){}});
+}catch(e){}};
+M.armSelf=function(){try{
+ if(M.selfArmed){return;}M.selfArmed=true;
+ var H=W.HTMLCanvasElement;
+ if(!H||!H.prototype||typeof H.prototype.getContext!=="function"){return;}
+ var orig=H.prototype.getContext;
+ M.gcOrig=orig;
+ M.gcWrap=function(t){
+  var r=orig.apply(this,arguments);
+  try{if(r&&M.cvs.length<8){
+   var dup=false;
+   for(var i=0;i<M.cvs.length;i++){if(M.cvs[i].c===this){dup=true;break;}}
+   if(!dup){M.cvs.push({c:this,t:(""+t).toLowerCase(),x:r,bad:false});}}}catch(e){}
+  return r;};
+ H.prototype.getContext=M.gcWrap;
+}catch(e){}};
+M.probeCanvas=function(round){try{
+ if(M.ffSelf!==undefined){return;}
+ var D=document;var gl=false;var tainted=false;
+ for(var i=0;i<M.cvs.length;i++){
+  var q=M.cvs[i];var cv=q.c;var x=q.x;
+  if(q.t.indexOf("webgl")>=0||q.t.indexOf("webgpu")>=0){gl=true;continue;}
+  if(q.bad||q.t!=="2d"||!x||!x.getImageData||!cv){continue;}
+  if(D.body&&D.body.contains&&!D.body.contains(cv)){continue;}
+  if(!cv.clientWidth||!cv.clientHeight||!cv.width||!cv.height){continue;}
+  var w=cv.width,h=cv.height;
+  var pts=[[w>>1,h>>1],[0,0],[w-1,h-1],[w>>2,h>>2]];
+  var p=pts[(round||0)%pts.length];
+  try{
+   var d=x.getImageData(p[0],p[1],1,1).data;
+   if(d[3]!==0||d[0]!==0||d[1]!==0||d[2]!==0){hit("pixel");return;}
+  }catch(er){q.bad=true;if(er&&er.name==="SecurityError"){tainted=true;}}
+ }
+ if(M.ffSrc===undefined){if(gl){M.ffSrc="gl-blind";}else if(tainted){M.ffSrc="tainted";}}
+}catch(e){}};
+}catch(e){}})();(function(){try{
+var W=window;var M=W.__TOY_PERF__;if(!M){return;}
+var NS="toy-shell-ability";
+M.toyID=35171449693184;M.renderMode=2;
+M.layer="content";
+M.armEst();M.armSelf();
+try{var pn=0;var pt=M.pnow();var pdone=function(){try{clearInterval(pk);}catch(e){}
+ try{if(M.unhookCtx){M.unhookCtx();}}catch(e){}
+ M.selfDone=true;try{if(M.onSelf){M.onSelf();}}catch(e){}};
+var pk=setInterval(function(){try{
+ M.probeCanvas(pn);
+ if(M.ffSelf!==undefined||++pn>=12||
+  (M.pnow()-pt)>=3600){pdone();}
+}catch(e){pdone();}},300);}catch(e){}
+M.seq=0;
+var flush=function(rs,up){try{
+ if(up==="self"){if(M.sent3){return;}M.sent3=true;}
+ else if(up){if(M.sent2){return;}M.sent2=true;}
+ else{if(M.sent){return;}M.sent=true;}
+ var o=M.collect(true);if(!o){return;}
+ o.flush_reason=up?(up==="self"?"self":"up"):rs;o.seq=++M.seq;o.ns=NS;o.type="perf";
+ M.pendingOut=(o.ff_self_src==="pending");
+ if(W.parent&&W.parent!==W){W.parent.postMessage(o,"*");}
+}catch(e){}};
+try{var n=0;var tk=setInterval(function(){try{M.probe();if(++n>8||M.done){clearInterval(tk);}}catch(e){}},400);}catch(e){}
+var arm=function(){try{
+ var waited=0;
+ var stop=function(t){try{M.done=true;clearInterval(t);}catch(e){}};
+ var tick=setInterval(function(){try{
+  waited+=300;
+  if(M.readFCP()!==undefined){stop(tick);flush("fcp",M.sent);return;}
+  if(M.fcpEst!==undefined){flush("est",false);}
+  if(waited>=5000){stop(tick);flush("bound",false);}
+ }catch(e){stop(tick);flush("err",false);}},300);
+ M.onFCP=function(){try{
+  if(!M.sent||M.sent2){return;}
+  stop(tick);flush("fcp",true);
+ }catch(e){}};
+ M.onSelf=function(){try{
+  if(!M.sent||M.sent3||!M.pendingOut){return;}
+  flush("self","self");
+ }catch(e){}};
+}catch(e){flush("err",false);}};
+if(document.readyState==="complete"){arm();}
+else{W.addEventListener("load",arm,false);}
+}catch(e){}})();</script>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#15191c" />
+    <meta name="leien-build" content="0.5-teamplay" />
+    <meta
+      name="description"
+      content="你是 CT 补枪手。炙热沙城 II B 点，40 秒内拆除炸弹。"
+    />
+    <title>LEIEN / DEFUSE — CS2 拆弹行动 V0.5</title>
+    <script src="js/portrait-guard.js"></script>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/game.css" />
+    <link rel="stylesheet" href="styles/cs2.css" />
+    <link rel="stylesheet" href="styles/music.css" />
+    <link rel="stylesheet" href="styles/pressure.css" />
+    <link rel="stylesheet" href="styles/identity.css" />
+    <link rel="stylesheet" href="styles/password-note.css" />
+    <link rel="stylesheet" href="styles/teammate.css" />
+    <link rel="stylesheet" href="styles/comms.css" />
+    <link rel="stylesheet" href="styles/mobile-polish.css" />
+    <link rel="stylesheet" href="styles/round-plan.css" />
+    <link rel="stylesheet" href="styles/combat-tactics.css" />
+    <link rel="stylesheet" href="styles/home-polish.css" />
+    <link rel="stylesheet" href="styles/mobile-compact.css" />
+    <link rel="stylesheet" href="styles/factions.css" />
+    <link rel="stylesheet" href="styles/v20-interface.css" />
+    <link rel="stylesheet" href="styles/v20-result.css" />
+    <link rel="stylesheet" href="styles/v22-home.css" />
+    <link rel="stylesheet" href="styles/home-materials.css" />
+    <link rel="stylesheet" href="styles/home-dialogue.css" />
+    <link rel="stylesheet" href="styles/enemy-showcase.css" />
+    <link rel="stylesheet" href="styles/enemy-contact.css" />
+    <link rel="stylesheet" href="styles/ct-roster.css" />
+    <link rel="stylesheet" href="styles/flash-retake.css" />
+    <link rel="stylesheet" href="styles/field-equipment.css" />
+    <link rel="stylesheet" href="styles/leaderboard.css" />
+    <link rel="stylesheet" href="styles/worn-note.css" />
+    <link rel="stylesheet" href="styles/field-narrator.css" />
+    <link rel="stylesheet" href="styles/mobile-release.css" />
+    <link rel="stylesheet" href="styles/release-fairness.css" />
+    <link rel="stylesheet" href="styles/mobile-toy.css" />
+    <link rel="stylesheet" href="styles/circuit-module.css" />
+    <link rel="stylesheet" href="styles/fake-module.css" />
+    <link rel="stylesheet" href="styles/rescue.css" />
+    <link rel="stylesheet" href="styles/v02.css" />
+    <link rel="stylesheet" href="styles/smoke-death.css" />
+    <link rel="stylesheet" href="styles/match.css" />
+    <link rel="stylesheet" href="styles/rush-defense.css" />
+    <link rel="stylesheet" href="styles/rush-result.css" />
+    <link rel="stylesheet" href="styles/release-polish.css" />
+    <link rel="stylesheet" href="styles/roster-showcase.css" />
+    <link rel="stylesheet" href="styles/ui-symbols.css" />
+    <link rel="stylesheet" href="styles/map-lobby.css" />
+    <link rel="stylesheet" href="styles/map-scenes.css" />
+    <link rel="stylesheet" href="styles/surrender.css" />
+    <link rel="stylesheet" href="styles/tactical-events.css" />
+    <script defer src="js/core.js"></script>
+    <script defer src="js/teamplay-core.js"></script>
+    <script defer src="js/crossfire-core.js"></script>
+    <script defer src="js/rescue-core.js"></script>
+    <script defer src="js/rush-defense-core.js"></script>
+    <script defer src="js/circuit-core.js"></script>
+    <script defer src="js/fake-defuse-core.js"></script>
+    <script defer src="js/flash-retake-core.js"></script>
+    <script defer src="js/pressure-core.js"></script>
+    <script defer src="js/assets.js"></script>
+    <script defer src="js/audio-bank-loader.js"></script>
+    <script defer src="js/audio.js"></script>
+    <script defer src="js/ui-feedback.js"></script>
+    <script defer src="js/music.js"></script>
+    <script defer src="js/components.js"></script>
+    <script defer src="js/cast.js"></script>
+    <script defer src="js/enemy-cast.js"></script>
+    <script defer src="js/ct-plan.js"></script>
+    <script defer src="js/scene-director.js"></script>
+    <script defer src="js/enemy-showcase.js"></script>
+    <script defer src="js/roster-showcase.js"></script>
+    <script defer src="js/player-profile.js"></script>
+    <script defer src="js/leaderboard-core.js"></script>
+    <script defer src="js/leaderboard-ui.js"></script>
+    <script defer src="js/rank-data.js"></script>
+    <script defer src="js/match-core.js"></script>
+    <script defer src="js/match-ui.js"></script>
+    <script defer src="js/pressure-ui.js"></script>
+    <script defer src="js/password-memos.js"></script>
+    <script defer src="js/modules/password.js"></script>
+    <script defer src="js/modules/hold.js"></script>
+    <script defer src="js/teamplay-ui.js"></script>
+    <script defer src="js/modules/listen.js"></script>
+    <script defer src="js/modules/wires.js"></script>
+    <script defer src="js/modules/tools.js"></script>
+    <script defer src="js/modules/smoke.js"></script>
+    <script defer src="js/modules/circuit.js"></script>
+    <script defer src="js/modules/suppression.js"></script>
+    <script defer src="js/modules/fake.js"></script>
+    <script defer src="js/smoke-dialogue.js"></script>
+    <script defer src="js/smoke-death.js"></script>
+    <script defer src="js/mvp.js"></script>
+    <script defer src="js/screens.js"></script>
+    <script defer src="js/flash-retake-ui.js"></script>
+    <script defer src="js/mobile-toy.js"></script>
+    <script defer src="js/rescue-ui.js"></script>
+    <script defer src="js/rush-result.js"></script>
+    <script defer src="js/rush-defense-ui.js"></script>
+    <script defer src="js/training-core.js"></script>
+    <script defer src="js/training-ui.js"></script>
+    <script defer src="js/app.js"></script>
+    <link rel="stylesheet" href="styles/training.css" />
+    <link rel="stylesheet" href="styles/viewport-fit.css" />
+    <link rel="stylesheet" href="styles/suppression.css" />
+    <link rel="stylesheet" href="styles/combat-stage.css" />
+    <link rel="stylesheet" href="styles/teamplay.css" />
+  </head>
+  <body>
+    <dialog id="portrait-guard" aria-labelledby="portrait-title" aria-describedby="portrait-detail">
+      <div class="portrait-message">
+        <svg class="portrait-phone" viewBox="0 0 100 100" aria-hidden="true"><rect x="34" y="15" width="38" height="70" rx="7"/><path d="M46 23h14M49 77h8M22 60a33 33 0 0 1 3-35m-12 4 12-5 5 12"/></svg>
+        <span class="portrait-label">竖屏拆包挑战</span>
+        <h1 id="portrait-title" tabindex="-1">请把手机竖着！</h1>
+        <p id="portrait-detail">本游戏仅支持竖屏，转回来就能继续。</p>
+        <small>拆包倒计时照常进行</small>
+      </div>
+    </dialog>
+    <div class="ambient-grid" aria-hidden="true"></div>
+    <div class="site-shell">
+      <header class="masthead">
+        <a class="wordmark" href="#" aria-label="LEIEN DEFUSE 首页"
+          ><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 36" focusable="false"><path d="M7 7h6v20h13v5H7z M18 5h11v11h-4V12l-8 9-3-3 9-9h-5z" fill="currentColor"/></svg></span
+          ><span class="brand-copy"
+            ><span class="brand-title">LEIEN <i>/</i> DEFUSE</span
+            ><span class="edition">DEFUSE TRAINING / 05</span></span
+          ></a
+        ><button
+          class="sound-button icon-button"
+          aria-label="声音与对局设置"
+          aria-expanded="false"
+          popovertarget="audio-settings"
+        ></button>
+        <div id="audio-settings" class="audio-settings" popover aria-label="声音设置">
+          <div class="audio-settings-title"><b>声音设置</b><button popovertarget="audio-settings" popovertargetaction="hide" aria-label="关闭声音设置"><svg class="icon action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+          <label><span>游戏音效<small>界面点击 · 枪声 · 队内提示</small></span><input type="checkbox" data-audio-effects checked></label>
+          <label><span>音乐盒<small>下包 · 最后十秒 · MVP</small></span><input type="checkbox" data-audio-music checked></label>
+          <label><span>柔和闪光<small>减轻闪光弹的白屏效果</small></span><input id="soft-flash" type="checkbox"></label>
+          <button type="button" class="settings-surrender surrender-button" data-open-surrender hidden>投降并重开</button>
+        </div>
+      </header>
+      <main id="app"></main>
+      <footer class="site-footer version-footer" aria-label="作者与游戏版本">
+        <a class="footer-author-link" href="https://space.bilibili.com/228323941" target="_blank" rel="noopener noreferrer" aria-label="作者：CSGO雷恩，打开 B站主页（新标签页）"><span>作者：</span><b>CSGO雷恩</b><svg class="icon action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></a>
+        <span class="footer-version">版本 <b>V0.5</b></span>
+      </footer>
+    </div>
+    <div
+      id="announcer"
+      class="sr-only"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+    <dialog id="surrender-dialog" aria-labelledby="surrender-title" aria-describedby="surrender-detail">
+      <div class="surrender-header"><span class="eyebrow">ABANDON MATCH / 投降</span><button type="button" class="icon-button" data-surrender-cancel aria-label="继续比赛"><svg class="icon action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+      <h2 id="surrender-title">投降并重开？</h2>
+      <p id="surrender-detail" data-surrender-detail>当前对局会回到 0∶0，连胜从这里中断。</p>
+      <div class="surrender-score" aria-label="当前比分"><span><small>CT</small><b data-surrender-ct>0</b></span><i aria-hidden="true">:</i><span><b data-surrender-t>0</b><small>T</small></span></div>
+      <p class="surrender-penalty" data-surrender-penalty>本次投降：首次不扣段位。</p>
+      <div class="surrender-actions"><button type="button" class="button secondary" data-surrender-cancel>继续比赛</button><button type="button" class="button primary" data-confirm-surrender>投降并从头开始</button></div>
+    </dialog>
+    <noscript>这个拆弹小游戏需要启用 JavaScript 才能运行。</noscript>
+  </body>
+</html>
+
+
+

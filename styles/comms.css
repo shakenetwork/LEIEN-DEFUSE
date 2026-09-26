@@ -1,0 +1,413 @@
+/* One live combat/comms card replaces the separate radio and bottom HUD. */
+.pressure-panel {
+  background: linear-gradient(120deg, #25323ced, #151d25fa 70%);
+  border-color: #60778480;
+  box-shadow:
+    0 9px 28px #0005,
+    inset 0 1px #ffffff12;
+  backdrop-filter: blur(12px);
+  margin-bottom: 20px;
+}
+.pressure-top {
+  padding: 9px 16px;
+  background: #10171bb3;
+  border-bottom-color: #93aab627;
+}
+.pressure-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #cbd6de;
+  font: 600 12px var(--sans);
+  letter-spacing: 1px;
+}
+.pressure-label i {
+  width: 5px;
+  height: 5px;
+  background: var(--threat);
+  box-shadow: 0 0 8px #8bc9f044;
+}
+.combat-location {
+  font: 10px var(--mono);
+  letter-spacing: 1px;
+  color: #859aa8;
+  white-space: nowrap;
+}
+.combat-location b {
+  color: #dec778;
+  font-weight: 400;
+}
+.operator-card {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) 136px;
+  gap: 13px;
+  align-items: center;
+  padding: 16px;
+}
+.operator-portrait {
+  position: relative;
+  width: 76px;
+  height: 76px;
+}
+.operator-portrait .player-avatar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #b7cbd5;
+  background: #e9edf0;
+  overflow: hidden;
+}
+.operator-portrait .player-avatar img {
+  width: 180%;
+  height: auto;
+  left: -40%;
+  top: -13%;
+  object-fit: cover;
+  object-position: center 20%;
+  transition:
+    transform 0.14s,
+    filter 0.14s;
+}
+.operator-tag {
+  position: absolute;
+  bottom: -3px;
+  right: -4px;
+  padding: 2px 5px;
+  background: #91c8e6;
+  color: #102736;
+  font: 700 10px var(--mono);
+  border: 2px solid #1a2630;
+}
+.operator-info {
+  min-width: 0;
+}
+.operator-name {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #f2f3ee;
+  font-size: 18px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+.operator-name > span {
+  font-size: 10px;
+  font-weight: 400;
+  padding: 1px 4px;
+  border: 1px solid #69899c66;
+  color: #a4c4d5;
+}
+.operator-role {
+  display: block;
+  margin-top: 4px;
+  color: #8ca3b1;
+  font-size: 11px;
+}
+.operator-action {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 7px;
+  color: #c6dbe5;
+  font-size: 13px;
+  line-height: 1.4;
+  min-height: 19px;
+}
+.operator-action i {
+  width: 4px;
+  height: 4px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: currentColor;
+}
+.operator-progress {
+  margin-top: 4px;
+  height: 2px;
+  background: #61758144;
+}
+.operator-progress[hidden] {
+  display: none;
+}
+.operator-progress span {
+  display: block;
+  height: 100%;
+  background: var(--yellow);
+}
+.pressure-panel .combat-vitals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  color: #b9d9e9;
+}
+.combat-vitals > div > span {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  font-size: 14px;
+}
+.combat-vitals small {
+  color: #8fa5b3;
+  font: 10px var(--sans);
+}
+.combat-vitals b {
+  display: block;
+  font-size: 26px;
+  line-height: 1.2;
+  margin: 2px 0 5px;
+  font-weight: 650;
+}
+.combat-vitals .vital-armor {
+  color: #8bb8d5;
+}
+.vital-track {
+  height: 4px;
+  background: #61758144;
+  --vital: 100%;
+}
+.vital-track i {
+  display: block;
+  background: currentColor;
+  width: var(--vital);
+  height: 100%;
+  transition: width 0.18s;
+}
+.low-health .combat-vitals .vital-health,
+.pressure-panel[data-motion="hit"] .operator-action {
+  color: #ff826e;
+}
+.pressure-panel[data-motion="hit"] .operator-tag {
+  background: #ff826e;
+}
+.pressure-panel[data-motion="hit"] .operator-portrait img {
+  transform: translateX(-3px) scale(1.04);
+  filter: sepia(0.5) saturate(1.8);
+}
+.pressure-panel[data-motion="blind"] .operator-portrait img {
+  filter: brightness(1.8) grayscale(0.7);
+}
+.pressure-panel[data-motion="turn"] .operator-portrait img {
+  transform: translateX(5px) scale(1.05);
+}
+.pressure-panel[data-motion="cover"] .operator-portrait img {
+  transform: translateY(6px) scale(1.05);
+}
+.pressure-panel[data-motion="working"] .operator-action {
+  color: #efd077;
+}
+.pressure-panel[data-motion="passed"] .operator-action {
+  color: #a9d3b7;
+}
+.pressure-panel .radio-bubble {
+  display: flex;
+  min-height: 82px;
+  margin: 0 16px;
+  padding: 10px 0;
+  gap: 12px;
+  border-top: 1px solid #8ea4b02e;
+  border-bottom: 1px solid #8ea4b02e;
+  background: transparent;
+}
+.pressure-panel .radio-avatar {
+  width: 48px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pressure-panel .radio-avatar img {
+  width: 58px;
+  height: 58px;
+  max-width: none;
+  margin: 0;
+  transform: none;
+  object-fit: contain;
+}
+.pressure-panel .radio-avatar img.profile-portrait {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+}
+.pressure-panel .radio-copy {
+  padding: 0;
+}
+.pressure-panel #radio-label {
+  gap: 3px 8px;
+  font-size: 12px;
+  padding-right: 22px;
+}
+.pressure-panel #radio-label i {
+  font-size: 10px;
+}
+.pressure-panel #radio-text {
+  font-size: 15px;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+.pressure-panel .voice-bars {
+  font-size: 10px;
+  top: 12px;
+}
+.pressure-panel .pressure-action {
+  padding: 12px 16px;
+  min-height: 83px;
+}
+.pressure-panel .pressure-action strong {
+  font-size: 20px;
+}
+.pressure-panel .evade-button {
+  min-width: 102px;
+  min-height: 52px;
+  box-shadow: inset 0 1px #ffffff35;
+}
+.pressure-panel[data-state="clear"] .evade-button {
+  background: #15212a;
+  box-shadow: none;
+}
+.game-screen .play-console button {
+  scroll-margin-top: var(--comms-height, 320px);
+  scroll-margin-bottom: 24px;
+}
+@media (max-width: 760px) {
+  .pressure-panel {
+    margin-bottom: 14px;
+  }
+  .pressure-top {
+    padding: 7px 11px;
+  }
+  .pressure-label {
+    font-size: 11px;
+    letter-spacing: 0.3px;
+  }
+  .combat-location {
+    font-size: 9px;
+    letter-spacing: 0.2px;
+  }
+  .operator-card {
+    grid-template-columns: 52px minmax(0, 1fr) 96px;
+    gap: 9px;
+    padding: 12px 11px;
+  }
+  .operator-portrait {
+    width: 52px;
+    height: 58px;
+  }
+  .operator-name {
+    font-size: 15px;
+    gap: 5px;
+  }
+  .operator-role {
+    font-size: 10px;
+  }
+  .operator-action {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  .pressure-panel .combat-vitals {
+    gap: 10px;
+  }
+  .combat-vitals b {
+    font-size: 23px;
+  }
+  .combat-vitals > div > span {
+    font-size: 11px;
+  }
+  .combat-vitals small {
+    font-size: 9px;
+  }
+  .pressure-panel .radio-bubble {
+    min-height: 74px;
+    margin-inline: 11px;
+    gap: 9px;
+    padding-block: 8px;
+  }
+  .pressure-panel .radio-avatar {
+    width: 36px;
+    height: 43px;
+  }
+  .pressure-panel .radio-avatar img {
+    width: 44px;
+    height: 44px;
+  }
+  .pressure-panel .radio-avatar img.profile-portrait {
+    width: 35px;
+    height: 35px;
+  }
+  .pressure-panel #radio-text {
+    font-size: 14px;
+  }
+  .pressure-panel #radio-label {
+    font-size: 11px;
+    padding-right: 15px;
+  }
+  .pressure-panel .pressure-action {
+    padding: 10px 11px;
+    min-height: 78px;
+  }
+  .pressure-panel .pressure-action strong {
+    font-size: 18px;
+  }
+  .pressure-panel .evade-button {
+    min-width: 83px;
+    min-height: 50px;
+  }
+}
+@media (max-width: 359px) {
+  .operator-card {
+    grid-template-columns: 44px minmax(0, 1fr) 86px;
+    gap: 8px;
+  }
+  .operator-portrait {
+    width: 44px;
+    height: 54px;
+  }
+  .operator-name {
+    font-size: 14px;
+  }
+  .operator-name > span {
+    display: none;
+  }
+  .operator-role {
+    font-size: 9px;
+  }
+  .pressure-panel .combat-vitals {
+    gap: 8px;
+  }
+  .combat-vitals b {
+    font-size: 21px;
+  }
+  .pressure-panel #radio-label i {
+    display: none;
+  }
+  .pressure-panel .pressure-action strong {
+    font-size: 17px;
+  }
+  .pressure-panel #threat-detail {
+    font-size: 11px;
+  }
+}
+/* Leave enough of a short phone viewport for the actual module controls. */
+@media (max-height: 700px) and (max-width: 760px) {
+  .operator-card {
+    padding-block: 8px;
+  }
+  .operator-role {
+    display: none;
+  }
+  .pressure-panel .radio-bubble {
+    padding-block: 6px;
+    min-height: 66px;
+  }
+  .pressure-panel .pressure-action {
+    padding-block: 8px;
+    min-height: 70px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .operator-portrait .player-avatar img,
+  .vital-track i {
+    transition: none;
+  }
+  .operator-portrait .player-avatar img {
+    transform: none !important;
+  }
+}

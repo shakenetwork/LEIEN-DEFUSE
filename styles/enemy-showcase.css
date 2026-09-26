@@ -1,0 +1,59 @@
+/* Five hand-drawn agents share a fixed-height stage. */
+.home-screen .enemy-heading { min-height: 44px; padding-block: 0; gap: 8px; }
+.enemy-pause {
+  flex: 0 0 44px; display: inline-grid; place-items: center;
+  min-width: 44px; min-height: 44px; margin-right: -8px;
+  padding: 0; color: #edcf83; background: transparent; border: 0;
+  border-left: 1px solid #c9b47124; cursor: pointer;
+  font: 700 16px/1 var(--sans); touch-action: manipulation;
+}
+.enemy-pause[aria-pressed="true"] { color: #fff0b6; background: #dac67913; }
+.enemy-pause:focus-visible { outline: 2px solid #f4d487; outline-offset: -4px; }
+.enemy-slide { position: absolute; inset: 0; opacity: 0; transform: translateX(12px); pointer-events: none; transition: opacity 420ms ease, transform 540ms ease; }
+.enemy-slide.is-active { opacity: 1; transform: translateX(0); }
+.enemy-slide:not(.is-active) .scene-tag { visibility: hidden; }
+.home-screen .enemy-slide .scene-tag { max-width: calc(100% - 26px); }
+.home-screen .enemy-slide .scene-tag .agent-name { display: flex; align-items: baseline; flex-wrap: wrap; gap: 3px 7px; }
+.home-screen .enemy-slide .scene-tag .agent-name small { margin-left: 0; }
+.home-screen .enemy-slide .scene-tag b { white-space: normal; line-height: 1.5; }
+.enemy-pagination { position: absolute; top: 10px; left: 12px; display: flex; gap: 4px; pointer-events: none; }
+.enemy-pagination i { width: 15px; height: 3px; background: #edf0e94a; box-shadow: 0 1px 4px #000a; transition: background-color .4s; }
+.enemy-pagination .is-active { background: #f1ca62; }
+.intro-screen[data-enemy="opponent"] .intro-character,
+.intro-screen[data-enemy="rebel"] .intro-character,
+.intro-screen[data-enemy="sallie"] .intro-character,
+.intro-screen[data-enemy="daryl"] .intro-character { width: 80%; right: 0; }
+.intro-screen .intro-enemy-style { color: #dfc382; font-size: 10px; font-weight: 400; letter-spacing: .3px; margin-left: 8px; }
+@media (max-width: 760px) {
+  .home-screen .enemy-heading .faction-task { font-size: 10px; }
+  .home-screen .enemy-heading { gap: 6px; }
+  .home-screen .enemy-slide .scene-tag { max-width: calc(100% - 18px); }
+  .home-screen .enemy-slide .agent-name small { font-size: 9px; }
+  .home-screen .enemy-slide .scene-tag b { font-size: 11px; }
+  .enemy-pagination { top: 8px; left: 9px; }
+  .intro-screen .intro-enemy-style { display: block; margin: 3px 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .enemy-slide, .enemy-pagination i { transition: none; transform: none; }
+}
+
+/* No living T remains: show the bomb outcome instead of reviving an agent. */
+.result-screen .result-scene.result-cleared {
+  display: flex; align-items: center; gap: 14px;
+  height: auto; min-height: 74px; padding: 10px 12px;
+  border: 1px solid #cbb17130; background: #342e211f;
+}
+.result-cleared .result-bomb-mark { display: grid; justify-items: center; gap: 2px; flex: 0 0 44px; color: #e5c47f; }
+.result-cleared .result-bomb-mark .faction-mark { width: 34px; height: 34px; margin: 0; }
+.result-cleared .result-bomb-mark b { font: 700 10px/1 var(--mono); letter-spacing: 2px; }
+.result-screen .result-cleared .result-speech { position: static; max-width: none; margin: 0; padding: 0; border: 0; background: transparent; color: #c7c6b8; font-size: 13px; line-height: 1.6; }
+.result-cleared .result-speech b { display: block; color: #e9d293; font-size: 15px; }
+@media (max-width: 1000px) and (max-height: 480px) {
+  .result-screen .result-scene.result-cleared { display: none; }
+}
+
+.enemy-picker { display: none; }
+.enemy-pause span { display: none; }
+.enemy-pause::before { content: ""; width: 11px; height: 14px; border-inline: 4px solid currentColor; box-sizing: border-box; }
+.enemy-pause[aria-pressed="true"]::before { width: 0; height: 0; border: 7px solid transparent; border-right: 0; border-left: 11px solid currentColor; }
+.brand-mark svg { width: 90%; height: 90%; display: block; }

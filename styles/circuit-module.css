@@ -1,0 +1,80 @@
+/* C4 service PCB: amber copper and plated terminals, separate from the smoke-memory grid. */
+.game-screen[data-module="circuit"] .play-console {
+  background: radial-gradient(ellipse at 18% 0,#306b7d26,transparent 65%),linear-gradient(135deg,#283946,#182631 70%);
+  border-color:#70898d;
+  border-top-color:#d1b274;
+  box-shadow:inset 0 1px #d9c79533,inset 0 0 0 1px #071b2470,0 4px 12px #0003;
+}
+.circuit-unit { --circuit-lit:#dfb55f; --circuit-live:#eaf6d2; padding:2px 0; }
+.circuit-board {
+  position:relative; width:min(100%,300px); aspect-ratio:1; margin-inline:auto; isolation:isolate;
+  background:
+    linear-gradient(163deg,transparent 0 45%,#bacecc08 45.2% 45.4%,transparent 45.6%),
+    repeating-linear-gradient(90deg,transparent 0 37px,#72a5ad0c 38px,transparent 39px 79px),
+    radial-gradient(circle at 18% 22%,#cad9bf14 .65px,transparent 1px) 0 0/11px 13px,
+    linear-gradient(142deg,#183d4a,#102935 66%,#0e2630);
+  border:1px solid #809897; border-radius:7px;
+  box-shadow:inset 0 0 0 3px #0b1e26,inset 0 0 0 5px #66888747,inset 0 0 32px #00121f88,0 3px 0 #09171d,0 7px 16px #02080d40;
+  touch-action:none; user-select:none; -webkit-user-select:none;
+}
+.circuit-silkscreen { position:absolute; top:7px; left:19px; right:19px; display:flex; justify-content:space-between; color:#a2c0bd80; font:7px/1.1 monospace; letter-spacing:.09em; pointer-events:none; }
+.circuit-screw { position:absolute; width:6px; height:6px; border:1px solid #71817d; border-radius:50%; background:linear-gradient(135deg,#708482 43%,#19343d 44% 57%,#526768 58%); z-index:4; pointer-events:none; }
+.circuit-screw-tl { top:6px; left:6px; } .circuit-screw-tr { top:6px; right:6px; }
+.circuit-screw-bl { bottom:6px; left:6px; } .circuit-screw-br { bottom:6px; right:6px; }
+.circuit-cells { position:absolute; inset:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); grid-template-rows:repeat(4,minmax(0,1fr)); }
+.circuit-cell {
+  position:relative; padding:0; min-width:0; min-height:0; border:0; border-radius:0; background:transparent; box-shadow:none;
+  color:#f8df9e; font:700 11px/1 sans-serif; touch-action:none; -webkit-tap-highlight-color:transparent;
+}
+.circuit-cell:hover,.circuit-cell:active { background:transparent; transform:none; box-shadow:none; }
+.circuit-cell.is-route:hover { background:#dfb55f0d; }
+.circuit-cell.is-wall { cursor:default; }
+.circuit-via { position:relative; display:block; width:8px; height:8px; margin:auto; border:2px solid #c2a466; border-radius:50%; background:#152b32; box-shadow:0 0 0 3px #102834; z-index:2; }
+.circuit-cell.is-done .circuit-via { border-color:#eaf6d2; background:#94c5b0; }
+.circuit-terminal { position:relative; display:block; width:32px; height:32px; margin:auto; }
+.circuit-terminal > i { position:absolute; inset:5px; border:3px solid #e9c777; border-radius:5px; background:#122935; box-shadow:0 0 0 3px #b6904152; }
+.circuit-terminal > em { position:absolute; top:34px; left:-9px; right:-9px; z-index:2; color:#f2da9b; font:700 8px/1 monospace; font-style:normal; white-space:nowrap; text-shadow:0 1px #061c25; }
+.circuit-cell.is-end .circuit-terminal > i { border-radius:50%; border-style:double; border-width:5px; }
+.circuit-cell.is-done .circuit-terminal > i { border-color:#dceacc; }
+.circuit-cell.is-current { color:#fff; }
+.circuit-cell:focus-visible { outline:2px solid #efce88; outline-offset:-4px; z-index:4; border-radius:5px; }
+.circuit-component { position:relative; display:block; margin:auto; opacity:.6; pointer-events:none; }
+.circuit-component-chip { width:23px; height:23px; border:3px solid #273e46; outline:1px solid #6c8d8c80; background:linear-gradient(135deg,#293c42,#0e2029); box-shadow:inset 0 0 0 1px #061b2580; transform:rotate(0deg); }
+.circuit-component-chip::before,.circuit-component-chip::after { content:""; position:absolute; left:-6px; right:-6px; height:3px; background:repeating-linear-gradient(90deg,#9aab9166 0 2px,transparent 2px 5px); }
+.circuit-component-chip::before { top:-5px; } .circuit-component-chip::after { bottom:-5px; }
+.circuit-component-resistor { width:27px; height:8px; border:1px solid #a5b4a259; border-radius:2px; background:linear-gradient(90deg,#9aab9766 0 13%,#283c42 13% 23%,#6a6043 23% 30%,#273a40 30% 45%,#9c786159 45% 54%,#243740 54% 80%,#9aab9766 80%); }
+.circuit-component-resistor::before { content:""; position:absolute; left:-6px; right:-6px; top:3px; height:1px; background:#81999673; z-index:-1; }
+.circuit-component-insulator { width:22px; height:22px; border:1px solid #69838259; background:repeating-linear-gradient(-45deg,#819b8d26 0 2px,transparent 2px 5px); }
+.circuit-traces { position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; z-index:1; }
+.circuit-traces path { fill:none; stroke-linejoin:round; stroke-linecap:round; }
+.circuit-channel-edge { stroke:#69857687; stroke-width:66; }
+.circuit-channel { stroke:#0e2631; stroke-width:59; }
+.circuit-copper { stroke:var(--circuit-lit); stroke-width:12; }
+.circuit-powered { stroke:var(--circuit-live); stroke-width:14; }
+.circuit-terminal-node { fill:#12313d; stroke:#edce80; stroke-width:5; }
+.circuit-terminal-core { fill:#e8c46f; }
+.circuit-probe-ring { fill:#102d36e8; stroke:#e7cf88; stroke-width:4; }
+.circuit-probe { fill:#f7f8df; stroke:#83b7ac; stroke-width:8; }
+.circuit-board.is-blocked .circuit-probe-ring { stroke:#f4a866; fill:#563721; }
+.circuit-board.is-complete { border-color:#dcecc9; }
+.circuit-board.is-dragging .circuit-probe-ring { fill:#416d68; stroke:#f5e4ac; }
+.circuit-status { display:flex; justify-content:space-between; align-items:center; gap:8px; margin:8px 0 0; color:#c6d9d5; font-size:12px; line-height:1.35; }
+.circuit-status span::before { content:""; display:inline-block; width:5px; height:5px; margin-right:6px; border:1px solid #ddbf73; transform:rotate(45deg); vertical-align:1px; }
+.circuit-status b { color:#ead599; font:700 12px/1.35 monospace; font-variant-numeric:tabular-nums; }
+@media (max-width:760px) {
+  .game-screen .circuit-board { width:clamp(180px,40dvh,280px); }
+  .circuit-status { margin-top:5px; font-size:11px; }
+  .circuit-terminal { width:23px; height:23px; }
+  .circuit-terminal > i { inset:4px; border-width:2px; box-shadow:0 0 0 2px #b6904152; }
+  .circuit-terminal > em { top:24px; font-size:7px; }
+  .circuit-cell.is-end .circuit-terminal > i { border-width:3px; }
+  .circuit-component-chip { width:18px; height:18px; border-width:2px; }
+  .circuit-component-resistor { width:22px; height:7px; }
+  .circuit-component-insulator { width:17px; height:17px; }
+  .circuit-silkscreen { font-size:6px; }
+}
+@media (max-width:760px) and (max-height:520px) {
+  .game-screen .circuit-board { width:180px; }
+  .circuit-unit { padding:0; }
+  .circuit-status span::before { margin-right:4px; }
+}

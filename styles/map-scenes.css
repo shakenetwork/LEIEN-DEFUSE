@@ -1,0 +1,57 @@
+/* Valve CS2 views matched to map selection, planting and the CT approach. */
+body::before {
+  background-image:radial-gradient(ellipse at 12% 5%,#c8a76822,transparent 55%),linear-gradient(180deg,#14222b77,#121a20cc 58%,#12191ff5),linear-gradient(90deg,#18212666,#12191fcc 35%,#12191fe0 65%,#18212666),url('../assets/scenes/dust2-lobby.webp');
+  background-position:center,center,center,center 42%;
+  background-size:cover;
+}
+.intro-screen .intro-arena {
+  background-image:linear-gradient(180deg,#14202b12,#14202b12 48%,#101d2760),url('../assets/scenes/cs2-dust2-cover-1280.webp');
+  background-position:center,center 52%;
+  background-size:cover;
+  border-color:#a3b8b65e;
+}
+.intro-screen .intro-arena .scene-haze { background:linear-gradient(0deg,#12202bc9,transparent 52%),linear-gradient(90deg,#14233330,transparent 58%); }
+.intro-screen .intro-arena.ct-down,.intro-screen .intro-arena.handoff {
+  background-image:linear-gradient(180deg,#14202b15,#0d182046),url('../assets/scenes/dust2-ct-mid.webp');
+  background-position:center,49% 50%;
+}
+.flash-retake-screen .retake-arena {
+  background-image:linear-gradient(180deg,#14202866,#1420280d 46%,#0e1a24bb),url('../assets/scenes/cs2-dust2-cover-1280.webp');
+  background-position:center,center 56%;
+}
+/* Keep B doors while waiting for the flash: it is an approach, not the site. */
+.flash-retake-screen[data-phase="waiting"] .retake-arena { background-image:linear-gradient(180deg,#13212955,transparent 40%,#131c27a6),url('../assets/scenes/dust2-b-doors.webp'); background-position:center,52% 60%; }
+.duel-field { background-image:linear-gradient(#111a2338,#111a2366),url('../assets/scenes/cs2-dust2-cover-1280.webp'); }
+.fire-smoke-grid { background-image:linear-gradient(#bec8c766,#aab2ac88),url('../assets/scenes/cs2-dust2-cover-1280.webp'); }
+.smoke-death-scene { background-image:linear-gradient(#19202280,#1a2021b8),url('../assets/scenes/cs2-dust2-cover-1280.webp'); }
+.result-screen.victory .result-scene { background-image:linear-gradient(90deg,#111e2acc,#111e2a40),url('../assets/scenes/dust2-ct-mid.webp'); }
+
+/* Scene geography: T staging in tunnels, CT approach outside B, fighting on site. */
+.home-screen .roster-panel[data-roster-side="t"] .roster-focus-art {
+  background-image:linear-gradient(100deg,#302c2480,#18252d66),url('../assets/scenes/dust2-upper-tunnels.webp');
+  background-size:cover; background-position:center;
+}
+.home-screen .roster-panel[data-roster-side="ct"] .roster-focus-art {
+  background-image:linear-gradient(100deg,#19334480,#18252d66),url('../assets/scenes/dust2-b-approach.webp');
+  background-size:cover; background-position:center;
+}
+/* Rarity stays purple for both sides, including the portrait backdrop. */
+.home-screen .roster-panel .roster-focus[data-rarity="rare"] .roster-focus-art {
+  background-image:linear-gradient(115deg,#46335fd9,#211c36d9),url('../assets/scenes/dust2-b-hold.webp');
+  background-size:cover; background-position:center;
+}
+.intro-screen .intro-arena.ct-down,.intro-screen .intro-arena.handoff {
+  background-image:linear-gradient(180deg,#14202b15,#0d182046),url('../assets/scenes/dust2-b-approach.webp');
+  background-position:center,center 55%;
+}
+.flash-retake-screen:not([data-phase="waiting"]) .retake-arena,
+.rush-defense-arena,.rescue-arena {
+  background-image:linear-gradient(180deg,#11263430,transparent 45%,#0b1729ba),url('../assets/scenes/dust2-b-hold.webp');
+  background-size:cover; background-position:center,center 57%;
+}
+.duel-field { background-image:linear-gradient(#111a2320,#111a2355),url('../assets/scenes/dust2-b-hold.webp'); background-position:center 55%; }
+.result-screen.victory .result-scene { background-image:linear-gradient(90deg,#111e2acc,#111e2a40),url('../assets/scenes/dust2-b-hold.webp'); }
+body:has(.game-screen)::before {
+  background-image:linear-gradient(180deg,#172631b8,#12191fea),url('../assets/scenes/dust2-b-hold.webp');
+  background-position:center; background-size:cover;
+}

@@ -1,0 +1,285 @@
+/* Brand, agent names and author credits share one hierarchy at every size. */
+.brand-copy {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+.brand-title {
+  white-space: nowrap;
+}
+.brand-title i {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--yellow);
+  margin: 0 5px;
+}
+.wordmark .edition {
+  font-size: 11px;
+  margin: 0;
+  letter-spacing: 1px;
+}
+.brand-mark {
+  flex-shrink: 0;
+}
+.training-label {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 8px;
+  line-height: 1.65;
+}
+.training-label > span {
+  white-space: nowrap;
+}
+.home-copy .status-label {
+  align-items: flex-start;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+.status-label > span {
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+.squad-roster {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+}
+.squad-roster > div {
+  width: auto;
+  height: auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 8px 14px;
+  gap: 0;
+  text-align: center;
+}
+.squad-roster > div + div {
+  border-left: 1px solid #ffffff0e;
+}
+.squad-roster img {
+  width: 100%;
+  max-width: 112px;
+  height: 92px;
+  margin: 0;
+  object-fit: contain;
+  object-position: center bottom;
+}
+.squad-roster span {
+  margin: 0;
+  white-space: normal;
+  min-width: 0;
+  max-width: 100%;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.squad-roster b {
+  display: block;
+  font-size: inherit;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.squad-roster small {
+  font-size: 12px;
+  margin-top: 4px;
+  line-height: 1.5;
+  color: #9eb2c2;
+}
+.scene-tag .agent-name {
+  font: 600 14px var(--sans);
+  letter-spacing: 0.5px;
+}
+.scene-tag .agent-name small {
+  font: 10px var(--mono);
+  color: #b4a57d;
+  margin-left: 9px;
+  letter-spacing: 0.3px;
+}
+.scene-tag b {
+  font-weight: 650;
+}
+.radio-copy {
+  min-width: 0;
+}
+.radio-bubble #radio-label {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 8px;
+  align-items: baseline;
+  line-height: 1.5;
+  padding-right: 18px;
+}
+.radio-bubble #radio-label i {
+  display: block;
+  margin: 0;
+  font-style: normal;
+  white-space: nowrap;
+}
+.trap-sticker > span {
+  display: block;
+  line-height: 1.6;
+}
+.site-footer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px 24px;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+}
+.footer-author {
+  color: #d3dce2;
+  font-weight: 650;
+  font-size: 14px;
+}
+.footer-profile {
+  color: #acbfcc;
+  line-height: 1.6;
+}
+a.footer-profile {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-underline-offset: 5px;
+  transition: color 0.15s;
+}
+a.footer-profile:hover,
+a.footer-profile:focus-visible {
+  color: var(--yellow);
+  text-decoration: underline;
+}
+.footer-build {
+  text-align: right;
+  white-space: nowrap;
+  font: 11px var(--mono);
+  letter-spacing: 0.6px;
+}
+@media (max-width: 900px) {
+  .brand-copy {
+    gap: 12px;
+  }
+  .wordmark .edition {
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    padding-left: 12px;
+  }
+  .squad-roster b {
+    white-space: normal;
+  }
+  .squad-roster span {
+    font-size: 13px;
+  }
+}
+@media (max-width: 760px) {
+  .masthead {
+    height: 77px;
+    gap: 10px;
+  }
+  .wordmark {
+    gap: 9px;
+    letter-spacing: 0;
+  }
+  .brand-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+  .brand-title {
+    font-size: clamp(15px, 4.6vw, 18px);
+  }
+  .brand-title i {
+    margin: 0 3px;
+  }
+  .wordmark .edition {
+    display: block;
+    border: 0;
+    padding: 0;
+    font-size: 10px;
+    letter-spacing: 0.6px;
+    color: #8ea4b6;
+  }
+  .brand-mark {
+    height: 34px;
+    width: 29px;
+  }
+  .masthead .sound-button {
+    width: 44px;
+    height: 44px;
+  }
+  .home-copy .status-label {
+    font-size: 10px;
+    letter-spacing: 0.8px;
+  }
+  .training-label {
+    gap: 1px 7px;
+  }
+  .status-label > span {
+    margin-top: 5px;
+  }
+  .squad-roster > div {
+    padding: 4px 5px 12px;
+  }
+  .squad-roster img {
+    height: 85px;
+    max-width: 98px;
+  }
+  .squad-roster span {
+    font-size: 13px;
+  }
+  .squad-roster small {
+    font-size: 11px;
+  }
+  .squad-roster b {
+    white-space: nowrap;
+  }
+  .scene-tag .agent-name {
+    font-size: 13px;
+  }
+  .scene-tag .agent-name small {
+    font-size: 10px;
+  }
+  .site-footer {
+    grid-template-columns: 1fr;
+    gap: 3px;
+    padding: 19px 0 23px;
+  }
+  .footer-author {
+    font-size: 14px;
+  }
+  .footer-profile {
+    font-size: 13px;
+  }
+  .footer-build {
+    font-size: 11px;
+    text-align: left;
+    margin-top: 6px;
+  }
+}
+@media (max-width: 359px) {
+  .squad-roster span {
+    font-size: 12px;
+  }
+  .squad-roster b {
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+  .squad-roster img {
+    height: 75px;
+  }
+  .scene-tag {
+    max-width: calc(100% - 24px);
+  }
+  .scene-tag .agent-name small {
+    margin-left: 6px;
+  }
+  .kill-feed {
+    left: 10px;
+    right: 10px;
+    gap: 6px;
+    font-size: 10px;
+  }
+}

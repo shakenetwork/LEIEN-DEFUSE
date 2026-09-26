@@ -1,0 +1,126 @@
+/* Threat actions stay in the same thumb-sized row; extra space only during a duel/search. */
+.pressure-panel .evade-button:not(:disabled) { background: var(--threat); color: #151b1e; transition: transform .1s, filter .1s; }
+.pressure-panel .evade-button:disabled { transition: transform .1s; }
+.combat-team { display: flex; align-items: center; gap: 5px; padding: 5px 16px 0; }
+.combat-team .teammate-chip { display: flex; align-items: center; gap: 4px; color: #a2b8c5; font-size: 10px; }
+.teammate-chip img { width: 22px; height: 23px; object-fit: cover; object-position: top; border: 1px solid #69818a80; }
+.teammate-chip.is-dead { color: #849097; }
+.teammate-chip.is-dead img, .radio-dead .radio-avatar { filter: grayscale(1); opacity: .48; }
+.combat-team > span:last-child { margin-left: auto; font: 10px var(--mono); color: #8cc7d9; }
+.tactical-actions { display: flex; gap: 8px; padding: 0 16px 10px; }
+.tactical-actions:has(> [hidden]):not(:has(> :not([hidden]))) { display: none; }
+.tactical-actions button { flex: 1; min-height: 48px; border: 1px solid #9bb7c366; color: #dce8eb; background: #23343c; padding: 6px 10px; font-size: 14px; font-weight: 700; touch-action: manipulation; }
+.tactical-actions button small { display: block; font-size: 10px; font-weight: 400; margin-top: 3px; color: #afc2ca; }
+.tactical-actions .smoke-button { border-color: #8dccdf; background: #294751; }
+.tactical-actions .duel-button { border-color: #a37d48; background: #4f3d233d; color: #edc885; }
+.pressure-panel[data-state="fire"], .pressure-panel[data-state="fire-warning"] { --threat: #ffae58; border-color: #d78945; }
+.pressure-panel[data-state="grenade"], .pressure-panel[data-state="duel"] { --threat: #ff826e; border-color: #c57055; }
+.pressure-panel[data-state="smoke"] { --threat: #a4c8ce; border-color: #84a1a5; }
+.pressure-panel[data-state="bodyguard"] { --threat: #e7c07e; border-color: #a0875e; }
+.tactical-arena { margin: 0 12px 10px; border: 1px solid #9ab0b04d; background: #172125; }
+.arena-heading { display: flex; justify-content: space-between; gap: 6px; padding: 7px 9px; color: #e4cd8e; font-size: 12px; }
+.arena-heading > span { font: 11px var(--mono); color: #b3c0c3; }
+.duel-opponent-card { display: flex; align-items: center; gap: 9px; min-height: 58px; padding: 8px 9px; border-top: 1px solid #ffffff0d; border-bottom: 1px solid #ffffff12; background: linear-gradient(90deg, #111b25, #1a2933); }
+.duel-opponent-avatar { flex: 0 0 44px; width: 44px; height: 44px; object-fit: cover; object-position: 50% 8%; border: 1px solid #be765f; background: #2a1f25; filter: saturate(.8) contrast(1.05); }
+.duel-opponent-card.avatar-fallback .duel-opponent-avatar { display: none; }
+.duel-opponent-card.avatar-fallback:before { content: "MU"; display: grid; place-items: center; flex: 0 0 44px; width: 44px; height: 44px; border: 1px solid #be765f; color: #edc885; background: #2e252a; font: 800 13px var(--mono); }
+.duel-opponent-copy { display: grid; gap: 2px; min-width: 0; flex: 1; }
+.duel-opponent-kicker { color: #d08c70; font: 9px var(--mono); letter-spacing: .7px; }
+.duel-opponent-name { overflow: hidden; color: #e9edf0; font-size: 14px; line-height: 1.2; text-overflow: ellipsis; white-space: nowrap; }
+.duel-opponent-meta { overflow: hidden; color: #a7b9c1; font-size: 10px; line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
+.duel-opponent-meta em { color: #e2c26e; font-style: normal; font-family: var(--mono); }
+.duel-opponent-status { align-self: flex-start; margin-left: auto; padding: 3px 5px; border: 1px solid #ae765f80; color: #e9b28b; font: 9px var(--mono); letter-spacing: .6px; }
+.duel-opponent-status[data-state="urgent"] { border-color: #ff7666; color: #ff9c88; animation: duelStatusPulse .55s steps(2, end) infinite; }
+.duel-opponent-card[hidden] { display: none; }
+@keyframes duelStatusPulse { 50% { opacity: .5; } }
+.duel-field { height: 164px; position: relative; overflow: hidden; background: linear-gradient(#131d2970, #131d2990), url('../assets/scenes/dust2-b-site.jpg') center 55% / cover; touch-action: manipulation; cursor: crosshair; }
+.duel-field:after { content: "点中头部 · 点空立即阵亡"; position: absolute; bottom: 4px; left: 0; right: 0; text-align: center; color: #e8e3d2; font-size: 10px; text-shadow: 0 1px 4px #000; pointer-events: none; }
+.duel-target { position: absolute; left: var(--target-x,50%); top: var(--target-y,50%); transform: translate(-50%,-50%); width: 56px; height: 56px; padding: 0; border: 2px solid #efb966; border-radius: 50%; background: #361915; box-shadow: 0 0 0 4px #0004, 0 3px 15px #0009; touch-action: manipulation; overflow: hidden; }
+.duel-target:active:not(:disabled) { transform: translate(-50%,-50%) scale(.95); }
+.duel-target { left: clamp(32px, var(--target-x,50%), calc(100% - 32px)); top: clamp(32px, var(--target-y,50%), calc(100% - 42px)); }
+.enemy-head { display: block; height: 100%; background: #241b1c var(--enemy-image, url('../assets/agents/elite-muharik-display.webp')) var(--enemy-position, 60% 8%) / 240% auto no-repeat; filter: saturate(.9) contrast(1.08); }
+.target-crosshair { position: absolute; inset: 0; display: grid; place-items: center; color: #ffe4a6; font: 28px var(--mono); text-shadow: 0 0 4px #000; }
+.fire-smoke-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; padding: 8px; background: linear-gradient(#bec8c766,#aab2ac88),url('../assets/scenes/dust2-b-site.jpg') center / cover; }
+.fire-smoke-grid button { height: 48px; min-width: 44px; min-height: 44px; color: #c4d2d2; font: 700 19px var(--mono); background: #263435b0; border: 1px solid #94a8a773; touch-action: manipulation; }
+.fire-smoke-grid button.remember { background: #e9bf50; color: #1b241f; box-shadow: 0 0 14px #e7bf5177; }
+.fire-smoke-grid.covered button { background: #6e7b7bed; border-color: #9aafaa60; }
+.fire-smoke-grid button.incorrect { background: #8f483e; }
+.fire-smoke-grid button { transition: transform .1s, filter .1s; }
+.game-screen.fire-blocked .play-console { opacity: .45; }
+.game-screen.tactical-blocked .play-console { user-select: none; opacity: .45; }
+.combat-overlay.burning .hit-vignette { opacity: .65; border-color: #ff9d45; box-shadow: inset 0 -90px 100px #b03a0080; }
+.tactical-actions [hidden], .tactical-arena[hidden], .duel-field[hidden], .fire-smoke-grid[hidden] { display: none; }
+@media(max-width:760px) {
+  .combat-team { padding: 4px 10px 0; }
+  .combat-team .teammate-chip { font-size: 9px; }
+  .combat-team > span:last-child { font-size: 9px; }
+  .tactical-actions { padding: 0 10px 8px; }
+  .tactical-arena { margin: 0 10px 8px; }
+  .duel-opponent-card { gap: 7px; padding: 7px 8px; }
+  .duel-opponent-avatar, .duel-opponent-card.avatar-fallback:before { flex-basis: 40px; width: 40px; height: 40px; }
+  .duel-opponent-name { font-size: 13px; }
+  .duel-opponent-meta { font-size: 9px; }
+  .duel-opponent-status { font-size: 8px; }
+  .pressure-panel .pressure-action #threat-detail { font-size: 11px; }
+  .game-screen:has(.tactical-arena:not([hidden])) .pressure-panel .radio-bubble { display: none; }
+  .game-screen:has(.tactical-arena:not([hidden])) .pressure-panel { top: max(4px,env(safe-area-inset-top)); }
+}
+/* A landscape phone is wide, but still needs the compact emergency HUD. */
+@media(max-height:480px) {
+  .pressure-panel { top: max(4px, env(safe-area-inset-top)); }
+  .pressure-panel .pressure-top { min-height: 27px; padding: 5px 10px; }
+  .pressure-panel .pressure-label { font-size: 10px; letter-spacing: 0; }
+  .pressure-panel .combat-location { font-size: 9px; }
+  .pressure-panel .operator-card { grid-template-columns: 40px minmax(0,1fr) 90px; gap: 8px; padding: 6px 10px; }
+  .pressure-panel .operator-portrait { width: 40px; height: 44px; }
+  .pressure-panel .operator-name { font-size: 14px; }
+  .pressure-panel .operator-name > span, .pressure-panel .operator-role, .pressure-panel .combat-vitals small { display: none; }
+  .pressure-panel .operator-action { margin-top: 3px; min-height: 16px; font-size: 11px; }
+  .pressure-panel .combat-vitals { gap: 8px; }
+  .pressure-panel .combat-vitals b { font-size: 20px; margin: 1px 0 3px; }
+  .pressure-panel .combat-vitals > div > span { font-size: 10px; }
+  .pressure-panel .radio-bubble { min-height: 48px; margin-inline: 10px; padding-block: 5px; gap: 7px; }
+  .pressure-panel .radio-avatar { width: 30px; height: 34px; }
+  .pressure-panel .radio-avatar img { width: 35px; height: 35px; }
+  .pressure-panel .radio-avatar img.profile-portrait { width: 30px; height: 30px; }
+  .pressure-panel #radio-label, .pressure-panel #radio-label i { font-size: 9px; }
+  .pressure-panel #radio-text { font-size: 12px; line-height: 1.3; margin-top: 2px; }
+  .pressure-panel .voice-bars { display: none; }
+  .pressure-panel .combat-team { padding: 4px 10px 0; }
+  .pressure-panel .pressure-action { min-height: 60px; padding: 6px 10px; gap: 7px; }
+  .pressure-panel .pressure-action strong { font-size: 16px; }
+  .pressure-panel #threat-detail { font-size: 10px; line-height: 1.3; }
+  .pressure-panel .evade-button { min-width: 76px; min-height: 48px; padding: 7px 8px; font-size: 14px; }
+  .pressure-panel .tactical-actions { padding: 0 10px 8px; }
+}
+/* During a one-second shot, the whole field must fit even in landscape.
+ * Removing the redundant HUD rows also prevents an oversized sticky panel
+ * from pinning its target below the visual viewport. */
+@media(max-height:600px) {
+  .game-screen:has(.tactical-arena:not([hidden])) .pressure-panel {
+    top: max(4px, env(safe-area-inset-top));
+    scroll-margin-top: max(4px, env(safe-area-inset-top));
+  }
+  .game-screen:has(.tactical-arena:not([hidden])) .pressure-panel .operator-card,
+  .game-screen:has(.tactical-arena:not([hidden])) .pressure-panel .radio-bubble,
+  .game-screen:has(.tactical-arena:not([hidden])) .pressure-panel .combat-team,
+  .game-screen:has(.tactical-arena:not([hidden])) .pressure-panel .pressure-action {
+    display: none;
+  }
+  .game-screen:has(.tactical-arena:not([hidden])) .pressure-top {
+    min-height: 27px;
+    padding: 5px 10px;
+  }
+  .game-screen:has(.tactical-arena:not([hidden])) .pressure-label { font-size: 10px; letter-spacing: 0; }
+  .game-screen:has(.tactical-arena:not([hidden])) .combat-location { font-size: 9px; }
+  .tactical-arena { margin: 0 8px 8px; }
+  .tactical-arena .duel-field { height: clamp(100px, 32dvh, 128px); }
+  .tactical-arena .arena-heading { padding: 5px 8px; }
+  .tactical-arena .duel-opponent-card { min-height: 48px; padding: 5px 8px; }
+  .tactical-arena .duel-opponent-avatar,
+  .tactical-arena .duel-opponent-card.avatar-fallback:before { flex-basis: 36px; width: 36px; height: 36px; }
+  .tactical-arena .duel-opponent-name { font-size: 13px; }
+  .tactical-arena .duel-opponent-kicker { font-size: 8px; }
+}
+
+@media(prefers-reduced-motion:reduce) { .combat-overlay.burning .hit-vignette { box-shadow: none; } .duel-opponent-status[data-state="urgent"] { animation: none; } }

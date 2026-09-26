@@ -1,0 +1,29 @@
+/* Contact replaces the existing comms label; no extra warning panel or row. */
+.pressure-top .enemy-contact {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  color: #f2d292;
+}
+.pressure-top .enemy-contact[hidden] { display: none; }
+.game-screen .pressure-top:has(.enemy-contact:not([hidden])) { display: flex; }
+.pressure-top:has(.enemy-contact:not([hidden])) .pressure-label { display: none; }
+.enemy-contact img {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+  object-position: center top;
+  background: #352e25;
+  border: 1px solid #b9975566;
+}
+.enemy-contact > span { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.enemy-contact small { margin-right: 3px; color: #d6ad5e; font: 600 10px var(--mono); }
+.enemy-contact b { font-size: 12px; font-weight: 600; }
+.duel-opponent-card.avatar-fallback::before { content: "T"; }
+@media (max-width: 760px), (max-height: 480px) and (max-width: 1000px) {
+  .game-screen .pressure-top:has(.enemy-contact:not([hidden])) { min-height: 32px; padding-block: 4px; }
+  .game-screen .enemy-contact b { font-size: 11px; }
+  .game-screen .pressure-top .combat-location { flex-shrink: 0; }
+}
